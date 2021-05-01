@@ -1,10 +1,9 @@
-# Operating System Configurations
-My personal configurations for my operating systems :)
-
-# Setup
-OS:        Arch Linux (Arch btw)
+# Basic configuration
+OS:        arch linux
 
 Terminal:  urxvt
+
+Editor:    neovim
 
 Server:    Xorg
 
@@ -12,10 +11,15 @@ WM:        bspwm
 
 Hotkeys:   sxhkd
 
-Bar:       Polybar
+Toolbar:   polybar
 
-Wallpaper: nitrogen
+# Before installing
+Go through the official Arch Installation guide. Furthermore install git. Then:
+```
+$ git clone https://github.com/tossenxD/OS-configs
+$ cd OS-configs/
+$ chmod +x install.sh
+$ ./install.sh
+```
 
-Files:     dropbox and nautilus
-
-Music:     spotifyd and spotify-tui
+# Detailed list
