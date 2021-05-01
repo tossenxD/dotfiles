@@ -14,7 +14,7 @@ Hotkeys:   sxhkd
 Toolbar:   polybar
 
 # Installation
-**Prerequisite:** Go through the official Arch Installation guide. Furthermore install git.
+**Prerequisite:** Go through the official Arch Installation Guide and install git.
 
 **Install:** Download the repo and run the install script.
 ```
