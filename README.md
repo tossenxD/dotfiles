@@ -5,7 +5,7 @@ Terminal:  urxvt
 
 Editor:    neovim
 
-Server:    Xorg
+Server:    xorg
 
 WM:        bspwm
 
