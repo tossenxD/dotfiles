@@ -25,7 +25,7 @@ match_lhs=""
 
 
 # Terminal line
-[[ -f ~/.dir_colors ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
+[[ -f ~/.colors/.urxvt_colors ]] && match_lhs="${match_lhs}$(<~/.colors/.urxvt_colors)"
 [[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
 [[ -z ${match_lhs} ]] \
 	&& type -P dircolors >/dev/null \
@@ -37,8 +37,8 @@ if [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] ; then
 
 	# Enable colors for ls, etc. Prefer ~/.dir_colors
 	if type -P dircolors >/dev/null ; then
-		if [[ -f ~/.dir_colors ]] ; then
-			eval $(dircolors -b ~/.dir_colors)
+		if [[ -f ~/.colors/.urxvt_colors ]] ; then
+			eval $(dircolors -b ~/.colors/.urxvt_colors)
 		elif [[ -f /etc/DIR_COLORS ]] ; then
 			eval $(dircolors -b /etc/DIR_COLORS)
 		fi
@@ -46,9 +46,6 @@ if [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] ; then
 
 	PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;37m\][\[\033[01;31m\]\h'; else echo '\[\033[01;37m\][\[\033[01;32m\]\u@\h'; fi)\[\033[01;34m\] \w\[\033[01;37m\]]\[\033[01;34m\]\$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;34m\] \")\\$\[\033[00m\] "
 fi
-
-
-#PS1='[\u@\h \W]\$ '
 PS2="> "
 PS3="> "
 PS4="+ "
@@ -64,18 +61,12 @@ alias la='ls --color=auto -F -a'
 alias dir="dir --color=auto"
 alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
-#alias cat="bat"
 alias open="xdg-open"
-alias pdf="$HOME/scripts/compilelatex.sh"
-alias pdfrm="$HOME/scripts/removepdf.sh"
-alias night="redshift -r -P -t 6500k:4000k &"
-alias day="killall redshift && redshift -x"
-
-alias spt="$HOME/scripts/spotifylaunch.sh"
+alias pdf="~/scripts/compilelatex.sh"
+alias pdfrm="~/scripts/removepdf.sh"
 
 shopt -s cmdhist
 shopt -s histappend
-
 
 #neofetch
 #echo "meow" | lolcat
