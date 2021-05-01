@@ -13,8 +13,10 @@ Hotkeys:   sxhkd
 
 Toolbar:   polybar
 
-# Before installing
-Go through the official Arch Installation guide. Furthermore install git. Then:
+# Installation
+**Prerequisite:** Go through the official Arch Installation guide. Furthermore install git.
+
+**Install:** Download the repo and run the install script.
 ```
 $ git clone https://github.com/tossenxD/OS-configs
 $ cd OS-configs/
