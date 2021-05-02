@@ -24,6 +24,12 @@ $ chmod +x install.sh
 $ ./install.sh
 ```
 
+# After installation
+To start the X window write the command beneath. A wallpaper can be downloaded from Firefox and set with Nitrogen.
+```
+$ startx
+```
+
 # Detailed package list
 Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/blob/main/install.sh).
 
@@ -42,4 +48,8 @@ Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/
 **Others:** *siji, ttf-unifont*. Both are used in the polybar configuration.
 
 # Notable configurations
+**Color themes:** Some color themes are included in the folder .colors/. .Xresources imports a color scheme and it will be used as system default.
 
+**Shortcuts:** In the .bashrc, multiple alias are defined based on scripts from scripts/. WM keybinds are defined in .config/sxhkd/sxhkdrc. Once NeoVim has been opened, many snippets will be installed from the vim-snippet package (view ./config/nvim/init.vim), which contains unique shortcuts/snippets in NeoVim for many file-types.
+
+**Other:** Keyboard-layout can be set in .xinitrc. More generally, settings can be found in the different dotfiles.
