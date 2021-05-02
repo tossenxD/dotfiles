@@ -1,66 +1,14 @@
-!*foreground: #00cc00
-!!*foreground_bold: #a8a19f
-!*cursor: #a8a19f
-!*background:       #1b1918
-!!*background: rgba(0, 0, 0, .7)
-
 #include ".colors/CountVonCount"
 
 URxvt.colorIT:      #87af5f
 URxvt.colorBD:      #d7d7d7
 URxvt.colorUL:      #87afd7
 
-!URxvt.intensityStyles:	false
-!URxvt*transparant:	true
-!URxvt*shading:		30
-!URxvt.background:       [70]#000000
 URxvt.depth:		32
 URxvt.font: 		xft:monospace:size=15
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 URxvt.cursorBlink: true
 
-!! Common Keybinds for Navigations
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
-!URxvt.keysym.Control-Up: \033[1;5A
-!URxvt.keysym.Control-Down: \033[1;5B
-!URxvt.keysym.Control-Right: \033[1;5C
-!URxvt.keysym.Control-Left: \033[1;5D
-
-!! Extensions
-! URxvt.perl-lib: /usr/bin/perl
-URxvt.perl-ext-common:	default,clipboard
-URxvt.colorUL:		#4682B4
-!! url-select
-!URxvt.keysym.M-u:	perl:url-select:select_next
-!URxvt.url-select.launcher: firefox
-!URxvt.url-select.underline: true
-!! keyboard-select:
-!URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!URxvt.keysym.M-s: perl:keyboard-select:search
-!! resize-font
-!URxvt.resize-font.smaller:	C-Down
-!URxvt.resize-font.bigger:	C-Up
-!! Matcher
-!URxvt.url-launcher:	firefox
-!URxvt.matcher.button:	1
-!! Clipboard
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
-!!rofi.color-enabled:	true
-!!rofi.color-window:	#000, #000, #000
-!!rofi.color-normal:	#111, #819396, #222, #008ed4, #ffffff
-!!rofi.color-active:	#002b37, #008ed4, #003643, #008ed4, #66c6ff
-!!rofi.color-urgent:	#002b37, #da4281, #003643, #008ed4, #890661
-
-!!rofi.fake-transparency:	true
-!!rofi.lines:		3
-!!rofi.bw:		0
-!!rofi.opacity:		"10"
-!!rofi.hide-scrollbar:	true
-!!rofi.width:		30

@@ -2,7 +2,7 @@ printf "\n>Change directory to ~/\n\n"
 cd ~/
 printf "\n>Installing basic packages\n\n"
 # Install basic packages
-sudo pacman -S --noconfirm neovim bspwm sxhkd rxvt-unicode dmenu xorg xorg-xinit nitrogen firefox nautilus ranger screengrab zathura amd-ucode xf86-video-amdgpu man-db man-pages
+sudo pacman -Syu --noconfirm neovim bspwm sxhkd rxvt-unicode dmenu xorg xorg-xinit nitrogen firefox nautilus ranger screengrab zathura amd-ucode xf86-video-amdgpu man-db man-pages
 
 # Install yay
 printf "\n>Make directory aur/ downloads/ pictures/\n\n"
@@ -16,7 +16,7 @@ cd ~/
 
 # Install polybar
 printf "\n>Using yay to install polybar\n\n"
-yay -S --noconfirm polybar siji ttf-unifont
+yay -S --noconfirm siji ttf-unifont polybar
 
 # Copy configurations
 printf "\n>Change directory to ~/git/OS-configs\n\n"
@@ -30,9 +30,5 @@ cp .xinitrc ~/
 cp .Xresources ~/
 cp .bashrc ~/
 cp wallpaper.png ~/pictures/
-
-# Set options
-printf "\n>Setting wallpaper\n\n"
-nitrogen --set-auto --save ~/pictures/wallpaper.png
 
 printf "\n>Installation is over!\n"

@@ -15,25 +15,33 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 Plug 'lervag/vimtex'
-Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
-
-call plug#end()
-
-
-" Pluggins configs
 let g:tex_flavor='latex'
-
 let g:vimtex_view_method='zathura'
-let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_quickfix_mode=0
 set conceallevel=2
 let g:tex_conceal='abdmg'
 hi clear Conceal
 
+Plug 'sirver/ultisnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+snippet beg "begin{} / end{}"
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet // "Fraction"
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "FractionBig"
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+call plug#end()
 
 
 " Setup
