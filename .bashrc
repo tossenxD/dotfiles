@@ -57,3 +57,5 @@ alias pdfrm="~/scripts/removepdf.sh"
 
 shopt -s cmdhist
 shopt -s histappend
+
+export EDITOR=nvim
