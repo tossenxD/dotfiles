@@ -4,12 +4,10 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
-
 
 " Pluggins for vim-plug
 call plug#begin('~/.config/nvim/autoload/plugged')
@@ -30,7 +28,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 call plug#end()
 
-
 " Setup
 syntax on
 filetype indent on
@@ -47,6 +44,3 @@ set shiftwidth=2
 set autoindent
 set smartindent
 set cindent
-
-" runtime! archlinux.vim
-" filetype plugin on

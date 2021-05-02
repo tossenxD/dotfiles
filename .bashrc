@@ -21,9 +21,6 @@ safe_term=${TERM//[^[:alnum:]]/?}
 match_lhs=""
 
 
-
-
-
 # Terminal line
 [[ -f ~/.colors/.urxvt_colors ]] && match_lhs="${match_lhs}$(<~/.colors/.urxvt_colors)"
 [[ -z ${match_lhs} ]] \
@@ -47,10 +44,6 @@ PS2="> "
 PS3="> "
 PS4="+ "
 
-
-export PATH=$PATH:/home/tb/.local/bin
-
-
 # Alias
 alias ls='ls --color=auto -F'
 alias ll='ls --color=auto -a -l -F -h'
@@ -64,11 +57,3 @@ alias pdfrm="~/scripts/removepdf.sh"
 
 shopt -s cmdhist
 shopt -s histappend
-
-#neofetch
-#echo "meow" | lolcat
-#echo "  \    /\    
-#   )  ( ')
-#  (  /  )
-#    \(__)|"
-#date | lolcat

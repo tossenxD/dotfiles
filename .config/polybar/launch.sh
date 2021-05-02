@@ -9,7 +9,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Launch Polybar, using defult config location ~/.config/polybar/launch.sh
 polybar default &
 
-
 # Polybar setup for multiple displays
 #if type "xrandr"; then
 #  # Find and save primary screen
