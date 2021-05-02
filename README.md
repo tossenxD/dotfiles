@@ -41,7 +41,7 @@ Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/
 
 **Commandline utilities:** *mlocate, man-db, man-pages, ranger*. A file-explorer, locate-function and manuals.
 
-**Graphical utilities:** *nitrogen, firefox, nautilus, screengrab, zathura*. Wallpaper setter, browser, file-explorer, screenshot utility and pdf-viewer.
+**Graphical utilities:** *nitrogen, firefox, nautilus, screengrab, zathura, zathura-pdf-poppler*. Wallpaper setter, browser, file-explorer, screenshot utility and pdf-viewer.
 
 **Package managers:** *yay, python-pip*. And AUR helper and python package installer. Both are used for installing other packages.
 
