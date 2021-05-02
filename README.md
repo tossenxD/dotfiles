@@ -50,6 +50,6 @@ Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/
 # Notable configurations
 **Color themes:** Some color themes are included in the folder .colors/. .Xresources imports a color scheme and it will be used as system default.
 
-**Shortcuts:** In the .bashrc, multiple alias are defined based on scripts from scripts/. WM keybinds are defined in .config/sxhkd/sxhkdrc. Once NeoVim has been opened, many snippets will be installed from the vim-snippet package (view ./config/nvim/init.vim), which contains unique shortcuts/snippets in NeoVim for many file-types.
+**Shortcuts:** Multiple alias are defined in the .bashrc, some based on scripts from scripts/. WM keybinds are defined in .config/sxhkd/sxhkdrc. Once NeoVim has been opened, many snippets will be installed from the vim-snippet package (view ./config/nvim/init.vim for more NeoVim binds and pluggins), which contains unique shortcuts/snippets in NeoVim for many file-types.
 
 **Other:** Keyboard-layout can be set in .xinitrc. More generally, settings can be found in the different dotfiles.
