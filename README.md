@@ -29,10 +29,17 @@ Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/
 
 **Hardware:** *amd-ucode, xf86-video-amdgpu*. For AMD GPU- and CPU-driver.
 
-**Windows manager:** *bspwm, sxhkd, xorg, xorg-xinit, dmenu*. A tilling-window environment, with keybinds and menu, for X.
+**Windows manager:** *bspwm, sxhkd, xorg, xorg-xinit, dmenu, polybar*. A tilling-window environment for X, with keybinds, a menu and a toolbar.
 
-**Functionality:** *neovim, rxvt-unicode, xsel*. The terminal emulator is urxvt which is configured by Xresources. NeoVim is the editor and comes with configurations including automatic installs/upgrades of plugins and three LaTeX plugins. xsel is used as clipboard tool primarily as a bridge between NeoVim and system clipboard.
+**Functionality:** *neovim, rxvt-unicode, xsel, python*. The terminal emulator is urxvt which is configured by Xresources. NeoVim is the editor and comes with configurations including automatic installs/upgrades of plugins and three LaTeX plugins. xsel is used as clipboard tool primarily as a bridge between NeoVim and system clipboard. Also installs python.
 
 **Commandline utilities:** *mlocate, man-db, man-pages, ranger*. A file-explorer, locate-function and manuals.
 
-nitrogen firefox nautilus  screengrab zathura   python python-pip python2 python2-pip  xdotool 
+**Graphical utilities:** *nitrogen, firefox, nautilus, screengrab, zathura*. Wallpaper setter, browser, file-explorer, screenshot utility and pdf-viewer.
+
+**Package managers:** *yay, python-pip*. And AUR helper and python package installer. Both are used for installing other packages.
+
+**Others:** *siji, ttf-unifont*. Both are used in the polybar configuration.
+
+# Notable configurations
+
