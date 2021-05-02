@@ -22,24 +22,11 @@ set conceallevel=2
 let g:tex_conceal='abdmg'
 hi clear Conceal
 
+Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips'
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-snippet beg "begin{} / end{}"
-\begin{$1}
-	$0
-\end{$1}
-endsnippet
-
-snippet // "Fraction"
-\\frac{$1}{$2}$0
-endsnippet
-
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "FractionBig"
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
-endsnippet
 
 call plug#end()
 

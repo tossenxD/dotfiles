@@ -2,7 +2,7 @@ printf "\n>Change directory to ~/\n\n"
 cd ~/
 printf "\n>Installing basic packages\n\n"
 # Install basic packages
-sudo pacman -Syu --noconfirm neovim bspwm sxhkd rxvt-unicode dmenu xorg xorg-xinit nitrogen firefox nautilus ranger screengrab zathura amd-ucode xf86-video-amdgpu man-db man-pages
+sudo pacman -Syu --noconfirm neovim bspwm sxhkd rxvt-unicode dmenu xorg xorg-xinit nitrogen firefox nautilus ranger screengrab zathura amd-ucode xf86-video-amdgpu man-db man-pages python
 
 # Install yay
 printf "\n>Make directory aur/ downloads/ pictures/\n\n"
