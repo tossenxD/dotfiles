@@ -26,7 +26,6 @@ match_lhs=""
 
 # Terminal line
 [[ -f ~/.colors/.urxvt_colors ]] && match_lhs="${match_lhs}$(<~/.colors/.urxvt_colors)"
-[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
 [[ -z ${match_lhs} ]] \
 	&& type -P dircolors >/dev/null \
 	&& match_lhs=$(dircolors --print-database)
@@ -39,8 +38,6 @@ if [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] ; then
 	if type -P dircolors >/dev/null ; then
 		if [[ -f ~/.colors/.urxvt_colors ]] ; then
 			eval $(dircolors -b ~/.colors/.urxvt_colors)
-		elif [[ -f /etc/DIR_COLORS ]] ; then
-			eval $(dircolors -b /etc/DIR_COLORS)
 		fi
 	fi
 
