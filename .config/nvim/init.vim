@@ -33,6 +33,7 @@ syntax on
 filetype indent on
 
 set clipboard=unnamedplus
+set mouse=a
 
 set number
 set relativenumber
@@ -44,3 +45,6 @@ set shiftwidth=2
 set autoindent
 set smartindent
 set cindent
+
+au BufNewFile,BufRead *.fo setlocal ft=fasto
+au BufNewFile,BufRead *.fs* setlocal ft=fsharp
