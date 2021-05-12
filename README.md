@@ -27,9 +27,10 @@ To start the X window write the command beneath. A wallpaper can be downloaded f
 ```
 $ startx
 ```
+Extra packages can be installed with the [install_extra.sh](https://github.com/tossenxD/OS-configs/blob/main/install_extra.sh).
 
 # Detailed package list
-Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/blob/main/install.sh).
+Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/blob/main/install.sh). List does not include [install_extra.sh](https://github.com/tossenxD/OS-configs/blob/main/install_extra.sh).
 
 **Hardware:** *amd-ucode, xf86-video-amdgpu*. For AMD GPU- and CPU-driver.
 
