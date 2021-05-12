@@ -19,9 +19,7 @@ Toolbar:   polybar
 **Install:** Download the repo and run the install script.
 ```
 $ git clone https://github.com/tossenxD/OS-configs
-$ cd OS-configs/
-$ chmod +x install.sh
-$ ./install.sh
+$ ./OS-configs/install.sh
 ```
 
 # After installation
@@ -29,13 +27,16 @@ To start the X window write the command beneath. A wallpaper can be downloaded f
 ```
 $ startx
 ```
+Extra packages can be installed with the [install_extra.sh](https://github.com/tossenxD/OS-configs/blob/main/install_extra.sh).
 
 # Detailed package list
-Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/blob/main/install.sh).
+Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/blob/main/install.sh). List does not include [install_extra.sh](https://github.com/tossenxD/OS-configs/blob/main/install_extra.sh).
 
 **Hardware:** *amd-ucode, xf86-video-amdgpu*. For AMD GPU- and CPU-driver.
 
 **Windows manager:** *bspwm, sxhkd, xorg, xorg-xinit, dmenu, polybar*. A tilling-window environment for X, with keybinds, a menu and a toolbar.
+
+**Sound** *alsa-utils, alsa-firmware, pulseaudio, pulseaudio-alsa, pulseaudio-jack, pulsemixer*. alsa-utils is used for keybinds, firmware adds extra soundcard support. Pulseaudio and modules is for out-of-the-box audio without tinkering.
 
 **Functionality:** *neovim, rxvt-unicode, xsel, python*. The terminal emulator is urxvt which is configured by Xresources. NeoVim is the editor and comes with configurations including automatic installs/upgrades of plugins and three LaTeX plugins. xsel is used as clipboard tool primarily as a bridge between NeoVim and system clipboard. Also installs python.
 
