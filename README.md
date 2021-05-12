@@ -37,6 +37,8 @@ Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/
 
 **Windows manager:** *bspwm, sxhkd, xorg, xorg-xinit, dmenu, polybar*. A tilling-window environment for X, with keybinds, a menu and a toolbar.
 
+**Sound** *alsa-utils, alsa-firmware, pulseaudio, pulseaudio-alsa, pulseaudio-jack, pulsemixer*. alsa-utils is used for keybinds, firmware adds extra soundcard support. Pulseaudio and modules is for out-of-the-box audio without tinkering.
+
 **Functionality:** *neovim, rxvt-unicode, xsel, python*. The terminal emulator is urxvt which is configured by Xresources. NeoVim is the editor and comes with configurations including automatic installs/upgrades of plugins and three LaTeX plugins. xsel is used as clipboard tool primarily as a bridge between NeoVim and system clipboard. Also installs python.
 
 **Commandline utilities:** *mlocate, man-db, man-pages, ranger*. A file-explorer, locate-function and manuals.
