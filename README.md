@@ -19,9 +19,7 @@ Toolbar:   polybar
 **Install:** Download the repo and run the install script.
 ```
 $ git clone https://github.com/tossenxD/OS-configs
-$ cd OS-configs/
-$ chmod +x install.sh
-$ ./install.sh
+$ ./OS-configs/install.sh
 ```
 
 # After installation
