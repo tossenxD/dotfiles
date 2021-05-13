@@ -13,6 +13,23 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 Plug 'lervag/vimtex'
+
+Plug 'honza/vim-snippets'
+Plug 'sirver/ultisnips'
+
+Plug 'liuchengxu/vim-which-key'
+Plug 'preservim/nerdtree'
+
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+call plug#end()
+
+
+
+
+
+" Pluggin setup
+" vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
@@ -20,15 +37,22 @@ set conceallevel=2
 let g:tex_conceal='abdmg'
 hi clear Conceal
 
-Plug 'honza/vim-snippets'
-Plug 'sirver/ultisnips'
+" snippets
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
-call plug#end()
+" vim-which-key
+source $HOME/.config/nvim/plugconfigs/which-key.vim
 
-" Setup
+" ranger
+let g:ranger_map_keys=0
+let g:bclose_no_plugin_maps=1
+
+
+
+
+" Settings
 syntax on
 filetype indent on
 
@@ -48,3 +72,4 @@ set cindent
 
 au BufNewFile,BufRead *.fo setlocal ft=fasto
 au BufNewFile,BufRead *.fs* setlocal ft=fsharp
+
