@@ -28,8 +28,9 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " maps
-let g:which_key_map['t'] = [':NERDTree'   , 'nerdtree']
-let g:which_key_map['r'] = [':Ranger'     , 'ranger']
+let g:which_key_map['n'] = [':NERDTree'      , 'nerdtree']
+let g:which_key_map['r'] = [':Ranger'        , 'ranger']
+let g:which_key_map['t'] = [':bot sp | set nonumber | set norelativenumber | term' , 'terminal']
 let g:which_key_map['w'] = {
       \ 'name' : '+windows' ,
       \ 'w' : ['<C-W>w'     , 'other-window']          ,
@@ -46,6 +47,14 @@ let g:which_key_map['w'] = {
       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
       \ }
+let g:which_key_map['e'] = {
+      \ 'name' : '+tabs' ,
+      \ 'e' : [':tabnew'     , 'new-tab']          ,
+      \ 'h' : [':tabnext'     , 'next-tab']         ,
+      \ 'l' : [':tabprev'     , 'previous-tab']           ,
+      \ 'q' : [':tabclose'     , 'close-tab']          ,
+      \ }
+
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

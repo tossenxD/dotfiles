@@ -52,8 +52,10 @@ alias dir="dir --color=auto"
 alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
 alias open="xdg-open"
-alias pdf="~/scripts/compilelatex.sh"
-alias pdfrm="~/scripts/removepdf.sh"
+alias pdf="$HOME/scripts/compilelatex.sh"
+alias pdfrm="$HOME/scripts/removepdf.sh"
+alias nviminit="nvim $HOME/.config/nvim/init.vim"
+alias systheme="$HOME/scripts/changesystemtheme.sh"
 
 shopt -s cmdhist
 shopt -s histappend

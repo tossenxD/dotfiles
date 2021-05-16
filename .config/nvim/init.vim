@@ -1,3 +1,4 @@
+"" Plugins
 " Install vim-plug if not found
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -28,7 +29,7 @@ call plug#end()
 
 
 
-" Pluggin setup
+"" Plugin config
 " vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -52,17 +53,22 @@ let g:bclose_no_plugin_maps=1
 
 
 
-" Settings
+
+"" Neovim config
+" settings
 syntax on
 filetype indent on
-
 set clipboard=unnamedplus
 set mouse=a
 
+" terminal
+autocmd TermOpen term://* startinsert
+tnoremap <Esc> <C-\><C-n>
+
+" navigation
 set number
 set relativenumber
 set linebreak
-
 set tabstop=2
 set expandtab
 set shiftwidth=2
@@ -70,6 +76,6 @@ set autoindent
 set smartindent
 set cindent
 
+" syntax
 au BufNewFile,BufRead *.fo setlocal ft=fasto
 au BufNewFile,BufRead *.fs* setlocal ft=fsharp
-
