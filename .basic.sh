@@ -8,7 +8,7 @@ pip install neovim
 
 # Home setup
 echo ">Setting up home"
-mkdir $HOME/aur $HOME/pictures $HOME/trash $HOME/backups $HOME/git
+mkdir $HOME/aur $HOME/pictures $HOME/trash $HOME/backups
 cp $pdir/.arch.png $HOME/pictures/arch.png
 nitrogen --set-auto $HOME/pictures/arch.png
 
