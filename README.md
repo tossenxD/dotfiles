@@ -1,4 +1,4 @@
-# Basic configuration
+# Essence of setup
 OS:        arch linux
 
 Terminal:  urxvt
@@ -16,21 +16,28 @@ Toolbar:   polybar
 # Installation
 **Prerequisite:** Finish the official Arch Installation Guide and then install git and base-devel.
 
-**Install:** Download the repo and run the install script.
+**Install:** Download the repo and run the startup script.
 ```
-$ git clone https://github.com/tossenxD/OS-configs
-$ ./OS-configs/install.sh
+$ git clone https://github.com/tossenxD/dotfiles
+$ ./dotfiles/run.sh
 ```
+There are 4 installation types. [run](https://github.com/tossenxD/dotfiles/blob/main/run.sh) will ask you for a type and to confirm the selected type.
+| includes | [basic packages, directories & wallpaper](https://github.com/tossenxD/dotfiles/blob/main/.basic.sh) | [extra packages](https://github.com/tossenxD/dotfiles/blob/main/.extras.sh) | [dotfiles](https://github.com/tossenxD/dotfiles/blob/main/.dotfiles.sh) |
+| ---------|:----------------------:|:--------------:|:--------:|
+| full     | x                      | x              | x        |
+| basic    | x                      |                | x        |
+| extras   |                        | x              |          |
+| dotfiles |                        |                | x        |
 
-# After installation
-To start the X window write the command beneath. A wallpaper can be downloaded from Firefox and set with Nitrogen.
+
+# After full installation
+To start X window write the command beneath. If you have sound-problems a reboot should fix it.
 ```
 $ startx
 ```
-Extra packages can be installed with the [install_extra.sh](https://github.com/tossenxD/OS-configs/blob/main/install_extra.sh).
 
-# Detailed package list
-Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/blob/main/install.sh). List does not include [install_extra.sh](https://github.com/tossenxD/OS-configs/blob/main/install_extra.sh).
+# Detailed package list of basic packages
+Packages can be modified in [.basic.sh](https://github.com/tossenxD/dotfiles/blob/main/.basic.sh). This list does not include [.extras.sh](https://github.com/tossenxD/dotfiles/blob/main/.extras.sh).
 
 **Hardware:** *amd-ucode, xf86-video-amdgpu*. For AMD GPU- and CPU-driver.
 
@@ -49,8 +56,8 @@ Packages can be modified in [install.sh](https://github.com/tossenxD/OS-configs/
 **Others:** *siji, ttf-unifont*. Both are used in the polybar configuration.
 
 # Notable configurations
-**Color themes:** Some color themes are included in the folder .colors/. .Xresources imports a color scheme and it will be used as system default.
+**Color themes:** Color themes are located in the directory [.colors/](https://github.com/tossenxD/dotfiles/blob/main/.colors/). Color themes is declared in [.Xresources](https://github.com/tossenxD/dotfiles/blob/main/.Xresources) and is used systemwide after declaration. A script to change color theme is aliased to "systheme". Calling this command in a terminal will allow you to choose a theme and it will automaticly be declared in .Xresources and refresh.
 
-**Shortcuts:** Multiple alias are defined in the .bashrc, some based on scripts from scripts/. WM keybinds are defined in .config/sxhkd/sxhkdrc. Once NeoVim has been opened, many snippets will be installed from the vim-snippet package, which contains unique shortcuts/snippets in NeoVim for many file-types (view ./config/nvim/init.vim for more NeoVim binds and pluggins).
+**Shortcuts:** Multiple alias are defined in the .bashrc, some based on scripts from scripts/. WM keybinds are defined in .config/sxhkd/sxhkdrc. On first NeoVim launch pluggins will be installed. These pluggins include shortcuts and snippets in NeoVim. View [.config/nvim/](https://github.com/tossenxD/dotfiles/blob/main/.config/nvim/)) for further information on how NeoVim binds and pluggins are setup.
 
-**Other:** Keyboard-layout can be set in .xinitrc. More generally, settings can be found in the different dotfiles. Polybar multi-monitor support can be outcommented in .config/polybar/launch.sh.
+**Other:** Keyboard-layout can be set in .xinitrc. Configurations are in the different dotfiles. Polybar multi-monitor support can be outcommented in .config/polybar/launch.sh.
