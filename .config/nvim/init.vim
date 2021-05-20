@@ -23,6 +23,8 @@ Plug 'preservim/nerdtree'
 
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 
@@ -50,6 +52,10 @@ source $HOME/.config/nvim/plugconfigs/which-key.vim
 let g:ranger_map_keys=0
 let g:bclose_no_plugin_maps=1
 
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'materia',
+      \ }
 
 
 
