@@ -54,10 +54,11 @@ alias dmesg='dmesg --color'
 alias open="xdg-open"
 alias nviminit="nvim $HOME/.config/nvim/init.vim"
 
-let scripts=$HOME/.scripts
-alias pdf="$scripts/compilelatex.sh"
-alias pdfrm="$scripts/removepdf.sh"
-alias systheme="$scripts/changesystemtheme.sh"
+alias pdf="$HOME/.scripts/compilelatex.sh"
+alias pdfrm="$HOME/.scripts/removepdf.sh"
+alias systheme="$HOME/.scripts/changesystemtheme.sh"
+
+alias archbtw="nitrogen --set-auto $HOME/pictures/.arch.png"
 
 shopt -s cmdhist
 shopt -s histappend

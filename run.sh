@@ -1,30 +1,33 @@
 #!/bin/bash
-pdir=$(dirname $(realpath $0))
+PDIR=$(dirname $(realpath $0))
 echo ">What is the installation type? [full/basic/extras/dotfiles]"
 read CHOICE
 case $CHOICE in
   "full")
-    install_type=(.basic.sh .extras.sh .dotfiles.sh)
+    FILES=".basic.sh .extras.sh .dotfiles.sh"
     ;;
   "basic")
-    install_type=(.basic.sh .dotfiles.sh)
+    FILES=".basic.sh .dotfiles.sh"
     ;;
   "extras")
-    install_type=(.extras.sh)
+    FILES=".extras.sh"
     ;;
   "dotfiles")
-    install_type=(.dotfiles.sh)
+    FILES=".dotfiles.sh"
     ;;
   *)
     echo "Invalid argument: $CHOICE"
-    exit 1
+    exit
     ;;
 esac
 echo ">Confirm $CHOICE installation? [yes]"
 read CONFIRMATION
 if [ $CONFIRMATION = "yes" ];
 then
-  source $pdir/$install_type
+  for FILE in $FILES
+  do
+    ($PDIR/$FILE)
+  done
   echo ">run.sh complete :) Enjoy <3"
 else
   echo ">Exiting"
