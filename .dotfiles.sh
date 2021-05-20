@@ -1,11 +1,21 @@
 #!/bin/bash
 echo ">Beginning installation of dotfiles"
-pdir=$(dirname $(realpath $0))
-ln -sf $pdir/.colors/ $HOME
-ln -sf $pdir/.config/ $HOME
-ln -sf $pdir/.scripts/ $HOME
-ln -sf $pdir/.xinitrc $HOME
-ln -sf $pdir/.Xresources $HOME
-ln -sf $pdir/.bashrc $HOME
-ln -sf $pdir/.arch.png $HOME/pictures/.arch.png
+PDIR=$(dirname $(realpath $0))
+ln -sf $PDIR/.colors $HOME
+ln -sf $PDIR/.scripts $HOME
+
+ln -sf $PDIR/.config/bspwm $HOME/.config
+ln -sf $PDIR/.config/polybar $HOME/.config
+ln -sf $PDIR/.config/ranger $HOME/.config
+ln -sf $PDIR/.config/sxhkd $HOME/.config
+ln -sf $PDIR/.config/zathura $HOME/.config
+
+ln -sf $PDIR/.config/nvim/init.vim $HOME/.config/nvim
+ln -sf $PDIR/.config/nvim/plugconfigs $HOME/.config/nvim
+ln -sf $PDIR/.config/nvim/syntax $HOME/.config/nvim
+
+ln -sf $PDIR/.xinitrc $HOME
+ln -sf $PDIR/.Xresources $HOME
+ln -sf $PDIR/.bashrc $HOME
+ln -sf $PDIR/.arch.png $HOME/pictures/.arch.png
 echo ">Finished installation of dotfiles"
