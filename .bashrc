@@ -52,6 +52,7 @@ alias dir="dir --color=auto"
 alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
 alias open="xdg-open"
+alias DD="trash-put"
 alias nviminit="nvim $HOME/.config/nvim/init.vim"
 
 alias pdf="$HOME/.scripts/compilelatex.sh"

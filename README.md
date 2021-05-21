@@ -47,7 +47,7 @@ Packages can be modified in [.basic.sh](https://github.com/tossenxD/dotfiles/blo
 
 **Functionality:** *neovim, rxvt-unicode, xsel, python*. The terminal emulator is urxvt which is configured by Xresources. NeoVim is the editor and comes with configurations including automatic installs/upgrades of plugins and three LaTeX plugins. xsel is used as clipboard tool primarily as a bridge between NeoVim and system clipboard. Also installs python.
 
-**Commandline utilities:** *mlocate, man-db, man-pages, ranger*. A file-explorer, locate-function and manuals.
+**Commandline utilities:** *mlocate, man-db, man-pages, ranger, trash-cli*. A file-explorer, locate-function, trash client and manuals.
 
 **Graphical utilities:** *nitrogen, firefox, nautilus, screengrab, zathura, zathura-pdf-poppler*. Wallpaper setter, browser, file-explorer, screenshot utility and pdf-viewer.
 
