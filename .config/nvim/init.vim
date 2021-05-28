@@ -1,4 +1,6 @@
-"" Plugins
+""""""""""""
+"" Plugins""
+""""""""""""
 " Install vim-plug if not found
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -27,40 +29,17 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
-
-
-
-
-"" Plugin config
-" vimtex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=2
-let g:tex_conceal='abdmg'
-hi clear Conceal
-
-" snippets
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-" vim-which-key
+" Plugin config
+source $HOME/.config/nvim/plugconfigs/vimtex.vim
+source $HOME/.config/nvim/plugconfigs/snippets.vim
 source $HOME/.config/nvim/plugconfigs/which-key.vim
-
-" ranger
-let g:ranger_map_keys=0
-let g:bclose_no_plugin_maps=1
-
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'materia',
-      \ }
+source $HOME/.config/nvim/plugconfigs/ranger.vim
+source $HOME/.config/nvim/plugconfigs/lightline.vim
 
 
-
-
-"" Neovim config
+""""""""""""""""""
+"" Neovim config""
+""""""""""""""""""
 " settings
 syntax on
 filetype indent on

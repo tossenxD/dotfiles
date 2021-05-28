@@ -28,8 +28,8 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " maps
-let g:which_key_map['n'] = [':NERDTree'      , 'nerdtree']
-let g:which_key_map['r'] = [':Ranger'        , 'ranger']
+let g:which_key_map['n'] = [':NERDTree' , 'nerdtree']
+let g:which_key_map['r'] = [':Ranger'   , 'ranger']
 let g:which_key_map['t'] = [':bot sp | set nonumber | set norelativenumber | term' , 'terminal']
 let g:which_key_map['w'] = {
       \ 'name' : '+windows' ,
@@ -48,11 +48,18 @@ let g:which_key_map['w'] = {
       \ 'v' : ['<C-W>v'     , 'split-window-right']    ,
       \ }
 let g:which_key_map['e'] = {
-      \ 'name' : '+tabs' ,
-      \ 'e' : [':tabnew'     , 'new-tab']          ,
-      \ 'h' : [':tabnext'     , 'next-tab']         ,
-      \ 'l' : [':tabprev'     , 'previous-tab']           ,
-      \ 'q' : [':tabclose'     , 'close-tab']          ,
+      \ 'name' : '+tabs'    ,
+      \ 'e' : [':tabnew'    , 'new-tab']               ,
+      \ 'h' : [':tabnext'   , 'next-tab']              ,
+      \ 'l' : [':tabprev'   , 'previous-tab']          ,
+      \ 'q' : [':tabclose'  , 'close-tab']             ,
+      \ }
+let g:which_key_map['v'] = {
+      \ 'name' : '+vimtex'        ,
+      \ 'v' : [':VimtexCompile'   , 'compile']           ,
+      \ 'i' : [':bot sp | set nonumber | set norelativenumber | VimtexInfo' , 'info'] ,
+      \ 't' : [':VimtexTocToggle' , 'table-of-content']  ,
+      \ 'c' : [':VimtexClean'     , 'clean-auxiliary']   ,
       \ }
 
 " Register which key map
