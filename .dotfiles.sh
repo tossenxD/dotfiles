@@ -17,5 +17,4 @@ ln -sf $PDIR/.config/nvim/syntax $HOME/.config/nvim
 ln -sf $PDIR/.xinitrc $HOME
 ln -sf $PDIR/.Xresources $HOME
 ln -sf $PDIR/.bashrc $HOME
-ln -sf $PDIR/.arch.png $HOME/pictures/.arch.png
 echo ">Finished installation of dotfiles"
