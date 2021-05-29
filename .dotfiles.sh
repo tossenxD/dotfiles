@@ -2,6 +2,7 @@
 echo ">Beginning installation of dotfiles"
 PDIR=$(dirname $(realpath $0))
 ln -sf $PDIR/.colors $HOME
+ln -sf $PDIR/.urxvt $HOME
 ln -sf $PDIR/.scripts $HOME
 
 ln -sf $PDIR/.config/bspwm $HOME/.config
