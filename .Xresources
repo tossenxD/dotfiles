@@ -1,14 +1,14 @@
-#include ".colors/mocha"
+#include ".colors/gruvbox"
 
-URxvt.colorIT:      #87af5f
-URxvt.colorBD:      #d7d7d7
-URxvt.colorUL:      #87afd7
+URxvt.font: 		         xft:monospace:size=15:antialias=True
+URxvt.scrollBar:	       false
+URxvt.cursorBlink:       true
 
-URxvt.depth:		32
-URxvt.font: 		xft:monospace:size=15
-URxvt.scrollBar:	false
-URxvt.cursorColor:	white
-URxvt.cursorBlink: true
-
-URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Up:   command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+URxvt.perl-ext-common:   resize-font
+
+URxvt.keysym.C-Down:     resize-font:smaller
+URxvt.keysym.C-Up:       resize-font:bigger
+URxvt.keysym.C-equal:    resize-font:reset
