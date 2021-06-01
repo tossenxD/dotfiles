@@ -9,6 +9,5 @@ URxvt.keysym.Shift-Down: command:\033]721;1\007
 
 URxvt.perl-ext-common:   resize-font
 
-URxvt.keysym.C-Down:     resize-font:smaller
-URxvt.keysym.C-Up:       resize-font:bigger
-URxvt.keysym.C-equal:    resize-font:reset
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
