@@ -62,7 +62,7 @@ line-size = 3
 line-color = #f00
 
 border-size = 3
-border-color = ${colors.black-alt}
+border-color = ${colors.white}
 
 padding-left = 0
 padding-right = 2
@@ -123,9 +123,9 @@ label-unmounted-foreground = ${colors.foreground-alt}
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.black-alt}
-label-focused-underline= ${colors.blue}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.white}
+#label-focused-underline= ${colors.red}
 label-focused-padding = 2
 
 label-occupied = %index%
