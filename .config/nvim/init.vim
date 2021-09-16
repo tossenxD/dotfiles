@@ -27,6 +27,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 Plug 'itchyny/lightline.vim'
+Plug 'BeneCollyridam/futhark-vim'
 call plug#end()
 
 " Plugin config
