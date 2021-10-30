@@ -48,10 +48,10 @@ white = ${xrdb:color7:#222}
 white-alt = ${xrdb:color15:#222}
 
 [bar/default]
-width =  70%
+width = 100%
 height = 33
-offset-x = 15%
-offset-y = 1%
+offset-x = 0%
+offset-y = 0%
 radius = 0.0
 ;fixed-center = true
 
@@ -162,7 +162,7 @@ type = internal/xbacklight
 format = <label> <bar>
 label = BL
 
-bar-width = 10
+bar-width = 100%
 bar-indicator = |
 bar-indicator-foreground = #fff
 bar-indicator-font = 2
@@ -260,7 +260,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = 🔇 muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
+bar-volume-width = 100%
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -289,7 +289,7 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
-bar-volume-width = 10
+bar-volume-width = 100%
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
