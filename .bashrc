@@ -28,7 +28,8 @@ alias dmesg='dmesg --color'
 
 alias open="xdg-open"
 alias DD="trash-put"
-alias nviminit="nvim $HOME/.config/nvim/init.vim"
+alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
+alias bashrc="$EDITOR $HOME/.bashrc"
 alias pdf="$HOME/.scripts/compilelatex.sh"
 alias pdfrm="$HOME/.scripts/removepdf.sh"
 alias systheme="$HOME/.scripts/changesystemtheme.sh"
