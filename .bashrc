@@ -26,6 +26,9 @@ alias dir="dir --color=auto"
 alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
 
+alias fsharpc='mono /bin/FSharp.Compiler.Tools/tools/fsc.exe'
+alias fsharpi='mono /bin/FSharp.Compiler.Tools/tools/fsi.exe'
+
 alias open="xdg-open"
 alias DD="trash-put"
 alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
