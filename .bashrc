@@ -25,6 +25,7 @@ alias ll='ls --color=auto -a -l -F -h'
 alias dir="dir --color=auto"
 alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
+alias storage="du -h --max-depth=1"
 
 alias fsharpc='mono /bin/FSharp.Compiler.Tools/tools/fsc.exe'
 alias fsharpi='mono /bin/FSharp.Compiler.Tools/tools/fsi.exe'
