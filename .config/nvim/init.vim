@@ -28,6 +28,9 @@ Plug 'rbgrouleff/bclose.vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'BeneCollyridam/futhark-vim'
+
+Plug 'mhinz/vim-signify'
+Plug 'elmcast/elm-vim'
 call plug#end()
 
 " Plugin config
@@ -36,6 +39,7 @@ source $HOME/.config/nvim/plugconfigs/snippets.vim
 source $HOME/.config/nvim/plugconfigs/which-key.vim
 source $HOME/.config/nvim/plugconfigs/ranger.vim
 source $HOME/.config/nvim/plugconfigs/lightline.vim
+source $HOME/.config/nvim/plugconfigs/signify.vim
 
 
 """"""""""""""""""
