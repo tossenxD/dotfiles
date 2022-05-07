@@ -30,7 +30,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'BeneCollyridam/futhark-vim'
 
 Plug 'mhinz/vim-signify'
-Plug 'elmcast/elm-vim'
+Plug 'elmcast/elm-vim' "formatting: npm install -g elm-format
 call plug#end()
 
 " Plugin config
