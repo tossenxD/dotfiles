@@ -3,8 +3,7 @@ echo "bspwm window gap? y/n"
 read CHOICE
 LEGAL=0
 
-if [ $CHOICE == "y" -o $CHOICE == "Y" ]
-then
+if [ $CHOICE == "y" -o $CHOICE == "Y" ]; then
   BWIDTH=6
   BGAP=8
   BPAD=50
@@ -13,8 +12,7 @@ then
   POFFSETY=1
   LEGAL=1
 else
-  if [ $CHOICE == "n" -o $CHOICE == "n" ]
-  then
+  if [ $CHOICE == "n" -o $CHOICE == "n" ]; then
     BWIDTH=2
     BGAP=0
     BPAD=36.5
@@ -25,8 +23,7 @@ else
   fi
 fi
 
-if [ $LEGAL == 1 ]
-then
+if [ $LEGAL == 1 ]; then
   sed -i --follow-symlinks "s/\(bspc\ config\ border\_width\).*/\1\ ${BWIDTH}/" $HOME/.config/bspwm/bspwmrc
   sed -i --follow-symlinks "s/\(bspc\ config\ window\_gap\).*/\1\ ${BGAP}/" $HOME/.config/bspwm/bspwmrc
   sed -i --follow-symlinks "s/\(bspc\ config\ top\_padding\).*/\1\ ${BPAD}/" $HOME/.config/bspwm/bspwmrc

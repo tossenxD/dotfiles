@@ -24,3 +24,9 @@ augroup END
 
 ""Python
 "pip3 install black
+
+""Shell
+"sudo pacman -S shfmt
+
+""Lua
+"sudo pacman -S stylua
