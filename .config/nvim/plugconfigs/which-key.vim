@@ -12,7 +12,6 @@ let g:which_key_map =  {}
 let g:which_key_sep = '→'
 " set timeoutlen=100
 
-
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
 
@@ -31,6 +30,11 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 let g:which_key_map['n'] = [':NERDTree' , 'nerdtree']
 let g:which_key_map['r'] = [':Ranger'   , 'ranger']
 let g:which_key_map['t'] = [':bot sp | set nonumber | set norelativenumber | term' , 'terminal']
+let g:which_key_map['f'] = {
+      \ 'name' : '+format' ,
+      \ 'f' : [':augroup fmt | autocmd BufWritePre * Neoformat | augroup END' , 'format'],
+      \ 'd' : [':autocmd! fmt' , 'noformat'],
+      \}
 let g:which_key_map['w'] = {
       \ 'name' : '+windows' ,
       \ 'w' : ['<C-W>w'     , 'other-window']          ,

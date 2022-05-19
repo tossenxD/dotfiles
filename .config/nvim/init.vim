@@ -14,23 +14,17 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Pluggins for vim-plug
 call plug#begin('~/.config/nvim/autoload/plugged')
-
 Plug 'lervag/vimtex'
-
 Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips'
-
 Plug 'liuchengxu/vim-which-key'
 Plug 'preservim/nerdtree'
-
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
-
 Plug 'itchyny/lightline.vim'
 Plug 'BeneCollyridam/futhark-vim'
-
 Plug 'mhinz/vim-signify'
-Plug 'elmcast/elm-vim' "formatting: npm install -g elm-format
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " Plugin config
@@ -40,6 +34,7 @@ source $HOME/.config/nvim/plugconfigs/which-key.vim
 source $HOME/.config/nvim/plugconfigs/ranger.vim
 source $HOME/.config/nvim/plugconfigs/lightline.vim
 source $HOME/.config/nvim/plugconfigs/signify.vim
+source $HOME/.config/nvim/plugconfigs/neoformat.vim
 
 
 """"""""""""""""""
