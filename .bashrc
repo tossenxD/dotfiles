@@ -29,6 +29,7 @@ alias storage="du -h --max-depth=1"
 
 alias fsharpc='mono /bin/FSharp.Compiler.Tools/tools/fsc.exe'
 alias fsharpi='mono /bin/FSharp.Compiler.Tools/tools/fsi.exe'
+alias ghci='stack exec ghci -- -W'
 
 alias open="xdg-open"
 alias DD="trash-put"
