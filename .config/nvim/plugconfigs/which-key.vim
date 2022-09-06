@@ -31,9 +31,13 @@ let g:which_key_map['n'] = [':NERDTree' , 'nerdtree']
 let g:which_key_map['r'] = [':Ranger'   , 'ranger']
 let g:which_key_map['t'] = [':bot sp | set nonumber | set norelativenumber | term' , 'terminal']
 let g:which_key_map['f'] = {
-      \ 'name' : '+format' ,
-      \ 'f' : [':augroup fmt | autocmd BufWritePre * Neoformat | augroup END' , 'format'],
-      \ 'd' : [':autocmd! fmt' , 'noformat'],
+      \ 'name' : '+format'       ,
+      \ 'f' : [':augroup fmt | autocmd BufWritePre * Neoformat | augroup END' , 'format']           ,
+      \ 'd' : [':autocmd! fmt'   , 'noformat']         ,
+      \ '=' : [':Tabularize /='  , 'tab =']            ,
+      \ '-' : [':Tabularize /->' , 'tab ->']           ,
+      \ ',' : [':Tabularize /,'  , 'tab ,']            ,
+      \ '#' : [':Tabularize /#-' , 'tab #-']           ,
       \}
 let g:which_key_map['w'] = {
       \ 'name' : '+windows' ,

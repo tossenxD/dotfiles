@@ -25,6 +25,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'BeneCollyridam/futhark-vim'
 Plug 'mhinz/vim-signify'
 Plug 'sbdchd/neoformat'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 " Plugin config
@@ -35,6 +36,7 @@ source $HOME/.config/nvim/plugconfigs/ranger.vim
 source $HOME/.config/nvim/plugconfigs/lightline.vim
 source $HOME/.config/nvim/plugconfigs/signify.vim
 source $HOME/.config/nvim/plugconfigs/neoformat.vim
+source $HOME/.config/nvim/plugconfigs/tabular.vim
 
 
 """"""""""""""""""
@@ -65,7 +67,7 @@ set smartindent
 set cindent
 
 " syntax
-au BufNewFile,BufRead *.fo setlocal ft=fasto
+au BufNewFile,BufRead *.fo  setlocal ft=fasto
 au BufNewFile,BufRead *.fs* setlocal ft=fsharp
 
 " keymap
