@@ -26,6 +26,7 @@ Plug 'BeneCollyridam/futhark-vim'
 Plug 'mhinz/vim-signify'
 Plug 'sbdchd/neoformat'
 Plug 'godlygeek/tabular'
+Plug 'vim-erlang/vim-erlang-runtime'
 call plug#end()
 
 " Plugin config
