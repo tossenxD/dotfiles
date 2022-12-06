@@ -44,4 +44,7 @@ alias syspy="$HOME/.scripts/setpy.sh"
 alias cpf="xsel --clipboard <"
 alias untar="tar xvzf"
 alias ntar="tar -cvzf"
+
 alias wmjava="wmname LG3D"
+alias antl="ant; ant -Dlocaltest=true test"
+alias ants="ant; ant -Dlocaltest=false test"
