@@ -32,7 +32,6 @@ alias fsharpi='mono /bin/FSharp.Compiler.Tools/tools/fsi.exe'
 alias ghci='stack exec ghci -- -W'
 
 alias open="xdg-open"
-alias DD="trash-put"
 alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
 alias bashrc="$EDITOR $HOME/.bashrc"
 alias pdf="$HOME/.scripts/compilelatex.sh"
@@ -47,5 +46,3 @@ alias untar="tar xvzf"
 alias ntar="tar -cvzf"
 
 alias wmjava="wmname LG3D"
-alias antl="ant; ant -Dlocaltest=true test"
-alias ants="ant; ant -Dlocaltest=false test"
