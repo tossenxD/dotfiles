@@ -48,3 +48,5 @@ alias ntar="tar -cvzf"
 alias wmjava="wmname LG3D"
 alias antl="ant; ant -Dlocaltest=true test"
 alias ants="ant; ant -Dlocaltest=false test"
+
+alias bs="~/BattleScribe/BattleScribe_2.03.21_Linux/RosterEditor.sh"
