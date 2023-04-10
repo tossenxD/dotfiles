@@ -32,7 +32,6 @@ alias fsharpi='mono /bin/FSharp.Compiler.Tools/tools/fsi.exe'
 alias ghci='stack exec ghci -- -W'
 
 alias open="xdg-open"
-alias DD="trash-put"
 alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
 alias bashrc="$EDITOR $HOME/.bashrc"
 alias pdf="$HOME/.scripts/compilelatex.sh"
@@ -41,6 +40,7 @@ alias systheme="$HOME/.scripts/changesystemtheme.sh"
 alias sysgaps="$HOME/.scripts/set_windows_gap.sh"
 alias sysmon="$HOME/.scripts/monitorsetup.sh"
 alias syspy="$HOME/.scripts/setpy.sh"
+alias sysup="sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman -Su --noconfirm"
 alias cpf="xsel --clipboard <"
 alias untar="tar xvzf"
 alias ntar="tar -cvzf"
