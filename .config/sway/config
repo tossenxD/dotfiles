@@ -32,16 +32,15 @@ font monospace 12
 #
 set $bg #282828
 set $fg #ebdbb2
-set $dred #cc241d
-set $bred #fb4934
-set $dyellow #d79921
+set $red #cc241d
+set $blue #458588
+set $yellow #d79921
 #
 # Class                 border   backgr.  text indicator child_border
 #
-client.background                $bg
-client.focused          $dyellow $dyellow $fg  $bred     $dyellow
-client.focused_inactive $dred    $dred    $fg  $bred     $dred
-client.unfocused        $dred    $dred    $fg  $bred     $dred
+client.focused          $yellow $yellow $fg  $blue     $yellow
+client.focused_inactive $red    $red    $fg  $blue     $red
+client.unfocused        $red    $red    $fg  $blue     $red
 
 ### Key bindings
 #
