@@ -8,7 +8,7 @@ set $term alacritty
 set $menu exec wofi --show drun
 
 ### Output configuration
-output * bg ~/Pictures/gondola2.png fill
+output * bg ~/wallpaper.png fill
 
 ### Input configuration
 input * xkb_layout "us"
@@ -16,6 +16,16 @@ input * xkb_variant "altgr-intl"
 input * xkb_options "caps:escape"
 input * repeat_delay 300
 input * repeat_rate 50
+
+### XWayland
+xwayland enable
+
+### Style
+default_border pixel 2
+default_floating_border pixel 2
+font monospace 12
+smart_borders on
+
 
 ### Key bindings
 #
