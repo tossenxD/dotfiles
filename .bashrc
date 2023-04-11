@@ -45,4 +45,6 @@ alias cpf="xsel --clipboard <"
 alias untar="tar xvzf"
 alias ntar="tar -cvzf"
 
+alias pkgsize="LANG=C pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2 | grep MiB"
+
 alias wmjava="wmname LG3D"
