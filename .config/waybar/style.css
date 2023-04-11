@@ -8,13 +8,13 @@
 }
 
 window {
-    color:      rgba(217, 216, 216, 1);
-    background: rgba(35, 31, 32, 1);
+    color:      rgba(235, 219, 178, 1);
+    background: rgba(40, 40, 40, 1);
 }
 
 window#waybar.solo {
-    color:      rgba(217, 216, 216, 1);
-    background: rgba(35, 31, 32, 1);
+    color:      rgba(235, 219, 178, 1);
+    background: rgba(40, 40, 40, 1);
 }
 
 #workspaces {
@@ -23,19 +23,19 @@ window#waybar.solo {
 
 #workspaces button {
     padding:    0 5px;
-    color:      rgba(217, 216, 216, 1);
+    color:      rgba(235, 219, 178, 1);
 }
 
 #workspaces button.visible {
-    color:      rgba(217, 216, 216, 1);
+    color:      rgba(235, 219, 178, 1);
 }
 
 #workspaces button.focused {
-    background: rgba(68, 65, 65, 1);
+    background: rgba(69, 133, 136, 1);
 }
 
 #workspaces button.urgent {
-    color:      rgba(238, 46, 36, 1);
+    color:      rgba(204, 36, 29, 1);
 }
 
 #mode, #battery, #network, #pulseaudio, #backlight, #custom-storage, #custom-spotify, #custom-weather {
@@ -49,21 +49,21 @@ window#waybar.solo {
 }
 
 #battery.warning {
-   color:       rgba(255, 210, 4, 1);
+   color:       rgba(215, 153, 33, 1);
 }
 
 #battery.critical {
-    color:      rgba(238, 46, 36, 1);
+    color:      rgba(204, 36, 29, 1);
 }
 
 #battery.charging {
-    color:      rgba(217, 216, 216, 1);
+    color:      rgba(69, 133, 136, 1);
 }
 
 #custom-storage.warning {
-    color:      rgba(255, 210, 4, 1);
+   color:       rgba(215, 153, 33, 1);
 }
 
 #custom-storage.critical {
-    color:      rgba(238, 46, 36, 1);
+    color:      rgba(204, 36, 29, 1);
 }
