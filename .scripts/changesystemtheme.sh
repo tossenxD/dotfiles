@@ -20,6 +20,5 @@ done
 
 echo "Setting theme: ${file[$COLOR]}"
 sed -i --follow-symlinks "s/\(\#include\ \".colors\/\).*/\1${file[$COLOR]}\"/" $HOME/.Xresources
-sed -i --follow-symlinks "s/\(\#include\ \".colors\/\).*/\1${file[$COLOR]}\"/" $HOME/.Xdefaults
 bspc wm -r
 xrdb -merge $HOME/.Xresources
