@@ -5,7 +5,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "custom/spotify", "custom/weather", "custom/storage", "memory", "cpu", "backlight", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "custom/spotify", "custom/weather", "custom/storage", "memory", "cpu", "temperature", "backlight", "pulseaudio", "network", "battery", "clock"],
     "sway/mode": {
         "format": " {}"
     },
@@ -20,6 +20,10 @@
     "clock": {
         "format": "{:%a %d/%m %H:%M}",
         "tooltip": false
+    },
+     "temperature": {
+	    "format": "{temperatureC}°C ",
+      "tooltip": false
     },
     "cpu": {
 	    "interval": 10,
@@ -59,7 +63,7 @@
         "format": "{volume}%{icon}",
         "format-muted": "🔇",
         "format-icons": {
-            "default": ["🔈", "🔉", "🔊"]
+            "default": ["", "", ""]
         },
         "on-click": "alacritty -e pulsemixer",
         "tooltip": false

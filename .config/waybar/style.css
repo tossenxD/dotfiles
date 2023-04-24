@@ -38,7 +38,7 @@ window#waybar.solo {
     color:      rgba(204, 36, 29, 1);
 }
 
-#mode, #clock, #battery, #network, #tray, #memory, #cpu, #pulseaudio, #backlight, #custom-storage, #custom-spotify, #custom-weather {
+#mode, #clock, #battery, #network, #tray, #temperature, #memory, #cpu, #pulseaudio, #backlight, #custom-storage, #custom-spotify, #custom-weather {
     margin:     0px 16px 0px 0px;
 }
 
