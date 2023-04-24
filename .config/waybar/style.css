@@ -50,8 +50,24 @@ window#waybar.solo {
     color:      rgba(204, 36, 29, 1);
 }
 
-#battery.charging {
-    color:      rgba(69, 133, 136, 1);
+#battery.charging.charge {
+    color:      rgba(131, 165, 152, 1);
+}
+
+#battery.charging.warning {
+    color:      rgba(131, 165, 152, 1);
+}
+
+#battery.charging.critical {
+    color:      rgba(131, 165, 152, 1);
+}
+
+#battery.charging.charged {
+    color:      rgba(142, 192, 124, 1);
+}
+
+#battery.charging.fullycharged {
+    color:      rgba(251, 73, 52, 1);
 }
 
 #custom-storage.warning {
