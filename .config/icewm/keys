@@ -1,0 +1,15 @@
+key "Super+Return"  urxvt
+key "Super+q"       icesh -f close
+key "Super+f"       icesh -f maximize
+key "Super+t"       icesh -f restore
+key "Super+r"       icesh restart
+key "Super+1"       icesh goto 0
+key "Super+2"       icesh goto 1
+key "Super+3"       icesh goto 2
+key "Super+4"       icesh goto 3
+
+key "XF86AudioLowerVolume"  amixer set Master 5%-
+key "XF86AudioRaiseVolume"  amixer set Master 5%+
+key "XF86AudioMute"         amixer set Master toggle
+key "XF86MonBrightnessUp"   brightnessctl s 5%+
+key "XF86MonBrightnessDown" brightnessctl s 5%-
