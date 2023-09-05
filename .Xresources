@@ -1,6 +1,6 @@
 #include ".colors/gruvbox"
 
-URxvt.font: 		         xft:monospace:size=15:antialias=True
+URxvt.font: 		         xft:monospace:size=12:antialias=True
 URxvt.scrollBar:	       false
 URxvt.cursorBlink:       true
 

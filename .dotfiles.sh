@@ -12,6 +12,7 @@ ln -sf $PDIR/.config/swappy $HOME/.config
 ln -sf $PDIR/.config/waybar $HOME/.config
 ln -sf $PDIR/.config/alacritty $HOME/.config
 ln -sf $PDIR/.config/wofi $HOME/.config
+ln -sf $PDIR/.config/icewm $HOME/.config
 
 ln -sf $PDIR/.config/nvim/init.vim $HOME/.config/nvim
 ln -sf $PDIR/.config/nvim/plugconfigs $HOME/.config/nvim
