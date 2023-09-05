@@ -34,6 +34,8 @@ alias fsharpc='mono /bin/FSharp.Compiler.Tools/tools/fsc.exe'
 alias fsharpi='mono /bin/FSharp.Compiler.Tools/tools/fsi.exe'
 alias ghci='stack exec ghci -- -W'
 
+alias isabelle='/usr/bin/Isabelle/bin/isabelle'
+
 alias open="xdg-open"
 alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
 alias bashrc="$EDITOR $HOME/.bashrc"
