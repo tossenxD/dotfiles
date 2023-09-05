@@ -4,5 +4,5 @@
 # modifications to this file will be overwritten when you reinstall icewm.
 #
 prog "urxvt" utilities-terminal urxvt
-prog "Firefox" firefox firefox
-
+prog "firefox" firefox firefox
+prog "files" folder pcmanfm
