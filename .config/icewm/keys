@@ -1,4 +1,5 @@
 key "Super+Return"  urxvt
+key "Super+Space"   rofi -show drun
 key "Super+q"       icesh -f close
 key "Super+f"       icesh -f maximize
 key "Super+t"       icesh -f restore
