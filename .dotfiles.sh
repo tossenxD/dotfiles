@@ -19,6 +19,7 @@ ln -sf $PDIR/.config/nvim/plugconfigs $HOME/.config/nvim
 ln -sf $PDIR/.config/nvim/syntax $HOME/.config/nvim
 
 ln -sf $PDIR/.bashrc $HOME
+ln -sf $PDIR/.bash_profile $HOME
 ln -sf $PDIR/.config/ranger $HOME/.config
 ln -sf $PDIR/.config/zathura $HOME/.config
 

@@ -11,6 +11,7 @@ let g:vimtex_compiler_latexrmk = {
         \   '-interaction=nonstopmode' ,
         \ ],
         \}
+let g:vimtex_compiler_progname='nvr'
 set conceallevel=2
 let g:tex_conceal='abdmg'
 hi clear Conceal
