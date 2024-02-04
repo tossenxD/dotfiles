@@ -17,6 +17,10 @@ input * xkb_options "altwin:swap_lalt_lwin,caps:escape"
 input * repeat_delay 300
 input * repeat_rate 50
 
+### Windows rules
+for_window [title="Friends List"] floating enable
+for_window [title="Steam - Browser"] floating enable
+
 ### XWayland
 xwayland enable
 
