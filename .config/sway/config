@@ -5,7 +5,8 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu exec wofi --show drun
+set $editor emacsclient -c -a 'emacs'
+set $menu wofi --show drun
 
 ### Output configuration
 output * bg ~/wallpapersway.png fill
@@ -51,6 +52,7 @@ client.unfocused        $red    $red    $fg  $blue     $red
 # Basics
 #
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $editor
     bindsym $mod+q kill
     bindsym $mod+space exec $menu
     floating_modifier $mod normal
