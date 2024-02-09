@@ -34,5 +34,6 @@ ln -sf $PDIR/.urxvt $HOME
 ln -sf $PDIR/.scripts $HOME
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+systemctl --user enable --now emacs
 
 echo ">Finished installation of dotfiles"
