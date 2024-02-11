@@ -1,6 +1,13 @@
 #+title: GNU Emacs Configuration
 #+author: Thorbjørn Bülow Bringgaard
 
+* Table of Contents :toc:
+- [[#package-management][Package Management]]
+  - [[#archives][Archives]]
+  - [[#installs][Installs]]
+- [[#faces--themes][Faces & Themes]]
+- [[#org-mode][Org Mode]]
+
 * Package Management
 ** Archives
 #+begin_src emacs-lisp
@@ -18,7 +25,7 @@
 
 * Faces & Themes
 #+begin_src emacs-lisp
-  (load-theme 'gruvbox-dark-medium t)
+  (load-theme 'gruvbox-dark-hard t)
   (set-face-attribute 'default nil :height 130)
 #+end_src
 
