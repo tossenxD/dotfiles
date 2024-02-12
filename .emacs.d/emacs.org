@@ -7,6 +7,9 @@
   - [[#installs][Installs]]
 - [[#faces--themes][Faces & Themes]]
 - [[#org-mode][Org Mode]]
+- [[#pdf][PDF]]
+- [[#latex][LaTeX]]
+- [[#programming-languages][Programming Languages]]
 
 * Package Management
 ** Archives
@@ -18,19 +21,49 @@
 #+end_src
 
 ** Installs
+Defines a function `get-package` s.t:
+  - (get-package pkg) ::
+    install `pkg` \to require `pkg`
+  - (get-package pkg pkg-req) ::
+    install `pkg` \to require `pkg-reg`
+  - (get-package 'pkg 'pkg-req 'init-fun args) ::
+    install `pkg` \to apply `init-fun` to `args` \to require `pkg-req` (if not nil) or `pkg`
 #+begin_src emacs-lisp
-  (mapcar (lambda (pkg) (unless (package-installed-p pkg) (package-install pkg) (require pkg)))
-         '(futhark-mode gruvbox-theme org-bullets toc-org))
+  (defun get-package (pkg &optional pkg-req init-fun &rest args)
+    (unless (package-installed-p pkg) (package-install pkg))
+    (when init-fun (apply init-fun args))
+    (if pkg-req (require pkg-req) (require pkg)))
 #+end_src
 
 * Faces & Themes
 #+begin_src emacs-lisp
+  (get-package 'gruvbox-theme)
   (load-theme 'gruvbox-dark-hard t)
   (set-face-attribute 'default nil :height 130)
+  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 #+end_src
 
 * Org Mode
 #+begin_src emacs-lisp
-  (add-hook 'org-mode-hook 'org-bullets-mode)
+  (get-package 'toc-org)
+  (get-package 'org-bullets)
   (add-hook 'org-mode-hook 'toc-org-mode)
+  (add-hook 'org-mode-hook 'org-bullets-mode)
+#+end_src
+
+* PDF
+#+begin_src emacs-lisp
+  (get-package 'pdf-tools nil 'pdf-tools-install t)
+  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-tools))
+#+end_src
+
+* LaTeX
+#+begin_src emacs-lisp
+  (get-package 'auctex 'tex-site)
+  (add-to-list 'TeX-view-program-selection (list 'output-pdf "PDF Tools"))
+#+end_src
+
+* Programming Languages
+#+begin_src emacs-lisp
+  (get-package 'futhark-mode)
 #+end_src
