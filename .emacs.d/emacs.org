@@ -5,11 +5,15 @@
 - [[#package-management][Package Management]]
   - [[#archives][Archives]]
   - [[#installs][Installs]]
-- [[#faces--themes][Faces & Themes]]
-- [[#pdf][PDF]]
+- [[#layout][Layout]]
+  - [[#faces--themes][Faces & Themes]]
+- [[#programs][Programs]]
+  - [[#pdf][PDF]]
 - [[#languages][Languages]]
   - [[#org][Org]]
   - [[#latex][LaTeX]]
+  - [[#markdown][Markdown]]
+  - [[#asciidoc][Asciidoc]]
   - [[#futhark][Futhark]]
 
 * Package Management
@@ -27,16 +31,20 @@ Defines a function `get-package` s.t:
     install `pkg` \to require `pkg`
   - (get-package pkg pkg-req) ::
     install `pkg` \to require `pkg-reg`
-  - (get-package 'pkg 'pkg-req 'init-fun args) ::
-    install `pkg` \to apply `init-fun` to `args` \to require `pkg-req` (if non-nil) or `pkg`
+  - (get-package pkg pkg-req mode) ::
+    install `pkg` \to require (see above) \to auto determine major-mode according to `mode`
+  - (get-package pkg pkg-req mode init-fun args) ::
+    install `pkg` \to apply `init-fun` to `args` \to require (see above) \to mode (see above)
 #+begin_src emacs-lisp
-  (defun get-package (pkg &optional pkg-req init-fun &rest args)
+  (defun get-package (pkg &optional pkg-req mode init-fun &rest args)
     (unless (package-installed-p pkg) (package-install pkg))
     (when init-fun (apply init-fun args))
-    (if pkg-req (require pkg-req) (require pkg)))
+    (if pkg-req (require pkg-req) (require pkg))
+    (when mode (add-to-list 'auto-mode-alist mode)))
 #+end_src
 
-* Faces & Themes
+* Layout
+** Faces & Themes
 #+begin_src emacs-lisp
   (get-package 'gruvbox-theme)
   (load-theme 'gruvbox-dark-hard t)
@@ -44,10 +52,10 @@ Defines a function `get-package` s.t:
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 #+end_src
 
-* PDF
+* Programs
+** PDF
 #+begin_src emacs-lisp
-  (get-package 'pdf-tools nil 'pdf-tools-install t)
-  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-tools))
+  (get-package 'pdf-tools nil '("\\.pdf\\'" . pdf-tools) 'pdf-tools-install t)
 #+end_src
 
 * Languages
@@ -63,7 +71,19 @@ Defines a function `get-package` s.t:
 ** LaTeX
 #+begin_src emacs-lisp
   (get-package 'auctex 'tex-site)
-  (add-to-list 'TeX-view-program-selection (list 'output-pdf "PDF Tools"))
+  ;;(add-to-list 'TeX-view-program-selection (list 'output-pdf "PDF Tools"))
+#+end_src
+
+** Markdown
+Markdown depends on a markdown processor for parsing - in this case `cmark`.
+#+begin_src emacs-lisp
+  (get-package 'markdown-mode nil '("README\\.md\\'" . gfm-mode)
+	       '(lambda () (setq markdown-command "cmark")))
+#+end_src
+
+** Asciidoc
+#+begin_src emacs-lisp
+  (get-package 'adoc-mode)
 #+end_src
 
 ** Futhark
