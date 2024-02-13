@@ -6,10 +6,11 @@
   - [[#archives][Archives]]
   - [[#installs][Installs]]
 - [[#faces--themes][Faces & Themes]]
-- [[#org-mode][Org Mode]]
 - [[#pdf][PDF]]
-- [[#latex][LaTeX]]
-- [[#programming-languages][Programming Languages]]
+- [[#languages][Languages]]
+  - [[#org][Org]]
+  - [[#latex][LaTeX]]
+  - [[#futhark][Futhark]]
 
 * Package Management
 ** Archives
@@ -27,7 +28,7 @@ Defines a function `get-package` s.t:
   - (get-package pkg pkg-req) ::
     install `pkg` \to require `pkg-reg`
   - (get-package 'pkg 'pkg-req 'init-fun args) ::
-    install `pkg` \to apply `init-fun` to `args` \to require `pkg-req` (if not nil) or `pkg`
+    install `pkg` \to apply `init-fun` to `args` \to require `pkg-req` (if non-nil) or `pkg`
 #+begin_src emacs-lisp
   (defun get-package (pkg &optional pkg-req init-fun &rest args)
     (unless (package-installed-p pkg) (package-install pkg))
@@ -43,27 +44,29 @@ Defines a function `get-package` s.t:
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 #+end_src
 
-* Org Mode
-#+begin_src emacs-lisp
-  (get-package 'toc-org)
-  (get-package 'org-bullets)
-  (add-hook 'org-mode-hook 'toc-org-mode)
-  (add-hook 'org-mode-hook 'org-bullets-mode)
-#+end_src
-
 * PDF
 #+begin_src emacs-lisp
   (get-package 'pdf-tools nil 'pdf-tools-install t)
   (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-tools))
 #+end_src
 
-* LaTeX
+* Languages
+** Org
+#+begin_src emacs-lisp
+  (get-package 'toc-org)
+  (get-package 'org-bullets)
+  (add-hook 'org-mode-hook 'toc-org-mode)
+  (add-hook 'org-mode-hook 'org-bullets-mode)
+  (setq-default org-pretty-entities t)
+#+end_src
+
+** LaTeX
 #+begin_src emacs-lisp
   (get-package 'auctex 'tex-site)
   (add-to-list 'TeX-view-program-selection (list 'output-pdf "PDF Tools"))
 #+end_src
 
-* Programming Languages
+** Futhark
 #+begin_src emacs-lisp
   (get-package 'futhark-mode)
 #+end_src
