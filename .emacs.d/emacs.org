@@ -3,12 +3,14 @@
 
 * Table of Contents :toc:
 - [[#package-management][Package Management]]
-  - [[#archives][Archives]]
-  - [[#installs][Installs]]
+  - [[#package-archives][Package Archives]]
+  - [[#installing-packages][Installing Packages]]
 - [[#layout][Layout]]
-  - [[#faces--themes][Faces & Themes]]
+  - [[#theme-customization][Theme Customization]]
+  - [[#faces--text-customization][Faces & Text Customization]]
+  - [[#frame-customization][Frame Customization]]
 - [[#programs][Programs]]
-  - [[#pdf][PDF]]
+  - [[#pdf-rendering][PDF Rendering]]
 - [[#languages][Languages]]
   - [[#org][Org]]
   - [[#latex][LaTeX]]
@@ -17,7 +19,7 @@
   - [[#futhark][Futhark]]
 
 * Package Management
-** Archives
+** Package Archives
 #+begin_src emacs-lisp
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -25,7 +27,7 @@
   (package-refresh-contents)
 #+end_src
 
-** Installs
+** Installing Packages
 Defines a function `get-package` s.t:
   - (get-package pkg) ::
     install `pkg` \to require `pkg`
@@ -44,16 +46,27 @@ Defines a function `get-package` s.t:
 #+end_src
 
 * Layout
-** Faces & Themes
+** Theme Customization
 #+begin_src emacs-lisp
   (get-package 'gruvbox-theme)
   (load-theme 'gruvbox-dark-hard t)
+#+end_src
+
+** Faces & Text Customization
+#+begin_src emacs-lisp
   (set-face-attribute 'default nil :height 130)
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 #+end_src
 
+** Frame Customization
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+#+end_src
+
 * Programs
-** PDF
+** PDF Rendering
 #+begin_src emacs-lisp
   (get-package 'pdf-tools nil '("\\.pdf\\'" . pdf-tools) 'pdf-tools-install t)
 #+end_src
@@ -75,10 +88,10 @@ Defines a function `get-package` s.t:
 #+end_src
 
 ** Markdown
-Markdown depends on a markdown processor for parsing - in this case `cmark`.
-#+begin_src emacs-lisp
+Markdown depends on a markdown processor for parsing - set in PROCESSOR.
+#+begin_src emacs-lisp :var PROCESSOR = "cmark"
   (get-package 'markdown-mode nil '("README\\.md\\'" . gfm-mode)
-	       '(lambda () (setq markdown-command "cmark")))
+	       '(lambda () (setq markdown-command PROCESSOR)))
 #+end_src
 
 ** Asciidoc
