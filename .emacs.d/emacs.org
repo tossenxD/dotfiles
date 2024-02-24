@@ -13,10 +13,12 @@
   - [[#pdf-rendering][PDF Rendering]]
 - [[#languages][Languages]]
   - [[#org][Org]]
+  - [[#c-and-c-likes][C and C-likes]]
   - [[#latex][LaTeX]]
   - [[#markdown][Markdown]]
   - [[#asciidoc][Asciidoc]]
   - [[#futhark][Futhark]]
+  - [[#cuda][CUDA]]
 
 * Package Management
 ** Package Archives
@@ -56,6 +58,7 @@ Defines a function `get-package` s.t:
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil :height 130)
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+  (setq-default indent-tabs-mode nil)
 #+end_src
 
 ** Frame Customization
@@ -81,6 +84,11 @@ Defines a function `get-package` s.t:
   (setq-default org-pretty-entities t)
 #+end_src
 
+** C and C-likes
+#+begin_src emacs-lisp
+  (setq-default c-basic-offset 4)
+#+end_src
+
 ** LaTeX
 #+begin_src emacs-lisp
   (get-package 'auctex 'tex-site)
@@ -102,4 +110,9 @@ Markdown depends on a markdown processor for parsing - set in PROCESSOR.
 ** Futhark
 #+begin_src emacs-lisp
   (get-package 'futhark-mode)
+#+end_src
+
+** CUDA
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\.cu$" . c++-mode))
 #+end_src
