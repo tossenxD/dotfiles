@@ -9,6 +9,7 @@
   - [[#theme-customization][Theme Customization]]
   - [[#faces--text-customization][Faces & Text Customization]]
   - [[#frame-customization][Frame Customization]]
+  - [[#mode-line][Mode line]]
 - [[#programs][Programs]]
   - [[#pdf-rendering][PDF Rendering]]
 - [[#languages][Languages]]
@@ -51,14 +52,17 @@ Defines a function `get-package` s.t:
 ** Theme Customization
 #+begin_src emacs-lisp
   (get-package 'gruvbox-theme)
-  (load-theme 'gruvbox-dark-hard t)
+  (load-theme 'gruvbox-dark-medium t)
 #+end_src
 
 ** Faces & Text Customization
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :height 130)
+  (set-face-attribute 'default nil :height 110)
+  (setq-default frame-resize-pixelwise t)
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (setq-default indent-tabs-mode nil)
+  (setq-default fill-column 80)
+  (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 #+end_src
 
 ** Frame Customization
@@ -66,6 +70,11 @@ Defines a function `get-package` s.t:
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
+#+end_src
+
+** Mode line
+#+begin_src emacs-lisp
+  (setq-default column-number-mode t)
 #+end_src
 
 * Programs
@@ -87,6 +96,7 @@ Defines a function `get-package` s.t:
 ** C and C-likes
 #+begin_src emacs-lisp
   (setq-default c-basic-offset 4)
+  (add-hook 'c++-mode-hook (lambda () (set-fill-column 100)))
 #+end_src
 
 ** LaTeX
@@ -115,4 +125,5 @@ Markdown depends on a markdown processor for parsing - set in PROCESSOR.
 ** CUDA
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\.cu$" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\.cu.h$" . c++-mode))
 #+end_src
