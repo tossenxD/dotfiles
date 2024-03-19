@@ -14,7 +14,7 @@ output * bg ~/wallpapersway.png fill
 ### Input configuration
 input * xkb_layout "us"
 input * xkb_variant "altgr-intl"
-input * xkb_options "altwin:swap_lalt_lwin,caps:escape"
+input * xkb_options "caps:ctrl_modifier"
 input * repeat_delay 300
 input * repeat_rate 50
 
