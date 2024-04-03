@@ -24,7 +24,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'BeneCollyridam/futhark-vim'
 Plug 'mhinz/vim-signify'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 Plug 'godlygeek/tabular'
 Plug 'vim-erlang/vim-erlang-runtime'
 call plug#end()
@@ -36,7 +36,7 @@ source $HOME/.config/nvim/plugconfigs/which-key.vim
 source $HOME/.config/nvim/plugconfigs/ranger.vim
 source $HOME/.config/nvim/plugconfigs/lightline.vim
 source $HOME/.config/nvim/plugconfigs/signify.vim
-source $HOME/.config/nvim/plugconfigs/neoformat.vim
+" source $HOME/.config/nvim/plugconfigs/neoformat.vim
 source $HOME/.config/nvim/plugconfigs/tabular.vim
 
 

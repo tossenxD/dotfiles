@@ -57,7 +57,7 @@ Defines a function `get-package` s.t:
 
 ** Faces & Text Customization
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :height 110)
+  (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 112)
   (setq-default frame-resize-pixelwise t)
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (setq-default indent-tabs-mode nil)
