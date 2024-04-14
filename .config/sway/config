@@ -21,6 +21,8 @@ input * repeat_rate 50
 ### Windows rules
 for_window [title="Friends List"] floating enable
 for_window [title="Steam - Browser"] floating enable
+for_window [title="GemCraft Frostborn Wrath"] floating enable
+for_window [app_id="Terminal - Floating"] floating enable
 
 ### XWayland
 xwayland enable
@@ -52,6 +54,7 @@ client.unfocused        $red    $red    $fg  $blue     $red
 # Basics
 #
     bindsym $mod+Return exec $term
+    bindsym $mod+Alt+Return exec $term --class="Terminal - Floating"
     bindsym $mod+Shift+Return exec $editor
     bindsym $mod+q kill
     bindsym $mod+space exec $menu
@@ -144,5 +147,6 @@ bindsym $mod+r mode "resize"
 
 ### Status Bar:
 exec_always ~/.config/waybar/waybar.sh
+exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 
 include /etc/sway/config.d/*

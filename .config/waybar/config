@@ -10,7 +10,7 @@
         "format": " {}"
     },
     "sway/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
         "disable-scroll": true
     },
     "sway/window": {
