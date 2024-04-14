@@ -13,6 +13,7 @@
 - [[#programs][Programs]]
   - [[#pdf-rendering][PDF Rendering]]
 - [[#languages][Languages]]
+  - [[#emacs-lisp][Emacs-lisp]]
   - [[#org][Org]]
   - [[#c-and-c-likes][C and C-likes]]
   - [[#latex][LaTeX]]
@@ -84,6 +85,11 @@ Defines a function `get-package` s.t:
 #+end_src
 
 * Languages
+** Emacs-lisp
+#+begin_src emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
+#+end_src
+
 ** Org
 #+begin_src emacs-lisp
   (get-package 'toc-org)
@@ -91,6 +97,7 @@ Defines a function `get-package` s.t:
   (add-hook 'org-mode-hook 'toc-org-mode)
   (add-hook 'org-mode-hook 'org-bullets-mode)
   (setq-default org-pretty-entities t)
+  (setq-default org-support-shift-select t)
 #+end_src
 
 ** C and C-likes
@@ -100,9 +107,60 @@ Defines a function `get-package` s.t:
 #+end_src
 
 ** LaTeX
+*** AUCTeX
+See more with: `C-h i m auctex`
 #+begin_src emacs-lisp
-  (get-package 'auctex 'tex-site)
-  ;;(add-to-list 'TeX-view-program-selection (list 'output-pdf "PDF Tools"))
+  (get-package 'auctex 'tex)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
+#+end_src
+
+*** RefTeX
+See more with: `C-h i m reftex`
+#+begin_src emacs-lisp
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq reftex-plug-into-AUCTeX t)
+#+end_src
+
+*** CDLaTeX
+See more at: https://www.gnu.org/software/emacs/manual/html_node/org/CDLaTeX-mode.html
+#+begin_src emacs-lisp
+  (get-package 'cdlatex)
+  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
+#+end_src
+
+*** Compilation
+`C-c C-a` to compile and view. `C-c C-g` to correlate view to source mark.
+#+begin_src emacs-lisp
+  (setq TeX-save-query nil)
+  (setq TeX-show-compilation nil)
+  (setq TeX-PDF-mode t)
+  (add-hook 'LaTeX-mode-hook (lambda ()
+                               (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+                                     TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+                                     TeX-source-correlate-start-server t)
+                               (add-to-list 'TeX-command-list '("LaTeX" "%`pdflatex -shell-escape --synctex=1%(mode)%' %t" TeX-run-TeX nil t))
+                               (define-key LaTeX-mode-map (kbd "C-c C-g") #'pdf-sync-forward-search)
+                               (setq TeX-command-default "LaTeX")
+                               (setq pdf-sync-backward-display-action t
+                                     pdf-sync-forward-display-action t
+                                     TeX-source-correlate-mode t
+                                     TeX-source-correlate-method '((dvi . source-specials) (pdf . synctex)))
+                               (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+                               ))
+#+end_src
+
+*** Prettification
+Configurations that makes LaTeX source more readable (especially math).
+#+begin_src emacs-lisp
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
+  (add-hook 'TeX-mode-hook (lambda () (prettify-symbols-mode)))
+#+end_src
+
+*** Spelling
+#+begin_src emacs-lisp
+  (add-hook 'TeX-mode-hook (lambda () (flyspell-mode 1)))
 #+end_src
 
 ** Markdown
