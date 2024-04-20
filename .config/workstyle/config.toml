@@ -10,6 +10,7 @@
 # precedence is given in order of apparition in this file.
 
 "alacritty" = ""
+"terminal - floating" = ""
 "github" = ""
 "rust" = ""
 "google" = ""
@@ -18,7 +19,7 @@
 "chrome" = ""
 "file manager" = ""
 "libreoffice calc" = ""
-"libreoffice writer" = ""
+"libreoffice writer" = "🗋"
 "libreoffice" = ""
 "nvim" = ""
 "gthumb" = ""
@@ -29,7 +30,7 @@
 "mpv" = ""
 "music" = ""
 "disk usage" = ""
-".pdf" = ""
+".pdf" = "🗎"
 "emacs" = "𝓔"
 "spotify" = ""
 "steam" = ""
