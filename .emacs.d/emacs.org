@@ -21,6 +21,7 @@
   - [[#asciidoc][Asciidoc]]
   - [[#futhark][Futhark]]
   - [[#cuda][CUDA]]
+  - [[#nix][Nix]]
 
 * Package Management
 ** Package Archives
@@ -184,4 +185,14 @@ Markdown depends on a markdown processor for parsing - set in PROCESSOR.
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\.cu$" . c++-mode))
   (add-to-list 'auto-mode-alist '("\.cu.h$" . c++-mode))
+#+end_src
+
+** Nix
+Provides Nix language support and a NixOS option search function,
+which is bound to `C-c C-n` in any .nix file buffers.
+#+begin_src emacs-lisp
+  (get-package 'nix-mode nil '("\\.nix\\'" . nix-mode))
+  (get-package 'helm-nixos-options)
+  (with-eval-after-load 'nix-mode
+    (define-key nix-mode-map (kbd "C-c C-n") 'helm-nixos-options))
 #+end_src

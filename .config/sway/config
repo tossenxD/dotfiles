@@ -145,8 +145,15 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-### Status Bar:
-exec_always ~/.config/waybar/waybar.sh
+#
+# Status Bar
+#
+bar {
+    swaybar_command waybar
+}
 exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 
+#
+# Misc
+#
 include /etc/sway/config.d/*
