@@ -85,6 +85,7 @@
     killall
     imagemagick
     neofetch
+    alsa-utils
   ];
 
   fonts.packages = with pkgs; [
