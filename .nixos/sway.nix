@@ -14,7 +14,7 @@
     # brightnessctl
   ];
 
-  programs.light.brightnessKeys.enable;
+  programs.light.brightnessKeys.enable = true;
 
   # Options
   programs.sway = {
