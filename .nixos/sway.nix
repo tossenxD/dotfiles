@@ -11,10 +11,8 @@
     waybar
     workstyle
     wofi
-    # brightnessctl
+    brightnessctl
   ];
-
-  programs.light.brightnessKeys.enable = true;
 
   # Options
   programs.sway = {
