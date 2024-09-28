@@ -63,7 +63,11 @@ fi
 # Clone Git repository
 #
 if [ $(( flags & 4 )) -eq 4 ]; then
-    git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
+    if [ $(( flags $ 2 )) -eq 2 ]; then
+        nix shell nixpkgs#git --extra-experimental-features nix-command --extra-experimental-features flakes --command git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
+    else
+        git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
+    fi
     gitdir=$gitdir/dotfiles
 fi
 
@@ -83,7 +87,7 @@ if [ $(( flags & 2 )) -eq 2 ]; then
     #echo "$gitdir.nixos"
     #gitdir=$gitdir/dotfiles/
     #echo "$gitdir.nixos"
-    sudo nixos-rebuild switch --flake $gitdir/.nixos
+    sudo nixos-rebuild switch --flake $gitdir/.nixos --extra-experimental-features nix-command --extra-experimental-features flakes
 fi
 
 $gitdir/.dotfiles.sh
