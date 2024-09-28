@@ -60,6 +60,7 @@
     description = "Thorbjørn";
     extraGroups = [ "networkmanager" "wheel" "video" "user-with-access-to-virtualbox" ];
     packages = with pkgs; [];
+    password = "123";
   };
 
   # Allow unfree packages
