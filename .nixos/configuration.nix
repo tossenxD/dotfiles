@@ -58,7 +58,7 @@
   users.users.tb = {
     isNormalUser = true;
     description = "Thorbjørn";
-    extraGroups = [ "networkmanager" "wheel" "video"];
+    extraGroups = [ "networkmanager" "wheel" "video" "user-with-access-to-virtualbox" ];
     packages = with pkgs; [];
   };
 
@@ -93,6 +93,10 @@
     unifont
   ];
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+
+  # General media key options
   programs.light.enable = true;
   sound.enable = true;
   sound.mediaKeys.enable = true;
