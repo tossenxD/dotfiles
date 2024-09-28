@@ -83,7 +83,7 @@ fi
 # Install NixOS setup
 #
 if [ $(( flags & 2 )) -eq 2 ]; then
-    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/.nixos#default
+    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/.nixos#default --impure
 fi
 
 $gitdir/.dotfiles.sh
