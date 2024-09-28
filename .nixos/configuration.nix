@@ -62,14 +62,6 @@
     packages = with pkgs; [];
   };
 
-  users.users.default = {
-    isNormalUser = false;
-    description = "A default host with sudo access";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-    password = "123";
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
