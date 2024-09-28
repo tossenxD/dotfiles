@@ -64,7 +64,7 @@ fi
 #
 if [ $(( flags & 4 )) -eq 4 ]; then
     if [ $(( flags & 2 )) -eq 2 ]; then
-        nix shell nixpkgs#git --extra-experimental-features nix-command --extra-experimental-features flakes --command git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
+        nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
     else
         git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
     fi
@@ -83,11 +83,7 @@ fi
 # Install NixOS setup
 #
 if [ $(( flags & 2 )) -eq 2 ]; then
-    #gitdir=git/
-    #echo "$gitdir.nixos"
-    #gitdir=$gitdir/dotfiles/
-    #echo "$gitdir.nixos"
-    sudo nixos-rebuild switch --flake $gitdir/.nixos --extra-experimental-features nix-command --extra-experimental-features flakes
+    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/.nixos#default
 fi
 
 $gitdir/.dotfiles.sh
