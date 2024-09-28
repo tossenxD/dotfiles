@@ -63,7 +63,7 @@ fi
 # Clone Git repository
 #
 if [ $(( flags & 4 )) -eq 4 ]; then
-    if [ $(( flags $ 2 )) -eq 2 ]; then
+    if [ $(( flags & 2 )) -eq 2 ]; then
         nix shell nixpkgs#git --extra-experimental-features nix-command --extra-experimental-features flakes --command git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
     else
         git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
