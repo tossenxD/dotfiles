@@ -1,23 +1,34 @@
 #! /usr/bin/env bash
 
+# To run this install script remote, use:
+#
+# $ curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/install.sh | bash -s -- <flags>
+#
+
 #
 # Handle flags
 #
 let flags=0 # bitmask
 while [ $# -gt 0 ]; do
     case $1 in
-        -a | --arch) # Arch Linux install
+        -a | --arch)
             let flags=$(( flags|1 ))
             ;;
-        -n | --nix) # NixOS install
+        -n | --nix)
             let flags=$(( flags|2 ))
+            if test ! -z "$2" && test ! "$2$" == -*; then
+                nuser="$2"
+                shift
+            else
+                nuser="default"
+            fi
             ;;
-        -g | --git) # Clone Git repository (script is being curled)
+        -g | --git)
             if test -z "$2" || test "$2" == -*; then
                 printf "\
-Invalid use of flag(s):\n\
-\tDirectory must be specified after \`--git\`\ (\`-g\`).\n\
-See \`--help\` (\`-h\`) for help.\n"
+Invalid use of flag(s):
+\tDirectory must be specified after [ -g | --git ].
+See [ -h | --help ] for help.\n"
                 exit 1
             fi
             gitdir="$(dirname $(realpath $0))/$2"
@@ -28,20 +39,20 @@ See \`--help\` (\`-h\`) for help.\n"
             let flags=$(( flags|4 ))
             shift
             ;;
-        -h | --help) # NixOS install
+        -h | --help)
             printf "\
-Valid flags includes:\n\
- \`--arch\` (\'-a\'):\n\
-\tArch Linux install (mutually exclusive with \`--nix\`).\n\
- \`--nix\` (\`-n\`):\n\
-\tNixOS install (mutually exclusive with \`--arch\`).\n\
- \`--git <directory>\` (-\`g <directory>\`):\n\
-\tClones dotfile repository into /path/to/<directory> (useful with \`curl\`).\n\
+Valid flags includes:
+ [ -a | --arch ]:
+\tArch Linux install (mutually exclusive with [ -n | --nix ]).
+ [ -n | --nix ]:
+\tNixOS install (mutually exclusive with [ -a | --arch ]).
+ [ -g <directory> | --git <directory> ]:
+\tClones dotfile repository into /path/to/<directory> (useful with \`curl\`).
 \nDotfiles will always be installed.\n"
             exit 0
             ;;
         *) # Invalid flags
-            printf "Invalid flag: \`$1\`. See \`--help\` (\`-h\`) for help.\n"
+            printf "Invalid flag: \`$1\`. See [ -h | --help ] for help.\n"
             exit 1
             ;;
     esac
@@ -54,8 +65,8 @@ done
 if [ $(( flags & 3 )) -eq 3 ]; then
     printf "\
 Invalid use of flag(s):\n\
-\t\`--arch\` (\`-a\`) and \`--nix\` (\`-n\`) are mutually exclusive.\n\
-See \`--help\` (\`-h\`) for help.\n"
+\t[ -a | --arch ] and [ -n | --nix ] are mutually exclusive.
+See [ -h | --help ] for help.\n"
     exit 1
 fi
 
@@ -83,7 +94,11 @@ fi
 # Install NixOS setup
 #
 if [ $(( flags & 2 )) -eq 2 ]; then
-    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/.nixos#default --impure
+    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/.nixos#$nuser --impure
+    printf "\
+[NOTE] Remember to ensure existance of user '$nuser' before reboot, e.g by
+ $ useradd $nuser
+ $ passwd $nuser\n"
 fi
 
-$gitdir/.dotfiles.sh
+#$gitdir/.dotfiles.sh
