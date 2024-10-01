@@ -86,6 +86,7 @@
     imagemagick
     neofetch
     alsa-utils
+    xdg-utils
   ];
 
   fonts.packages = with pkgs; [

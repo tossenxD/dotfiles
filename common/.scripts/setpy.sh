@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Swap the program 'python' between Python2 and Python3 nondestructive.
+
 VERSION1=$(python -V 2>&1)
 
 if [ "$1" == "3" ]; then
