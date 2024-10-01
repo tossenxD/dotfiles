@@ -12,7 +12,7 @@
     nixosConfigurations = {
       T14 = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
+        modules = [ ./configuration.nix ./hosts/T14.nix ];
       };
       apollo69 = lib.nixosSystem {
         system = "x86_64-linux";
