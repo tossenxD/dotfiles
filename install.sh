@@ -75,8 +75,8 @@ fi
 #
 # Clone Git repository
 #
-nixgit="nix shell nixpkgs#git --extra-experimental-features \
-                                                 'nix-command flakes' --command"
+nixgit="nix shell nixpkgs#git"
+nixgit="$nixgit --extra-experimental-features 'nix-command flakes' --command"
 if [ $(( flags & 4 )) -eq 4 ]; then
     if [ $(( flags & 2 )) -eq 2 ]; then
         $nixgit git clone https://github.com/tossenxD/dotfiles.git\
