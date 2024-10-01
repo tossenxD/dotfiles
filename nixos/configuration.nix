@@ -87,6 +87,7 @@
     neofetch
     alsa-utils
     xdg-utils
+    protonvpn-gui
   ];
 
   fonts.packages = with pkgs; [
