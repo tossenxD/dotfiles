@@ -107,8 +107,8 @@ if [ $(( flags & 2 )) -eq 2 ]; then
         hwfile="hardware-configuration-$host.nix"
         if [ ! -f "$hwfile" ]; then
             cp /etc/nixos/hardware-configuration.nix $hwfile
-            nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git add $hwfile
-            nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git commit -m "Generate $host hardware file"
+            nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git add -N $hwfile
+            #nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git commit -m "Generate $host hardware file"
         fi
     )
     nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/nixos#$host
