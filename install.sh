@@ -15,7 +15,7 @@ while [ $# -gt 0 ]; do
             ;;
         -n | --nix)
             let flags=$(( flags|2 ))
-            if test ! -z "$2" && test ! "$2$" == -*; then
+            if [[ ! -z "$2" && ! "$2$" == -* ]]; then
                 host="$2"
                 shift
             else
@@ -23,7 +23,7 @@ while [ $# -gt 0 ]; do
             fi
             ;;
         -g | --git)
-            if test -z "$2" || test "$2" == -*; then
+            if [[ -z "$2" || "$2" == -* ]]; then
                 printf "\
 [ERR] Directory must be specified after [ -g | --git ].
       See [ -h | --help ] for help.\n"
@@ -75,9 +75,12 @@ fi
 #
 # Clone Git repository
 #
+nixgit="nix shell nixpkgs#git --extra-experimental-features \
+                                                 'nix-command flakes' --command"
 if [ $(( flags & 4 )) -eq 4 ]; then
     if [ $(( flags & 2 )) -eq 2 ]; then
-        nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
+        $nixgit git clone https://github.com/tossenxD/dotfiles.git\
+                $gitdir/dotfiles
     else
         git clone https://github.com/tossenxD/dotfiles.git $gitdir/dotfiles
     fi
@@ -95,10 +98,10 @@ fi
 # Install NixOS setup
 #
 if [ $(( flags & 2 )) -eq 2 ]; then
-    if [ -z $(cat $gitdir/nixos/flake.nix | grep "$host = lib.nixosSystem") ];
+    if [[ -z $(cat $gitdir/nixos/flake.nix | grep "$host = lib.nixosSystem") ]];
     then
         printf "\
-[ERR] Host $host does not exists in NixOS flake; add (and commit) manually.
+[ERR] Host $host does not exists in NixOS flake; add manually.
       See [ -h | --help ] for help.\n"
         exit 1
     fi
@@ -107,11 +110,10 @@ if [ $(( flags & 2 )) -eq 2 ]; then
         hwfile="hardware-configuration-$host.nix"
         if [ ! -f "$hwfile" ]; then
             cp /etc/nixos/hardware-configuration.nix $hwfile
-            nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git add -N $hwfile
-            #nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command git commit -m "Generate $host hardware file"
+            $nixgit git add $hwfile
         fi
     )
-    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/nixos#$host
+    $nixgit sudo nixos-rebuild switch --flake $gitdir/nixos#$host
     printf "\
 [NOTE] Remember to ensure existance of a valid user before reboot, e.g by
  $ useradd <username>
