@@ -14,10 +14,6 @@
         system = "x86_64-linux";
         modules = [ ./configuration.nix ];
       };
-      default = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
-      };
     };
   };
 }

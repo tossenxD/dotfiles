@@ -1,5 +1,4 @@
-#!/bin/bash
-echo ">Beginning installation of dotfiles"
+#! /usr/bin/env bash
 PDIR=$(dirname $(realpath $0))
 ln -sf $PDIR/.config/bspwm $HOME/.config
 ln -sf $PDIR/.config/polybar $HOME/.config
@@ -33,8 +32,3 @@ ln -sf $PDIR/.emacs.d/emacs.org $HOME/.emacs.d
 ln -sf $PDIR/.colors $HOME
 ln -sf $PDIR/.urxvt $HOME
 ln -sf $PDIR/.scripts $HOME
-
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-systemctl --user enable --now emacs
-
-echo ">Finished installation of dotfiles"

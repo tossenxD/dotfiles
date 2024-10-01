@@ -2,7 +2,7 @@
 
 # To run this install script remote, use:
 #
-# $ curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/install.sh | bash -s -- <flags>
+# $ curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/install.sh | bash -s -- [ <flags>* ]
 #
 
 #
@@ -17,23 +17,22 @@ while [ $# -gt 0 ]; do
         -n | --nix)
             let flags=$(( flags|2 ))
             if test ! -z "$2" && test ! "$2$" == -*; then
-                nuser="$2"
+                nconf="$2"
                 shift
-            else
-                nuser="default"
             fi
             ;;
         -g | --git)
             if test -z "$2" || test "$2" == -*; then
                 printf "\
-Invalid use of flag(s):
-\tDirectory must be specified after [ -g | --git ].
-See [ -h | --help ] for help.\n"
+[ERR] Directory must be specified after [ -g | --git ].
+      See [ -h | --help ] for help.\n"
                 exit 1
             fi
             gitdir="$(dirname $(realpath $0))/$2"
             if [ ! -d "$gitdir" ]; then
-                printf "\'$gitdir\' is not a valid directory.\n"
+                printf "\
+[ERR] Directory \'$gitdir\' does not exist.
+      See [ -h | --help ] for help.\n"
                 exit 1
             fi
             let flags=$(( flags|4 ))
@@ -41,18 +40,21 @@ See [ -h | --help ] for help.\n"
             ;;
         -h | --help)
             printf "\
-Valid flags includes:
+Valid flags:
  [ -a | --arch ]:
-\tArch Linux install (mutually exclusive with [ -n | --nix ]).
- [ -n | --nix ]:
-\tNixOS install (mutually exclusive with [ -a | --arch ]).
- [ -g <directory> | --git <directory> ]:
-\tClones dotfile repository into /path/to/<directory> (useful with \`curl\`).
-\nDotfiles will always be installed.\n"
+\tArch Linux install Mutually exclusive with [ -n | --nix ].
+\n [ -n [ <flake-conf> ] | --nix [ <flake-conf> ] ]:
+\tNixOS install of configuration <flake-conf> (hostname if not specified).
+\tMutually exclusive with [ -a | --arch ].
+\n [ -g <directory> | --git <directory> ]:
+\tClones dotfile repository into /path/to/<directory> using Git.
+\nDotfiles will always be populated.\n"
             exit 0
             ;;
         *) # Invalid flags
-            printf "Invalid flag: \`$1\`. See [ -h | --help ] for help.\n"
+            printf "\
+[ERR] Invalid argument \'$1\'.
+      See [ -h | --help ] for help.\n"
             exit 1
             ;;
     esac
@@ -64,9 +66,8 @@ done
 #
 if [ $(( flags & 3 )) -eq 3 ]; then
     printf "\
-Invalid use of flag(s):\n\
-\t[ -a | --arch ] and [ -n | --nix ] are mutually exclusive.
-See [ -h | --help ] for help.\n"
+[ERR] Flags [ -a | --arch ] and [ -n | --nix ] are mutually exclusive.
+      See [ -h | --help ] for help.\n"
     exit 1
 fi
 
@@ -86,19 +87,21 @@ fi
 # Install Arch Linux setup
 #
 if [ $(( flags & 1 )) -eq 1 ]; then
-    $gitdir/.basic.sh
-    $gitdir/.extras.sh
+    $gitdir/arch/pkgs.sh
 fi
 
 #
 # Install NixOS setup
 #
 if [ $(( flags & 2 )) -eq 2 ]; then
-    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/.nixos#$nuser --impure
+    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/nixos#$nconf --impure
     printf "\
-[NOTE] Remember to ensure existance of user '$nuser' before reboot, e.g by
- $ useradd $nuser
- $ passwd $nuser\n"
+[NOTE] Remember to ensure existance of a valid user before reboot, e.g by
+ $ useradd <username>
+ $ passwd <username>\n"
 fi
 
-#$gitdir/.dotfiles.sh
+#
+# Populate dotfiles
+#
+$gitdir/common/populate.sh
