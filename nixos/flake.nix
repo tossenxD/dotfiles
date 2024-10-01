@@ -16,7 +16,7 @@
       };
       apollo69 = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
+        modules = [ ./configuration.nix ./hosts/apollo69.nix ];
       };
     };
   };

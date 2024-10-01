@@ -1,13 +1,5 @@
 #! /usr/bin/env bash
 PDIR=$(dirname $(realpath $0))
-ln -sf $PDIR/.config/bspwm $HOME/.config
-ln -sf $PDIR/.config/polybar $HOME/.config
-ln -sf $PDIR/.config/sxhkd $HOME/.config
-
-ln -sf $PDIR/.xinitrc $HOME
-ln -sf $PDIR/.Xresources $HOME
-
-ln -sf $PDIR/.config/icewm $HOME/.config
 
 ln -sf $PDIR/.config/sway $HOME/.config
 ln -sf $PDIR/.config/swappy $HOME/.config
@@ -29,6 +21,4 @@ ln -sf $PDIR/.bash_profile $HOME
 ln -sf $PDIR/.emacs.d/init.el $HOME/.emacs.d
 ln -sf $PDIR/.emacs.d/emacs.org $HOME/.emacs.d
 
-ln -sf $PDIR/.colors $HOME
-ln -sf $PDIR/.urxvt $HOME
 ln -sf $PDIR/.scripts $HOME

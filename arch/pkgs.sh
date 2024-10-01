@@ -7,11 +7,11 @@ pip install neovim neovim-remote
 
 # yay install
 mkdir $HOME/aur
-cd $HOME/aur
-git clone https://aur.archlinux.org/yay.git
-cd $HOME/aur/yay/
-makepkg -si --noconfirm
-cd $(dirname $(realpath $0))
+( cd $HOME/aur
+  git clone https://aur.archlinux.org/yay.git
+  cd $HOME/aur/yay/
+  makepkg -si --noconfirm
+  cd $(dirname $(realpath $0)))
 
 # AUR package install
 yay -S --noconfirm siji ttf-unifont polybar workstyle-git adwaita-qt5-git adwaita-qt6-git

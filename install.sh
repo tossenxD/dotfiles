@@ -1,14 +1,13 @@
 #! /usr/bin/env bash
 
 # To run this install script remote, use:
-#
 # $ curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/install.sh | bash -s -- [ <flags>* ]
-#
 
 #
 # Handle flags
 #
-let flags=0 # bitmask
+gitdir=$(dirname $(realpath $0))  # calling directory
+let flags=0                       # bitmask
 while [ $# -gt 0 ]; do
     case $1 in
         -a | --arch)
@@ -17,8 +16,10 @@ while [ $# -gt 0 ]; do
         -n | --nix)
             let flags=$(( flags|2 ))
             if test ! -z "$2" && test ! "$2$" == -*; then
-                nconf="$2"
+                host="$2"
                 shift
+            else
+                host="$(hostname -s)"
             fi
             ;;
         -g | --git)
@@ -28,7 +29,7 @@ while [ $# -gt 0 ]; do
       See [ -h | --help ] for help.\n"
                 exit 1
             fi
-            gitdir="$(dirname $(realpath $0))/$2"
+            gitdir="$gitdir/$2"
             if [ ! -d "$gitdir" ]; then
                 printf "\
 [ERR] Directory \'$gitdir\' does not exist.
@@ -94,7 +95,23 @@ fi
 # Install NixOS setup
 #
 if [ $(( flags & 2 )) -eq 2 ]; then
-    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/nixos#$nconf --impure
+    if [ -z $(cat $gitdir/nixos/flake.nix | grep "$host = lib.nixosSystem") ];
+    then
+        printf "\
+[ERR] Host $host does not exists in NixOS flake; add (and commit) manually.
+      See [ -h | --help ] for help.\n"
+        exit 1
+    fi
+    ( # If hardware-file for <hostname> is missing, create and commit it
+        cd $gitdir/nixos/hosts/
+        hwfile="hardware-configuration-$host.nix"
+        if [ ! -f "$hwfile" ]; then
+            cp /etc/nixos/hardware-configuration.nix $hwfile
+            git add $hwfile
+            git commit -m "Generate $host hardware file"
+        fi
+    )
+    nix shell nixpkgs#git --extra-experimental-features 'nix-command flakes' --command sudo nixos-rebuild switch --flake $gitdir/nixos#$host
     printf "\
 [NOTE] Remember to ensure existance of a valid user before reboot, e.g by
  $ useradd <username>
