@@ -11,7 +11,6 @@
     waybar
     workstyle
     wofi
-    brightnessctl
   ];
 
   # Options
