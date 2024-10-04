@@ -92,6 +92,7 @@ fi
 #
 if [ $(( flags & 1 )) -eq 1 ]; then
     $gitdir/arch/pkgs.sh
+    cp $gitdir/common/wallpapers/archlinux.png ~/.wallpaper.png
 fi
 
 #
@@ -118,6 +119,7 @@ if [ $(( flags & 2 )) -eq 2 ]; then
 [NOTE] Remember to ensure existance of a valid user before reboot, e.g by
  $ useradd <username>
  $ passwd <username>\n"
+    cp $gitdir/common/wallpapers/nixosrainbow.png ~/.wallpaper.png
 fi
 
 #

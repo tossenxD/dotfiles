@@ -6,4 +6,5 @@
     ];
   networking.hostName = "T14";
   tb.enable = true;
+  boot.loader.grub.splashImage = ../../common/wallpapers/thankpad.png;
 }

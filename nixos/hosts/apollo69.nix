@@ -6,4 +6,5 @@
     ];
   networking.hostName = "apollo69";
   tb.enable = true;
+  boot.loader.grub.splashImage = ../../common/wallpapers/enterprise.png;
 }

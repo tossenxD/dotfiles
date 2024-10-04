@@ -9,7 +9,7 @@ set $editor emacsclient -c -a 'emacs'
 set $menu wofi --show drun
 
 ### Output configuration
-output * bg ~/wallpapersway.png fill
+output * bg ~/.wallpaper.png fill
 
 ### Input configuration
 input * xkb_layout "us"
@@ -146,15 +146,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar
-#
+### Status Bar
 bar {
     swaybar_command waybar
 }
 exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 
-#
-# Misc
-#
+### Misc
 include /etc/sway/config.d/*
