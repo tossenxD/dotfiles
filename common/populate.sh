@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 PDIR=$(dirname $(realpath $0))
+mkdir -p $HOME/.config $HOME/.emacs.d
 
 ln -sf $PDIR/.config/sway $HOME/.config
 ln -sf $PDIR/.config/swappy $HOME/.config
