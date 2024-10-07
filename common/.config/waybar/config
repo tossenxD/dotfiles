@@ -69,11 +69,13 @@
         "tooltip": false
     },
     "custom/spotify": {
-        "interval": 1,
+        "format": "",
+        "interval": 5,
         "return-type": "json",
         "exec": "~/.config/waybar/modules/spotify.sh",
         "exec-if": "pgrep spotify",
-        "escape": true
+        "escape": true,
+        "on-click": "playerctl play-pause"
     },
     "custom/storage": {
         "format": "{} 💾",

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 weather=($(curl wttr.in/?format="%c+%l+%t+%f+%w+%h"))
 

@@ -12,5 +12,6 @@
       ./vpns.nix
       ./wms.nix
       ./gaming.nix
+      ./mps.nix
     ];
 }
