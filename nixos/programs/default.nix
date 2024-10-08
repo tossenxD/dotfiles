@@ -13,5 +13,6 @@
       ./wms.nix
       ./gaming.nix
       ./mps.nix
+      ./langs.nix
     ];
 }

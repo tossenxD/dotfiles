@@ -1,6 +1,9 @@
 { config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    gnome.nautilus
     ranger
+    kdePackages.dolphin
+    kdePackages.qtwayland
+    kdePackages.qtsvg
   ];
+  services.gvfs.enable = true;
 }

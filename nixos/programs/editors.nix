@@ -4,6 +4,9 @@
     emacs
     vim
     neovim
+    cura
+    libreoffice
+    gimp
   ];
   
   # Options

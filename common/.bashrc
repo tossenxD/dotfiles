@@ -25,8 +25,6 @@ alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
 alias storage="du -h --max-depth=1"
 
-alias ghci='stack exec ghci -- -W'
-
 alias open="xdg-open"
 alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
 alias bashrc="$EDITOR $HOME/.bashrc"
