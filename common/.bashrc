@@ -28,10 +28,12 @@ alias storage="du -h --max-depth=1"
 alias open="xdg-open"
 alias nviminit="$EDITOR $HOME/.config/nvim/init.vim"
 alias bashrc="$EDITOR $HOME/.bashrc"
-alias syspy="$HOME/.scripts/setpy.sh"
-alias weathercow="$HOME/.scripts/weathercow.sh"
+alias syspy="$HOME/scripts/setpy.sh"
+alias weathercow="$HOME/scripts/weathercow.sh"
 alias untar="tar xvzf"
 alias ntar="tar -cvzf"
+
+alias nixosrebuild="sudo nixos-rebuild switch --flake ~/git/dotfiles/nixos"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   alias cpf="wl-copy <"

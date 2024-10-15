@@ -16,6 +16,9 @@
     alsa-utils
     pipewire
     udisks
+    zip
+    unzip
+    lspci
   ];
 
   # Experimental features

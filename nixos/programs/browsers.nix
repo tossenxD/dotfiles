@@ -21,5 +21,4 @@
     "SearchSuggestEnabled" = false;
     "SavingBrowserHistoryDisabled" = true;
   };
-}
- 
+} 

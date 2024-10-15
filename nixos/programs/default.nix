@@ -5,7 +5,6 @@
       ./editors.nix
       ./imgs.nix
       ./terminals.nix
-      ./vpns.nix
       ./filemanagers.nix
       ./pdfs.nix
       ./vms.nix
@@ -14,5 +13,6 @@
       ./gaming.nix
       ./mps.nix
       ./langs.nix
+      ./misc.nix
     ];
 }

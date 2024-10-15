@@ -105,6 +105,9 @@ Defines a function `get-package` s.t:
 #+begin_src emacs-lisp
   (setq-default c-basic-offset 4)
   (add-hook 'c++-mode-hook (lambda () (set-fill-column 100)))
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (add-hook 'c-mode-hook 'eglot-ensure)
+  (add-hook 'c++-mode-hook 'eglot-ensure)
 #+end_src
 
 ** LaTeX

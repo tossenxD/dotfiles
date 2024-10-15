@@ -5,11 +5,13 @@
     stack
     # Python
     python3
-    # GCC
-    libgcc
     # Futhark
     futhark
     # TeX
     texliveTeTeX
+    # C/C++
+    libclang
+    clang-tools
+    cmake
   ];
 }

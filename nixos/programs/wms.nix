@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   # Packages
   environment.systemPackages = with pkgs; [
     sway

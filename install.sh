@@ -114,7 +114,7 @@ if [ $(( flags & 2 )) -eq 2 ]; then
             $nixgit git add $hwfile
         fi
     )
-    $nixgit sudo nixos-rebuild switch --flake ./$gitdir/nixos#$host
+    $nixgit sudo nixos-rebuild switch --flake $gitdir/nixos#$host
     printf "\
 [NOTE] Remember to ensure existance of a valid user before reboot, e.g by
  $ useradd <username>

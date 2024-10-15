@@ -7,6 +7,7 @@
     cura
     libreoffice
     gimp
+    openscad
   ];
   
   # Options
