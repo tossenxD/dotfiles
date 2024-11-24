@@ -1,5 +1,7 @@
 { config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    gnumake
+    binutils
     # Haskell
     ghc
     stack

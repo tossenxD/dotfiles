@@ -18,7 +18,7 @@
     udisks
     zip
     unzip
-    lspci
+    pciutils
   ];
 
   # Experimental features

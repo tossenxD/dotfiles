@@ -43,7 +43,7 @@ while [ $# -gt 0 ]; do
             printf "\
 Valid flags:
  [ -a | --arch ]:
-\tArch Linux install Mutually exclusive with [ -n | --nix ].
+\tArch Linux install. Mutually exclusive with [ -n | --nix ].
 \n [ -n [ <flake-conf> ] | --nix [ <flake-conf> ] ]:
 \tNixOS install of configuration <flake-conf> (hostname if not specified).
 \tMutually exclusive with [ -a | --arch ].
