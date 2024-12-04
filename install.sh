@@ -12,6 +12,12 @@ while [ $# -gt 0 ]; do
     case $1 in
         -a | --arch)
             let flags=$(( flags|1 ))
+            if [[ ! -z "$2" && ! "$2$" == -* ]]; then
+                host="$2$
+                shift
+            else
+                host="$(hostname -s)"
+            fi
             ;;
         -n | --nix)
             let flags=$(( flags|2 ))
@@ -42,8 +48,9 @@ while [ $# -gt 0 ]; do
         -h | --help)
             printf "\
 Valid flags:
- [ -a | --arch ]:
-\tArch Linux install. Mutually exclusive with [ -n | --nix ].
+ [ -a <host> | --arch <host> ]:
+\tArch Linux install of configuration <host> (hostname if not specified).
+\tMutually exclusive with [ -n | --nix ].
 \n [ -n [ <flake-conf> ] | --nix [ <flake-conf> ] ]:
 \tNixOS install of configuration <flake-conf> (hostname if not specified).
 \tMutually exclusive with [ -a | --arch ].
@@ -91,7 +98,15 @@ fi
 # Install Arch Linux setup
 #
 if [ $(( flags & 1 )) -eq 1 ]; then
-    $gitdir/arch/pkgs.sh
+    if [[ -z $(cat $gitdir/arch/hosts.sh | grep "$host") ]];
+    then
+        printf "\
+[ERR] Host $host does not exists in Arch Linux configuration; add manually to
+      -> $gitdir/arch/hosts.sh.
+      See [ -h | --help ] for help.\n"
+        exit 1
+    fi
+    $gitdir/arch/hosts.sh $host
     cp $gitdir/common/wallpapers/archlinux.png ~/.wallpaper.png
 fi
 
@@ -102,7 +117,8 @@ if [ $(( flags & 2 )) -eq 2 ]; then
     if [[ -z $(cat $gitdir/nixos/flake.nix | grep "$host = lib.nixosSystem") ]];
     then
         printf "\
-[ERR] Host $host does not exists in NixOS flake; add manually.
+[ERR] Host $host does not exists in NixOS flake; add manually in
+      -> $gitdir/nixos/
       See [ -h | --help ] for help.\n"
         exit 1
     fi
