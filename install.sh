@@ -13,7 +13,7 @@ while [ $# -gt 0 ]; do
         -a | --arch)
             let flags=$(( flags|1 ))
             if [[ ! -z "$2" && ! "$2$" == -* ]]; then
-                host="$2$
+                host="$2$"
                 shift
             else
                 host="$(hostname -s)"
