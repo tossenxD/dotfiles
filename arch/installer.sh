@@ -18,8 +18,8 @@ applySystemConfiguration()
     fi
 
     # Run an awk program to process input
-    read pac aur cmds <<< $(echo $PKGS | \
-                               awk -v pac="" -v aur="" -v cmds=$CMDS -F '[][]' '
+    { read -r pac; read -r aur; read -r cmds; } <<< \
+        $(echo $PKGS | awk -v pac="" -v aur="" -v cmds="$CMDS" -F '[][]' '
 {
     for (i = 1; i <= NF; i++)
     {
@@ -53,16 +53,17 @@ applySystemConfiguration()
 }')
 
     # Install packages
-    sudo pacman -Syu $pac
-    yay -S $aur
-    # sudo pacman -Syu --noconfirm $pac
-    # yay -S --noconfirm $aur
+    sudo pacman -Syu --noconfirm $pac
+    yay -S --noconfirm $aur
 
     # Run commands
     IFS=","
     for cmd in $cmds
     do
-        $cmd
+        unset IFS
+        echo "$cmd"
+        eval " $cmd"
+        IFS=","
     done
     unset IFS
 }

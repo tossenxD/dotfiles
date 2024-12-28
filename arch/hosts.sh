@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #
 # Import package bundles and installation handle
 #
@@ -19,7 +21,7 @@ case $1 in
         CMDS="pip install neovim neovim-remote"
         ;;
     Gaia)
-        PKGS="BROWSERS"
+        PKGS="$BROWSERS"
         ;;
     *)
         printf "\
@@ -32,4 +34,4 @@ esac
 #
 # Run installation handle
 #
-applySystemConfiguration $PKGS $CMDS
+applySystemConfiguration "$PKGS" "$CMDS"

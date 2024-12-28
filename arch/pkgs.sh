@@ -21,7 +21,8 @@ BSPWM="\
 xorg xorg-xinit bspwm sxhkd nitrogen dmenu screengrab rofi xsel ueberzug sxiv \
 [AUR siji ttf-unifont polybar]"
 NVIM="neovim [CMD pip install neovim neovim-remote]"
-EMACS="emacs [CMD systemctl --user enable --now emacs]"
-EMACSWAYLAND="emacs-wayland [CMD systemctl --user enable --now emacs]"
+EMACS="emacs [CMD sudo systemctl --user enable --now emacs]"
+EMACSWAYLAND="emacs-wayland [CMD sudo systemctl --user enable --now emacs]"
 LANGS="python python-pip texlive-latexrecommended texlive-latexextra \
 texlive-frontsrecommended cmark ghc"
+LOGITECH="solaar"

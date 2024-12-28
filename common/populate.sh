@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/sh
 PDIR=$(dirname $(realpath $0))
 mkdir -p $HOME/.config
 
