@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-# To run this install script remote, use:
+# To run this install script remote, e.g. use:
 # $ curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/install.sh | bash -s -- [ <flags>* ]
 
 #
