@@ -8,6 +8,7 @@ applyConfiguration()
 
     # Requries yay to be installed (or some other AUR manager)
     if [[ -z $(pacman -Qi yay) ]]
+    then
        mkdir /tmp/build
        ( cd /tmp/build
          git clone https://aur.archlinux.org/yay.git
@@ -52,8 +53,10 @@ applyConfiguration()
 }')
 
     # Install packages
-    sudo pacman -Syu --noconfirm $pac
-    yay -S --noconfirm $aur
+    sudo pacman -Syu $pac
+    yay -S $aur
+    # sudo pacman -Syu --noconfirm $pac
+    # yay -S --noconfirm $aur
 
     # Run commands
     IFS=","
