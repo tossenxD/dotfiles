@@ -1,9 +1,9 @@
 #
 # Package installation handler with parameters PKGS and CMDS (see below)
 #
-applyConfiguration()
+applySystemConfiguration()
 {
-    PKGS=$1 # packages to install, see `pkgs.sh` for format
+    PKGS=$1 # packages to install (see `pkgs.sh` for format)
     CMDS=$2 # commands to run in a comma-seperated string
 
     # Requries yay to be installed (or some other AUR manager)
