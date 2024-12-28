@@ -1,8 +1,9 @@
 #
 # Import package bundles and installation handle
 #
-source pkgs.sh
-source installer.sh
+path=$(dirname $(realpath $0))
+source $path/pkgs.sh
+source $path/installer.sh
 
 #
 # Define host configurations
