@@ -5,7 +5,7 @@
 #     from the Arch User Repository. The attribute `[CMD ...]` specifies a
 #     command `...` to run after other packages have been installed.
 #
-SYSTEM="man-db man-pages neofetch cowsays vi nano tree plocate openssh wget sl \
+SYSTEM="man-db man-pages neofetch cowsay vi nano tree plocate openssh wget sl \
     curl lm_sensors"
 NETWORKMANAGER="\
     networkmanager [CMD sudo systemctl enable --now NetworkManager.service]"
