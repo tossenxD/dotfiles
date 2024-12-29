@@ -17,6 +17,15 @@ applySystemConfiguration()
          cd $(dirname $(realpath $0)))
     fi
 
+    # Requires multilib repository to be enabled
+    if grep -q "#\\[multilib\\]" /etc/pacman.conf
+    then
+        n=$(grep -n "\\[multilib\\]" /etc/pacman.conf | cut -d: -f1)
+        sudo sed -i ''$n's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
+        term="Include = /etc/pacman.d/mirrorlist"
+        sudo sed -i ''$(expr $n + 1)"s|#$term|$term|g" /etc/pacman.conf
+    fi
+
     # Run an awk program to process input
     { read -r pac; read -r aur; read -r cmds; } <<< \
         $(echo $PKGS | awk -v pac="" -v aur="" -v cmds="$CMDS" -F '[][]' '

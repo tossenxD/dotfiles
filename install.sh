@@ -141,4 +141,4 @@ fi
 #
 # Populate dotfiles
 #
-$gitdir/common/populate.sh
+#$gitdir/common/populate.sh
