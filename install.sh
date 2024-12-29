@@ -45,6 +45,9 @@ while [ $# -gt 0 ]; do
             let flags=$(( flags|4 ))
             shift
             ;;
+        -d | --dot)
+            let flags=$(( flags|8 ))
+            shift
         -h | --help)
             printf "\
 Valid flags:
@@ -56,7 +59,8 @@ Valid flags:
 \tMutually exclusive with [ -a | --arch ].
 \n [ -g <directory> | --git <directory> ]:
 \tClones dotfile repository into /path/to/<directory> using Git.
-\nDotfiles will always be populated.\n"
+\n [ -d | --dot ]:
+\tDotfiles will be populated.\n"
             exit 0
             ;;
         *) # Invalid flags
@@ -141,4 +145,7 @@ fi
 #
 # Populate dotfiles
 #
-#$gitdir/common/populate.sh
+if [ $(( flags & 8 )) -eq 8 ]
+then
+    $gitdir/common/populate.sh
+fi

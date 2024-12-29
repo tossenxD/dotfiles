@@ -12,15 +12,14 @@ NETWORKMANAGER="\
 MONITORING="btop rocm-smi-lib hddtemp mangohud"
 AMDCPU="amd-ucode"
 AMDGPU="mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon"
-AUDIO="alsa-utils alsa-firmware pulseaudio pulseaudio-alsa pulseaudio-jack \
-    pulsemixer pipewire"
+AUDIO="alsa-utils alsa-firmware pipewire pipewire-alsa"
 BLUETOOTH="\
     bluez bluez-utils [CMD sudo systemctl enable --now bluetooth.service]"
 
 SWAY="sway swaybg waybar xorg-xwayland wayland swappy grim slurp wl-clipboard \
     wofi [AUR workstyle-git]"
 BSPWM="xorg xorg-xinit bspwm sxhkd nitrogen dmenu screengrab rofi xsel \
-    ueberzug sxiv [AUR siji ttf-unifont polybar]"
+    ueberzug [AUR siji ttf-unifont polybar]"
 KDE="plasma-meta kde-utilities-meta kde-system-meta kde-multimedia-meta \
     [CMD sudo systemctl enable sddm.service]"
 
@@ -34,14 +33,14 @@ FILEMANAGERS="dolphin ranger"
 BROWSERS="firefox chromium"
 OFFICE="libreoffice-fresh gimp"
 BITTORRENT="qbittorrent"
-NVIM="neovim" #powerline
+NVIM="neovim"
 EMACS="emacs [CMD sudo systemctl --user enable --now emacs]"
 EMACSWAYLAND="emacs-wayland [CMD sudo systemctl --user enable --now emacs]"
 VIRTUALBOX="virtualbox virtualbox-host-modules-arch"
 DDDPRINT="openscad [AUR cura-bin]"
 SPOTIFY="[AUR spotify]"
 DISCORD="discord"
-MULTIMEDIA="mpv"
+MULTIMEDIA="mpv imv audacious"
 
 HASKELL="ghc stack"
 PYTHON="python python-pip"
