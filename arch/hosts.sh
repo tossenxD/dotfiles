@@ -3,19 +3,20 @@
 #
 # Import package bundles and installation handle
 #
-path=$(dirname $(realpath $0))
-source $path/pkgs.sh
-source $path/installer.sh
+PDIR=$(dirname $(realpath $0))
+source $PDIR/pkgs.sh
+source $PDIR/installer.sh
 
 #
 # Define host configurations
 #
-if [ -z $1 ]
+HOST=$1
+if [ -z $HOST ]
 then
-    printf "[ERR] Missing hostname for Arch Linux based package installation.\n"
-    exit 1
+    HOST="$(hostname -s)"
 fi
-case $1 in
+
+case $HOST in
     T14 | apollo69)
         PKGS="\
 $SYSTEM $NETWORKMANAGER $MONITORING $AMDCPU $AMDGPU $AUDIO $BLUETOOTH $FONTS \
@@ -33,8 +34,8 @@ $BROWSERS $OFFICE $DISCORD $STEAM $LUTRIS $MINECRAFT"
 
     *)
         printf "\
-[ERR] Undefined setup of Arch Linux based package configurations for hostname:\n
-      $1\n"
+[ERR] Undefined setup of Arch Linux based package configurations for hostname:
+      $HOST\n"
         exit 1
         ;;
 esac
