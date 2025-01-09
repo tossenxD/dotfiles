@@ -3,7 +3,6 @@
 #
 # Setup
 #
-
 if [ $1 = "-h" -o $1 = "--help" ]
 then
     printf "\
@@ -13,9 +12,11 @@ symbolic links. Configurations are defined on a hostname basis.
 
 If HOST is empty, the hostname of the caller will be used instead.
 
+Files are never lost linking nor unlinking.
+
 OPTION can be one of the following:
   -h, --help      Print this help message
-  -c, --clear     Unlink the dotfiles
+  -u, --unlink    Unlink the dotfiles
 "
     exit 0
 fi
@@ -23,10 +24,9 @@ fi
 mkdir -p $HOME/.config
 PDIR=$(dirname $(realpath $0))
 
-CLEAR=0
-if [ $1 = "-c" -o $1 = "--clear" ]
+if [ $1 = "-u" -o $1 = "--unlink" ]
 then
-    CLEAR=1
+    UNLINK_P=1
     shift
 fi
 
@@ -41,45 +41,46 @@ fi
 #
 case $HOST in
     T14 | apollo69)
-        ln -sf $PDIR/.config/sway $HOME/.config
-        ln -sf $PDIR/.config/swappy $HOME/.config
-        ln -sf $PDIR/.config/waybar $HOME/.config
-        ln -sf $PDIR/.config/alacritty $HOME/.config
-        ln -sf $PDIR/.config/wofi $HOME/.config
-        ln -sf $PDIR/.config/workstyle $HOME/.config
-
-        ln -sf $PDIR/.emacs.d $HOME
-        ln -sf $PDIR/.config/nvim $HOME/.config
-        ln -sf $PDIR/.config/ranger $HOME/.config
-        ln -sf $PDIR/.config/zathura $HOME/.config
-
-        ln -sf $PDIR/.bashrc $HOME
-        ln -sf $PDIR/.bash_profile $HOME
-
-        ln -sf $PDIR/scripts $HOME
+        CONFIG=".config/sway .config/swappy .config/waybar .config/alacritty
+                .config/wofi .config/workstyle .emacs.d .config/nvim
+                .config/ranger .config/zathura .bashrc .bash_profile scripts"
         ;;
 
     legacy)
-        ln -sf $PDIR/.config/bspwm $HOME/.config
-        ln -sf $PDIR/.config/polybar $HOME/.config
-        ln -sf $PDIR/.config/sxhkd $HOME/.config
-
-        ln -sf $PDIR/.config/icewm $HOME/.config
-
-        ln -sf $PDIR/.xinitrc $HOME
-        ln -sf $PDIR/.Xresources $HOME
-        ln -sf $PDIR/.colors $HOME
+        CONFIG=".config/bspwm .config/polybar .config/sxhkd .config/icewm
+                .config/nvim .config/ranger .config/zathura .bashrc .bash
+                .xinitrc .Xresources .colors scripts"
         ;;
 
     *)
-        printf "\
-Undefined dotfile configuration for host:
-  $HOST
-"
+        printf "Could not find a dotfile configuration for host:\n  $HOST\n"
         exit 1
         ;;
 esac
 
 #
-# Run main program
+# Run linker or unlinker
 #
+for TARGET in $CONFIG
+do
+    SOURCE=$PDIR/$TARGET
+    DEST=$HOME/$TARGET
+    if [ -z $UNLINK_P ]
+    then
+        if [ -e $DEST  -a  "$(readlink -f -- $DEST)" != $SOURCE ]
+        then
+            echo "refuse to overwrite: $DEST"
+        else
+            ln -sf $SOURCE $DEST
+            echo "linked: $SOURCE -> $DEST"
+        fi
+    else
+        if [ -e $DEST  -a  "$(readlink -f -- $DEST)" != $SOURCE ]
+        then
+            echo "refuse to unlink: $DEST"
+        else
+            unlink $DEST
+            echo "unlinked: $DEST"
+        fi
+    fi
+done
