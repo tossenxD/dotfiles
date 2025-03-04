@@ -1,10 +1,9 @@
-#
 # Package bundles in the following format:
 #     Packages are whitespace seperated and by default installed with pacman.
 #     The package attribute `[AUR ...]` specifies packages `...` to be installed
 #     from the Arch User Repository. The attribute `[CMD ...]` specifies a
 #     command `...` to run after other packages have been installed.
-#
+
 SYSTEM="man-db man-pages neofetch cowsay vi nano tree plocate openssh wget sl \
     curl lm_sensors"
 NETWORKMANAGER="\
@@ -37,7 +36,7 @@ NVIM="neovim"
 EMACS="emacs [CMD sudo systemctl --user enable --now emacs]"
 EMACSWAYLAND="emacs-wayland [CMD sudo systemctl --user enable --now emacs]"
 VIRTUALBOX="virtualbox virtualbox-host-modules-arch"
-DDDPRINT="openscad [AUR cura-bin]"
+DDDPRINT="openscad prusa-slicer [AUR cura-bin]"
 SPOTIFY="[AUR spotify]"
 DISCORD="discord"
 MULTIMEDIA="mpv imv audacious"

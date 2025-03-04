@@ -1,23 +1,52 @@
 #!/bin/sh
 
+# This program can both link and unlink files specified relative to the program.
+# See -h, --help for usage and explanation. A *dotfile configuration* is a
+# string of space-seperated filenames. The value of variable CONFIG at eof is
+# the dotfile configuration that will be linked or unlinked. Lastly, this
+# program takes a conservative approach meaning that data will never be lost.
+
 #
-# Setup
+# Define configurations
+#
+matchToConfiguration()
+{
+    if [ $1 = "T14" -o $1 = "apollo69" ]
+    then
+        CONFIG="
+.config/sway .config/swappy .config/waybar .config/alacritty .config/wofi
+.config/workstyle .emacs.d .config/nvim .config/ranger .config/zathura .bashrc
+.bash_profile scripts"
+
+    elif [ $1 = "legacy" ]
+    then
+        CONFIG="
+.config/bspwm .config/polybar .config/sxhkd .config/icewm .config/nvim
+.config/ranger .config/zathura .bashrc .xinitrc .Xresources .colors scripts"
+
+    else
+        printf "Could not find a dotfile configuration for host:\n  $HOST\n"
+        exit 1
+    fi
+}
+
+#
+# Handle input
 #
 if [ $1 = "-h" -o $1 = "--help" ]
 then
     printf "\
 Usage: $0 [OPTION] [HOST]
-Populate a specified dotfile configuration to home directory of caller by
-symbolic links. Configurations are defined on a hostname basis.
+Populate a specified dotfile configuration to the home directory of the caller
+by means of symbolic linkage. Configurations are defined on a hostname basis.
 
 If HOST is empty, the hostname of the caller will be used instead.
 
 Files are never lost linking nor unlinking.
 
 OPTION can be one of the following:
-  -h, --help      Print this help message
-  -u, --unlink    Unlink the dotfiles
-"
+  -h, --help      Print this help message.
+  -u, --unlink    Unlink the dotfiles.\n"
     exit 0
 fi
 
@@ -31,56 +60,33 @@ then
 fi
 
 HOST=$1
-if [ -z $HOST ]
-then
-    HOST="$(hostname -s)"
-fi
+[ -z $HOST ] && HOST="$(hostname -s)"
+
+matchToConfiguration $HOST
 
 #
-# Specify configurations
-#
-case $HOST in
-    T14 | apollo69)
-        CONFIG=".config/sway .config/swappy .config/waybar .config/alacritty
-                .config/wofi .config/workstyle .emacs.d .config/nvim
-                .config/ranger .config/zathura .bashrc .bash_profile scripts"
-        ;;
-
-    legacy)
-        CONFIG=".config/bspwm .config/polybar .config/sxhkd .config/icewm
-                .config/nvim .config/ranger .config/zathura .bashrc .bash
-                .xinitrc .Xresources .colors scripts"
-        ;;
-
-    *)
-        printf "Could not find a dotfile configuration for host:\n  $HOST\n"
-        exit 1
-        ;;
-esac
-
-#
-# Run linker or unlinker
+# Run (un)linker
 #
 for TARGET in $CONFIG
 do
     SOURCE=$PDIR/$TARGET
     DEST=$HOME/$TARGET
-    if [ -z $UNLINK_P ]
+    if [ -e $DEST  -a  $(readlink -f -- $DEST) != $SOURCE ]
     then
-        if [ -e $DEST  -a  "$(readlink -f -- $DEST)" != $SOURCE ]
+        if [ -z $UNLINK_P ]
         then
             echo "refuse to overwrite: $DEST"
         else
-            ln -sf $SOURCE $DEST
-            echo "linked: $SOURCE -> $DEST"
+            echo "refuse to unlink: $DEST"
         fi
     else
-        if [ -e $DEST  -a  "$(readlink -f -- $DEST)" != $SOURCE ]
+        if [ -z $UNLINK_P ]
         then
-            echo "refuse to unlink: $DEST"
+            [ -z $DRYRUN_P ] && ln -sf $SOURCE $DEST
+            echo "linked: $SOURCE -> $DEST"
         else
-            unlink $DEST
-            echo "unlinked: $DEST"
+            [ -z $DRYRUN_P ] && unlink $DEST
+            echo "unlinked: $DEST <- $SOURCE"
         fi
     fi
 done
