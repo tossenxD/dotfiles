@@ -112,7 +112,7 @@ fi
 #
 if [ $(( FLAGS & 1 )) -eq 1 ]
 then
-    ! grep -q "$HOST" $DIR/arch/hosts.sh
+    if ! grep -q "$HOST" $DIR/arch/hosts.sh
     then
         printf "\
 Could not find a Arch Linux configuration for host:\n> $HOST
