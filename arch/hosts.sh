@@ -12,8 +12,8 @@ $SYSTEM $NETWORKMANAGER $MONITORING $AMDCPU $AMDGPU $AUDIO $BLUETOOTH $FONTS \
 $SWAY $ALACRITTY $FILEMANAGERS $EMACSWAYLAND $NVIM $BROWSERS $OFFICE $ZATHURA \
 $BITTORRENT $DDDPRINT $VIRTUALBOX $SPOTIFY $DISCORD $MULTIMEDIA $STEAM \
 $HASKELL $PYTHON $LATEX $DEVUTILS"
-        CMDS="pip install neovim neovim-remote,
-              cp $PDIR/common/wallpapers/archlinux.png ~/.wallpaper.png"
+        CMDS="pip install neovim neovim-remote"
+        CMDS=$CMDS",cp $PDIR/common/wallpapers/archlinux.png ~/.wallpaper.png"
 
     elif [ $1 = "Gaia" ]
     then

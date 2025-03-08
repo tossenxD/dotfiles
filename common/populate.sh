@@ -66,22 +66,23 @@ for TARGET in $CONFIG
 do
     SOURCE=$PDIR/$TARGET
     DEST=$HOME/$TARGET
-    if [ -e $DEST  -a  $(readlink -f -- $DEST) != $SOURCE ]
+    if [ ( ( ! -z $UNLINK_P ) -a ( ! -e $DEST ) ) -o \
+         ( ( -e $DEST ) -a ( $(readlink -f -- $DEST) != $SOURCE ) ) ]
     then
         if [ -z $UNLINK_P ]
         then
-            echo "refuse to overwrite:\n> $DEST"
+            printf "refuse to overwrite:\n> $DEST\n"
         else
-            echo "refuse to unlink:\n> $DEST"
+            printf "refuse to unlink:\n> $DEST\n"
         fi
     else
         if [ -z $UNLINK_P ]
         then
             [ -z $DRYRUN_P ] && ln -sf $SOURCE $DEST
-            echo "linked:\n> $SOURCE -> $DEST"
+            printf "linked:\n> $SOURCE -> $DEST\n"
         else
             [ -z $DRYRUN_P ] && unlink $DEST
-            echo "unlinked:\n> $DEST <- $SOURCE"
+            printf "unlinked:\n> $DEST <- $SOURCE\n"
         fi
     fi
 done

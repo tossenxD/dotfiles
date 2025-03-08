@@ -91,9 +91,9 @@ fi
 
 [ -z "$HOST" ] && HOST="$(hostname -s)"
 
-[ $(( FLAGS & 2 )) -eq 2 ] && GIT_ENV="nix shell nixpkgs#git \
+[ $(( FLAGS & 2 )) -eq 2 ] && GIT_ENV=$(echo "nix shell nixpkgs#git \
                        --extra-experimental-features nix-command \
-                       --extra-experimental-features flakes --command "
+                       --extra-experimental-features flakes --command " | xargs)
 
 #
 # Clone Git repository
