@@ -54,7 +54,7 @@ OPTION can be one of the following:
   -n, --nix          NixOS installion of configuration flake HOST.
   -g, --git  DIR     Clone the configuration repository into ./DIR using Git.
   -d, --dot          Populate package configuration files (dotfiles) of HOST.
-      --dry          Executions are instead printed (excluding NixOS and Git).
+      --dry          Executions are instead printed to stdout (except --git).
   -h  --help         Prints this message.\n"
         exit 0
 
@@ -128,7 +128,6 @@ See -h, --help for help.\n"
         exit 1
     fi
     $DIR/arch/hosts.sh $HOST
-    cp $DIR/common/wallpapers/archlinux.png ~/.wallpaper.png
 fi
 
 #
@@ -150,17 +149,20 @@ See -h, --help for help.\n"
         if [ ! -f "$HWFILE" ]
         then
             echo "> generating $HWFILE"
-            cp /etc/nixos/hardware-configuration.nix $HWFILE
-            $GIT_ENV git add $HWFILE
+            [ -z $DRYRUN_P ] && cp /etc/nixos/hardware-configuration.nix $HWFILE
+            [ -z $DRYRUN_P ] && $GIT_ENV git add $HWFILE
         fi
     )
     echo "$GIT_ENV sudo nixos-rebuild switch --flake $DIR/nixos#$HOST"
-    $GIT_ENV sudo nixos-rebuild switch --flake $DIR/nixos#$HOST
+    [ -z $DRYRUN_P ] && \
+        $GIT_ENV sudo nixos-rebuild switch --flake $DIR/nixos#$HOST
     printf "\
 Ensure existance of a valid user before reboot e.g by running
 > $ useradd USERNAME
 > $ passwd USERNAME\n"
-    cp $DIR/common/wallpapers/nixosrainbow.png ~/.wallpaper.png
+    [ -z $DRYRUN_P ] && \
+        echo "cp $DIR/common/wallpapers/nixosrainbow.png ~/.wallpaper.png" && \
+        cp $DIR/common/wallpapers/nixosrainbow.png ~/.wallpaper.png
 fi
 
 #

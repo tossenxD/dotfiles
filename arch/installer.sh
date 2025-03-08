@@ -7,11 +7,11 @@ applySystemConfiguration()
     CMDS=$2 # commands to run in a comma-seperated string
 
     # Requires base to be installed
-    ! $(pacman -Q base >> dev/null) && echo "sudo pacman -Syu base" && \
+    ! $(pacman -Q base &> /dev/null) && echo "sudo pacman -Syu base" && \
         [ -z $DRYRUN_P ] && sudo pacman -Syu base
 
     # Requries yay to be installed
-    if [ -z $DRYRUN_P ] && ! pacman -Q yay
+    if [ -z $DRYRUN_P ] && ! $(pacman -Q yay &> /dev/null)
     then
         echo "> building yay"
         mkdir /tmp/build

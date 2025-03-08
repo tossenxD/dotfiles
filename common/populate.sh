@@ -53,14 +53,9 @@ fi
 mkdir -p $HOME/.config
 PDIR=$(dirname $(realpath $0))
 
-if [ $1 = "-u" -o $1 = "--unlink" ]
-then
-    UNLINK_P=1
-    shift
-fi
+[ $1 = "-u" -o $1 = "--unlink" ] && UNLINK_P=1 && shift
 
-HOST=$1
-[ -z $HOST ] && HOST="$(hostname -s)"
+HOST=$1 && [ -z $HOST ] && HOST="$(hostname -s)"
 
 matchToConfiguration $HOST
 
