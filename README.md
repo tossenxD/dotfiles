@@ -1,4 +1,4 @@
-# Declarative Executor of Multiple User- and System-configurations (DEMUS)
+# Declarative Manager for System, User, and Hardware Configurations
 
 This repository can store and apply configuration declarations for multiple
 users and systems, currently limited to distributions Arch Linux and NixOS. The
@@ -26,11 +26,11 @@ for more details).
 dotfiles) and a linker for said files. The linker will never result in data loss
 and can safely be used to unlink files as well.
 
-The parts have been coupled using the script **demus.sh**. Running the script
+The parts have been coupled using the script **main.sh**. Running the script
 can do multiple things, best explained by its own *--help* message. In short, it
 can invoke each of the respective parts and can clone the repository over
 Git. This allows the script to be called remotely and bootstrap itself just
 after the initial OS install, by e.g. using:
 
->curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/demus.sh\
+>curl -sL https://raw.githubusercontent.com/tossenxD/dotfiles/master/main.sh\
 >     | bash -s -- [OPTION]... [HOST]

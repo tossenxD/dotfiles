@@ -107,7 +107,8 @@ then
 Git clone error; parent directory does not exist for path:\n> $DIR
 See -h, --help for help.\n"
         exit 1
-    elif [ -d $DIR ] && [ ! -z "$(ls -A $DIR)" ]
+    elif ([ -e $DIR ] && [ ! -d $DIR ]) || \
+         ([ -d $DIR ] && [ ! -z "$(ls -A $DIR)" ])
     then
         printf "\
 Git clone error; directory already exists and is not empty:\n> $DIR
