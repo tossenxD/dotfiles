@@ -107,6 +107,12 @@ then
 Git clone error; parent directory does not exist for path:\n> $DIR
 See -h, --help for help.\n"
         exit 1
+    elif [ ( ! -d $DIR ) -o ( ( -d $DIR ) -a ( -z $(ls -A $DIR) ) ) ]
+    then
+        printf "\
+Git clone error; directory already exists and is not empty:\n> $DIR
+See -h, --help for hepl.\n"
+        exit 1
     fi
     DEFAULT_DIR_NAME=$(echo $GIT_URL | rev | cut -d/ -f1 | rev | cut -d. -f1)
     [ -d $DIR ] && DIR=$DIR/$DEFAULT_DIR_NAME
