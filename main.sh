@@ -52,7 +52,7 @@ Files are never lost upon populating the dotfiles.
 OPTION can be one of the following:
   -a, --arch         Arch Linux installation of configuration HOST.
   -n, --nix          NixOS installion of configuration flake HOST.
-  -g, --git  DIR     Clone the configuration repository into ./DIR using Git.
+  -g, --git  DIR     Clone the configuration repository using git-clone DIR.
   -d, --dot          Populate package configuration files (dotfiles) of HOST.
       --dry          Executions are instead printed to stdout (except --git).
   -h  --help         Prints this message.\n"
@@ -98,27 +98,13 @@ fi
 #
 # Clone Git repository
 #
-GIT_URL="https://github.com/tossenxD/dotfiles.git"
 if [ $(( FLAGS & 4 )) -eq 4 ]
 then
-    if [ ! -d $(dirname $DIR) ]
-    then
-        printf "\
-Git clone error; parent directory does not exist for path:\n> $DIR
-See -h, --help for help.\n"
-        exit 1
-    elif ([ -e $DIR ] && [ ! -d $DIR ]) || \
-         ([ -d $DIR ] && [ ! -z "$(ls -A $DIR)" ])
-    then
-        printf "\
-Git clone error; directory already exists and is not empty:\n> $DIR
-See -h, --help for hepl.\n"
-        exit 1
-    fi
+    GIT_URL="https://github.com/tossenxD/dotfiles.git"
     DEFAULT_DIR_NAME=$(echo $GIT_URL | rev | cut -d/ -f1 | rev | cut -d. -f1)
     [ -d $DIR ] && DIR=$DIR/$DEFAULT_DIR_NAME
-    echo "$GIT_ENVgit clone $GIT_URL $DIR"
-    $GIT_ENV git clone $GIT_URL $DIR
+    echo "$GIT_ENV git clone $GIT_URL $DIR" | xargs
+    (! $GIT_ENV git clone $GIT_URL $DIR) && exit 1
 fi
 
 #
@@ -126,7 +112,7 @@ fi
 #
 if [ $(( FLAGS & 1 )) -eq 1 ]
 then
-    if ! grep -q "$HOST" $DIR/arch/hosts.sh
+    ! grep -q "$HOST" $DIR/arch/hosts.sh
     then
         printf "\
 Could not find a Arch Linux configuration for host:\n> $HOST
