@@ -61,7 +61,7 @@ OPTION can be one of the following:
     elif [ $(echo $1 | cut -c1) = "-" ]
     then
         printf "\
-Unrecognized flag:\n> $1
+Unrecognized flag: $1
 See -h, --help for help.\n"
         exit 1
 
@@ -69,7 +69,7 @@ See -h, --help for help.\n"
         if [ ! -z "$2" ]
         then
             printf "\
-Invalid argument:\n> $2
+Invalid argument: $2
 See -h, --help for help.\n"
             exit 1
         fi
@@ -115,8 +115,8 @@ then
     if ! grep -q "$HOST" $DIR/arch/hosts.sh
     then
         printf "\
-Could not find a Arch Linux configuration for host:\n> $HOST
-To add a configuration of the host visit file:\n> $DIR/arch/hosts.sh
+Could not find a Arch Linux configuration for host: $HOST
+To add a configuration of the host visit file: $DIR/arch/hosts.sh
 See -h, --help for help.\n"
         exit 1
     fi
@@ -131,8 +131,8 @@ then
     if ! grep -q "$HOST = lib.nixosSystem" $DIR/nixos/flake.nix
     then
         printf "\
-Could not find a NixOS flake for host:\n> $HOST
-To add a configuration of the host visit file:\n> $DIR/nixos/flake.nix
+Could not find a NixOS flake for host: $HOST
+To add a configuration of the host visit file: $DIR/nixos/flake.nix
 See -h, --help for help.\n"
         exit 1
     fi
