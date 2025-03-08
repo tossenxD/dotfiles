@@ -7,12 +7,14 @@ applySystemConfiguration()
     CMDS=$2 # commands to run in a comma-seperated string
 
     # Requires base to be installed
-    ! pacman -Q base && sudo pacman -Syu base
+    ! $(pacman -Q base >> dev/null) && echo "sudo pacman -Syu base" && \
+        [ -z $DRYRUN_P ] && sudo pacman -Syu base
 
     # Requries yay to be installed
-    if ! pacman -Q yay
+    if [ -z $DRYRUN_P ] && ! pacman -Q yay
     then
-       mkdir /tmp/build
+        echo "> building yay"
+        mkdir /tmp/build
        ( cd /tmp/build
          git clone https://aur.archlinux.org/yay.git
          cd /tmp/build/yay/
@@ -21,11 +23,13 @@ applySystemConfiguration()
     fi
 
     # Requires multilib repository to be enabled
-    if grep -q "#\\[multilib\\]" /etc/pacman.conf
+    if [ -z $DRYRUN_P ] && grep -q "#\\[multilib\\]" /etc/pacman.conf
     then
         N=$(grep -n "\\[multilib\\]" /etc/pacman.conf | cut -d: -f1)
+        echo "sudo sed -i ''$N's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf"
         sudo sed -i ''$N's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
         TERM="Include = /etc/pacman.d/mirrorlist"
+        echo "sudo sed -i ''$(expr $N + 1)\"s|#$TERM|$TERM|g\" /etc/pacman.conf"
         sudo sed -i ''$(expr $N + 1)"s|#$TERM|$TERM|g" /etc/pacman.conf
     fi
 
@@ -65,31 +69,19 @@ applySystemConfiguration()
 }')
 
     # Install packages
-    if [ -z $DRYRUN_P ]
-    then
-        sudo pacman -Syu --noconfirm $PAC
-        yay -S --noconfirm $AUR
-    else
-        echo "sudo pacman -Syu --noconfirm $PAC"
-        echo "yay -S --noconfirm $AUR"
-    fi
+    echo "sudo pacman -Syu --noconfirm $PAC"
+    [ -z $DRYRUN_P ] && sudo pacman -Syu --noconfirm $PAC
+    echo "yay -S --noconfirm $AUR"
+    [ -z $DRYRUN_P ] && yay -S --noconfirm $AUR
 
     # Run commands
-    if [ -z $DRYRUN_P ]
-    then
-        IFS=","
-        for CMD in $CMDS
-        do
-            unset IFS
-            echo "$CMD"
-            eval " $CMD"
-            IFS=","
-        done
+    IFS=","
+    for CMD in $CMDS
+    do
         unset IFS
-    else
-        for CMD in $CMDS
-        do
-            echo "$CMD"
-        done
-    fi
+        echo "$CMD"
+        [ -z $DRYRUN_P ] && eval " $CMD"
+        IFS=","
+    done
+    unset IFS
 }

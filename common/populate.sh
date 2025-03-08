@@ -75,18 +75,18 @@ do
     then
         if [ -z $UNLINK_P ]
         then
-            echo "refuse to overwrite: $DEST"
+            echo "refuse to overwrite:\n> $DEST"
         else
-            echo "refuse to unlink: $DEST"
+            echo "refuse to unlink:\n> $DEST"
         fi
     else
         if [ -z $UNLINK_P ]
         then
             [ -z $DRYRUN_P ] && ln -sf $SOURCE $DEST
-            echo "linked: $SOURCE -> $DEST"
+            echo "linked:\n> $SOURCE -> $DEST"
         else
             [ -z $DRYRUN_P ] && unlink $DEST
-            echo "unlinked: $DEST <- $SOURCE"
+            echo "unlinked:\n> $DEST <- $SOURCE"
         fi
     fi
 done

@@ -34,7 +34,7 @@ See -h, --help for help.\n"
 
     elif [ $1 = "--dry" ]
     then
-        DRYRUN_P=1
+        export DRYRUN_P=1
 
     elif [ $1 = "-h" -o $1 = "--help" ]
     then
@@ -61,7 +61,7 @@ OPTION can be one of the following:
     elif [ $(echo $1 | cut -c1) = "-" ]
     then
         printf "\
-Unrecognized flag:  $1
+Unrecognized flag:\n> $1
 See -h, --help for help.\n"
         exit 1
 
@@ -69,7 +69,7 @@ See -h, --help for help.\n"
         if [ ! -z "$2" ]
         then
             printf "\
-Invalid argument:  $2
+Invalid argument:\n> $2
 See -h, --help for help.\n"
             exit 1
         fi
@@ -98,20 +98,20 @@ fi
 #
 # Clone Git repository
 #
+GIT_URL="https://github.com/tossenxD/dotfiles.git"
 if [ $(( FLAGS & 4 )) -eq 4 ]
 then
     if [ ! -d $(dirname $DIR) ]
     then
         printf "\
-Git clone error; parent directory does not exist for path:\n  $DIR
+Git clone error; parent directory does not exist for path:\n> $DIR
 See -h, --help for help.\n"
         exit 1
     fi
-    [ -d $DIR ] && DIR_EXISTS_P=1
-    GIT_URL="https://github.com/tossenxD/dotfiles.git"
+    DEFAULT_DIR_NAME=$(echo $GIT_URL | rev | cut -d/ -f1 | rev | cut -d. -f1)
+    [ -d $DIR ] && DIR=$DIR/$DEFAULT_DIR_NAME
     echo "$GIT_ENVgit clone $GIT_URL $DIR"
     $GIT_ENV git clone $GIT_URL $DIR
-    [ -z $DIR_EXISTS_P ] && DIR=$DIR/dotfiles
 fi
 
 #
@@ -119,11 +119,11 @@ fi
 #
 if [ $(( FLAGS & 1 )) -eq 1 ]
 then
-    if ! grep "$HOST" $DIR/arch/hosts.sh
+    if ! grep -q "$HOST" $DIR/arch/hosts.sh
     then
         printf "\
-Could not find a Arch Linux configuration for host:\n  $HOST
-To add a configuration of the host visit file:\n  $DIR/arch/hosts.sh
+Could not find a Arch Linux configuration for host:\n> $HOST
+To add a configuration of the host visit file:\n> $DIR/arch/hosts.sh
 See -h, --help for help.\n"
         exit 1
     fi
@@ -136,11 +136,11 @@ fi
 #
 if [ $(( FLAGS & 2 )) -eq 2 ]
 then
-    if ! grep "$HOST = lib.nixosSystem" $DIR/nixos/flake.nix
+    if ! grep -q "$HOST = lib.nixosSystem" $DIR/nixos/flake.nix
     then
         printf "\
-Could not find a NixOS flake for host:\n  $HOST
-To add a configuration of the host visit file:\n  $DIR/nixos/flake.nix
+Could not find a NixOS flake for host:\n> $HOST
+To add a configuration of the host visit file:\n> $DIR/nixos/flake.nix
 See -h, --help for help.\n"
         exit 1
     fi
@@ -149,7 +149,7 @@ See -h, --help for help.\n"
         HWFILE="hardware-configuration-$HOST.nix"
         if [ ! -f "$HWFILE" ]
         then
-            echo "Generating $HWFILE"
+            echo "> generating $HWFILE"
             cp /etc/nixos/hardware-configuration.nix $HWFILE
             $GIT_ENV git add $HWFILE
         fi
@@ -158,8 +158,8 @@ See -h, --help for help.\n"
     $GIT_ENV sudo nixos-rebuild switch --flake $DIR/nixos#$HOST
     printf "\
 Ensure existance of a valid user before reboot e.g by running
-  $ useradd USERNAME
-  $ passwd USERNAME\n"
+> $ useradd USERNAME
+> $ passwd USERNAME\n"
     cp $DIR/common/wallpapers/nixosrainbow.png ~/.wallpaper.png
 fi
 
