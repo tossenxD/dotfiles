@@ -28,9 +28,10 @@ See -h, --help for help.\n"
         DIR="$DIR/$2"
         shift
 
-    elif [ $1 = "-d" -o $1 = "--dot" ]
+    elif [ $1 = "-d" -o $1 = "--dot" -o $1 = "-u" -o $1 = "--unlink" ]
     then
-         let FLAGS=$(( FLAGS|8 )) # bit 4
+        let FLAGS=$(( FLAGS|8 )) # bit 4
+        [ $1 = "-u" -o $1 = "--unlink" ] && export UNLINK_P=1
 
     elif [ $1 = "--dry" ]
     then
@@ -54,6 +55,7 @@ OPTION can be one of the following:
   -n, --nix          NixOS installion of configuration flake HOST.
   -g, --git  DIR     Clone the configuration repository using git-clone DIR.
   -d, --dot          Populate package configuration files (dotfiles) of HOST.
+  -u, --unlink       Depopulate package configuration files (dotfiles) of HOST.
       --dry          Executions are instead printed to stdout (except --git).
   -h  --help         Prints this message.\n"
         exit 0
