@@ -66,8 +66,8 @@ for TARGET in $CONFIG
 do
     SOURCE=$PDIR/$TARGET
     DEST=$HOME/$TARGET
-    if [ ( ( ! -z $UNLINK_P ) -a ( ! -e $DEST ) ) -o \
-         ( ( -e $DEST ) -a ( $(readlink -f -- $DEST) != $SOURCE ) ) ]
+    if [ ! -z $UNLINK_P  -a  ! -e $DEST ] || \
+       [ -e $DEST  -a  $(readlink -f -- $DEST) != $SOURCE ]
     then
         if [ -z $UNLINK_P ]
         then
