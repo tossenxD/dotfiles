@@ -44,7 +44,7 @@ MULTIMEDIA="mpv imv audacious"
 HASKELL="ghc stack"
 PYTHON="python python-pip"
 LATEX="texlive-basic texlive-latex texlive-latexrecommended texlive-latexextra \
-    texlive-mathscience texlive-frontsrecommended"
+    texlive-mathscience texlive-fontsrecommended"
 DEVUTILS="gdb valgrind cmark git nix npm nasm"
 
 STEAM="steam ttf-liberation \
