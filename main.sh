@@ -105,7 +105,8 @@ fi
 # May requires git to be installed
 [ $(( FLAGS & 1 )) -eq 1 ] && [ $(( FLAGS & 4 )) -eq 4 ] && \
     <(  ! $(pacman -Q git &> /dev/null) && \
-        echo "sudo pacman -Syu git" && sudo pacman -Syu git )
+        echo "sudo pacman -Syu --noconfirm git" && \
+        sudo pacman -Syu --noconfirm git )
 
 [ $(( FLAGS & 2 )) -eq 2 ] && GIT_ENV=$(echo "nix shell nixpkgs#git \
                        --extra-experimental-features nix-command \
@@ -115,7 +116,8 @@ fi
 if [ -z "$HOST" ]
 then
     [ $(( FLAGS & 1 )) -eq 1 ] && ! $(pacman -Q inetutils &> /dev/null) && \
-        echo "sudo pacman -Syu inetutils" && sudo pacman -Syu inetutils
+        echo "sudo pacman -Syu --noconfirm inetutils" && \
+        sudo pacman -Syu --noconfirm inetutils
     HOST="$(hostname -s)"
 fi
 
