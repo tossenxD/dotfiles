@@ -102,11 +102,21 @@ See -h, --help for help.\n"
     exit 1
 fi
 
-[ -z "$HOST" ] && HOST="$(hostname -s)"
+# Requires git to be installed
+[ $(( FLAGS & 1 )) -eq 1 ] && ! $(pacman -Q git &> /dev/null) && \
+    echo "sudo pacman -Syu git" && sudo pacman -Syu git
 
 [ $(( FLAGS & 2 )) -eq 2 ] && GIT_ENV=$(echo "nix shell nixpkgs#git \
                        --extra-experimental-features nix-command \
                        --extra-experimental-features flakes --command " | xargs)
+
+# Requires a host to be set (possible using hostname)
+if [ -z "$HOST" ]
+then
+    [ $(( FLAGS & 1 )) -eq 1 ] && ! $(pacman -Q inetutils &> /dev/null) && \
+        echo "sudo pacman -Syu inetutils" && sudo pacman -Syu inetutils
+    HOST="$(hostname -s)"
+fi
 
 #
 # Clone Git repository
