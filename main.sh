@@ -106,7 +106,7 @@ fi
 [ $(( FLAGS & 1 )) -eq 1 ] && [ $(( FLAGS & 4 )) -eq 4 ] && \
     ! $(pacman -Q git &> /dev/null) && \
     echo "sudo pacman -Syu --noconfirm git" && \
-    sudo pacman -Syu --noconfirm git
+    eval "sudo pacman -Syu --noconfirm git"
 
 [ $(( FLAGS & 2 )) -eq 2 ] && GIT_ENV=$(echo "nix shell nixpkgs#git \
                        --extra-experimental-features nix-command \
@@ -117,7 +117,7 @@ if [ -z "$HOST" ]
 then
     [ $(( FLAGS & 1 )) -eq 1 ] && ! $(pacman -Q inetutils &> /dev/null) && \
         echo "sudo pacman -Syu --noconfirm inetutils" && \
-        sudo pacman -Syu --noconfirm inetutils
+        eval "sudo pacman -Syu --noconfirm inetutils"
     HOST="$(hostname -s)"
 fi
 
