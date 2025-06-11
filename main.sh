@@ -1,6 +1,17 @@
 #!/bin/sh
 
 #
+# No arguments
+#
+if [ -z $1 ]
+then
+    printf "\
+Usage: $0 [OPTION]... [HOST]
+See -h, --help for help.\n"
+    exit 0
+fi
+
+#
 # Handle flags
 #
 DIR=$(dirname $(realpath $0))  # calling directory
