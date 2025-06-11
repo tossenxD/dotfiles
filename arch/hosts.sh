@@ -23,7 +23,7 @@ $BROWSERS $OFFICE $DISCORD $STEAM $LUTRIS $MINECRAFT"
 
     else
         printf "\
-Could not find an Arch Linux based package configuration for host:\n  $HOST\n"
+Could not find an Arch Linux based package configuration for host: $HOST\n"
         exit 1
     fi
 }

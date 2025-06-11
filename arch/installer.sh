@@ -11,26 +11,23 @@ applySystemConfiguration()
         [ -z $DRYRUN_P ] && sudo pacman -Syu base
 
     # Requries yay to be installed
-    if [ -z $DRYRUN_P ] && ! $(pacman -Q yay &> /dev/null)
-    then
-        echo "> building yay"
-        mkdir /tmp/build
-       ( cd /tmp/build
-         git clone https://aur.archlinux.org/yay.git
-         cd /tmp/build/yay/
-         makepkg -si --noconfirm
-         cd $(dirname $(realpath $0)))
-    fi
+    ! $(pacman -Q yay &> /dev/null) && echo "> building yay" && \
+        [ -z $DRYRUN_P ] && (
+            mkdir /tmp/build
+            cd /tmp/build
+            git clone https://aur.archlinux.org/yay.git
+            cd /tmp/build/yay/
+            makepkg -si --noconfirm)
 
     # Requires multilib repository to be enabled
-    if [ -z $DRYRUN_P ] && grep -q "#\\[multilib\\]" /etc/pacman.conf
+    if grep -q "#\\[multilib\\]" /etc/pacman.conf
     then
         N=$(grep -n "\\[multilib\\]" /etc/pacman.conf | cut -d: -f1)
-        echo "sudo sed -i ''$N's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf"
-        sudo sed -i ''$N's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
+        EXP1="sudo sed -i ''$N's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf"
+        echo "$EXP1" && [ -z $DRYRUN_P ] && eval " $EXP1"
         TERM="Include = /etc/pacman.d/mirrorlist"
-        echo "sudo sed -i ''$(expr $N + 1)\"s|#$TERM|$TERM|g\" /etc/pacman.conf"
-        sudo sed -i ''$(expr $N + 1)"s|#$TERM|$TERM|g" /etc/pacman.conf
+        EXP2="sudo sed -i ''$(expr $N + 1)\"s|#$TERM|$TERM|g\" /etc/pacman.conf"
+        echo "$EXP2" && [ -z $DRYRUN_P ] && eval " $EXP2"
     fi
 
     # Run an awk program to process input
@@ -79,8 +76,7 @@ applySystemConfiguration()
     for CMD in $CMDS
     do
         unset IFS
-        echo "$CMD"
-        [ -z $DRYRUN_P ] && eval " $CMD"
+        echo "$CMD" && [ -z $DRYRUN_P ] && eval " $CMD"
         IFS=","
     done
     unset IFS
