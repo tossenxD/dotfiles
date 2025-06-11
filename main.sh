@@ -18,7 +18,7 @@ do
     elif [ $1 = "-g" -o $1 = "--git" ]
     then
         let FLAGS=$(( FLAGS|4 )) # bit 3
-        if [ -z "$2" -o $(echo $2 | cut -c1) = "-" ]
+        if [ -z "$2" ] || [ $(echo $2 | cut -c1) = "-" ]
         then
             printf "\
 Missing directory argument after -g, --git.
