@@ -11,7 +11,7 @@ applySystemConfiguration()
         [ -z $DRYRUN_P ] && sudo pacman -Syu base
 
     # Requries yay to be installed
-    ! $(pacman -Q yay &> /dev/null) && echo "> building yay" && \
+    ! $(pacman -Q yay &> /dev/null) && echo "building yay:" && \
         [ -z $DRYRUN_P ] && (
             mkdir /tmp/build
             cd /tmp/build
