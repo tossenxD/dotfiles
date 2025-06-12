@@ -39,7 +39,13 @@ source $PDIR/installer.sh
 # Retrieve configuration based on input
 #
 HOST=$1
-[ -z $HOST ] && HOST="$(hostname -s)"
+if [ -z "$HOST" ]
+then
+    ! $(pacman -Q inetutils &> /dev/null) && \
+        echo "sudo pacman -Syu --noconfirm inetutils" && \
+        eval "sudo pacman -Syu --noconfirm inetutils"
+    HOST="$(hostname -s)"
+fi
 
 matchToConfiguration $HOST
 
