@@ -15,6 +15,7 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    xwayland = { enable = true; };
   };
   programs.waybar.enable = true;
   xdg.portal.wlr.enable = true; # allows screensharing on sway

@@ -8,6 +8,9 @@
     libreoffice
     gimp
     openscad
+    prusa-slicer
+    freecad
+    inkscape
   ];
   
   # Options
