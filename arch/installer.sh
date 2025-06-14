@@ -7,8 +7,9 @@ applySystemConfiguration()
     CMDS=$2 # commands to run in a comma-seperated string
 
     # Requires base to be installed
-    ! $(pacman -Q base &> /dev/null) && echo "sudo pacman -Syu --noconfirm base" && \
-        [ -z $DRYRUN_P ] && sudo pacman -Syu --noconfirm base
+    ! $(pacman -Q base &> /dev/null) && \
+        echo "sudo pacman -Syu --noconfirm --needed base" && \
+        [ -z $DRYRUN_P ] && sudo pacman -Syu --noconfirm --needed base
 
     # Requries yay to be installed
     ! $(pacman -Q yay &> /dev/null) && echo "building yay:" && \
@@ -66,10 +67,10 @@ applySystemConfiguration()
 }')
 
     # Install packages
-    echo "sudo pacman -Syu --noconfirm $PAC"
-    [ -z $DRYRUN_P ] && sudo pacman -Syu --noconfirm $PAC
-    echo "yay -S --noconfirm $AUR"
-    [ -z $DRYRUN_P ] && yay -S --noconfirm $AUR
+    echo "sudo pacman -Syu --noconfirm --needed $PAC"
+    [ -z $DRYRUN_P ] && sudo pacman -Syu --noconfirm --needed $PAC
+    echo "yay -S --noconfirm --needed $AUR"
+    [ -z $DRYRUN_P ] && yay -S --noconfirm --needed $AUR
 
     # Run commands
     IFS=","

@@ -12,8 +12,7 @@ $SYSTEM $NETWORKMANAGER $MONITORING $AMDCPU $AMDGPU $AUDIO $BLUETOOTH $FONTS \
 $SWAY $ALACRITTY $FILEMANAGERS $EMACSWAYLAND $NVIM $BROWSERS $OFFICE $ZATHURA \
 $BITTORRENT $DDDPRINT $VIRTUALBOX $SPOTIFY $DISCORD $MULTIMEDIA $STEAM \
 $HASKELL $PYTHON $LATEX $DEVUTILS"
-        CMDS="pip install neovim neovim-remote"
-        CMDS=$CMDS",cp $PDIR/../common/wallpapers/archlinux.png ~/.wallpaper.png"
+        CMDS="cp $PDIR/../common/wallpapers/archlinux.png ~/.wallpaper.png"
 
     elif [ $1 = "Gaia" ]
     then
@@ -42,8 +41,8 @@ HOST=$1
 if [ -z "$HOST" ]
 then
     ! $(pacman -Q inetutils &> /dev/null) && \
-        echo "sudo pacman -Syu --noconfirm inetutils" && \
-        eval "sudo pacman -Syu --noconfirm inetutils"
+        echo "sudo pacman -Syu --noconfirm --needed inetutils" && \
+        eval "sudo pacman -Syu --noconfirm --needed inetutils"
     HOST="$(hostname -s)"
 fi
 

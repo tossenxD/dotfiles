@@ -29,15 +29,17 @@ GNOMETHEMES="gnome-themes-extra [AUR adwaita-qt5-git adwaita-qt6-git] \
 ALACRITTY="alacritty"
 ZATHURA="zathura zathura-pdf-poppler"
 FILEMANAGERS="dolphin ranger"
-BROWSERS="firefox chromium"
+BROWSERS="firefox chromium [AUR librewolf]"
 OFFICE="libreoffice-fresh gimp"
 BITTORRENT="qbittorrent"
-NVIM="neovim"
-EMACS="emacs [CMD sudo systemctl --user enable --now emacs]"
-EMACSWAYLAND="emacs-wayland [CMD sudo systemctl --user enable --now emacs]"
+NVIM="neovim python-pynvim"
+EMACSCOMMON="aspell aspell-en aspell-da \
+    [CMD systemctl --user enable --now emacs]"
+EMACS="emacs "$EMACSCOMMON
+EMACSWAYLAND="emacs-wayland "$EMACSCOMMON
 VIRTUALBOX="virtualbox virtualbox-host-modules-arch"
 DDDPRINT="openscad inkscape prusa-slicer"
-SPOTIFY="[AUR spotify]"
+SPOTIFY="spotify-launcher"
 DISCORD="discord"
 MULTIMEDIA="mpv imv audacious"
 

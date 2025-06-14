@@ -102,11 +102,11 @@ See -h, --help for help.\n"
     exit 1
 fi
 
-# May requires git to be installed
+# Require git to be installed
 [ $(( FLAGS & 1 )) -eq 1 ] && [ $(( FLAGS & 4 )) -eq 4 ] && \
     ! $(pacman -Q git &> /dev/null) && \
-    echo "sudo pacman -Syu --noconfirm git" && \
-    eval "sudo pacman -Syu --noconfirm git"
+    echo "sudo pacman -Syu --noconfirm --needed git" && \
+    eval "sudo pacman -Syu --noconfirm --needed git"
 
 [ $(( FLAGS & 2 )) -eq 2 ] && GIT_ENV=$(echo "nix shell nixpkgs#git \
                        --extra-experimental-features nix-command \
@@ -116,8 +116,8 @@ fi
 if [ -z "$HOST" ]
 then
     [ $(( FLAGS & 1 )) -eq 1 ] && ! $(pacman -Q inetutils &> /dev/null) && \
-        echo "sudo pacman -Syu --noconfirm inetutils" && \
-        eval "sudo pacman -Syu --noconfirm inetutils"
+        echo "sudo pacman -Syu --noconfirm --needed inetutils" && \
+        eval "sudo pacman -Syu --noconfirm --needed inetutils"
     HOST="$(hostname -s)"
 fi
 
@@ -188,3 +188,5 @@ fi
 # Populate dotfiles
 #
 [ $(( FLAGS & 8 )) -eq 8 ] && $DIR/common/populate.sh $HOST
+
+exit 0
