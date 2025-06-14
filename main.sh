@@ -126,7 +126,7 @@ fi
 #
 if [ $(( FLAGS & 4 )) -eq 4 ]
 then
-    GIT_URL="https://github.com/tossenxD/dotfiles.git"
+    GIT_URL="git@github.com:tossenxD/dotfiles.git"
     DEFAULT_DIR_NAME=$(echo $GIT_URL | rev | cut -d/ -f1 | rev | cut -d. -f1)
     [ -d $DIR ] && DIR=$DIR/$DEFAULT_DIR_NAME
     echo "$GIT_ENV git clone $GIT_URL $DIR" | xargs
