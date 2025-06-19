@@ -5,13 +5,14 @@
 #     command `...` to run after other packages have been installed.
 
 SYSTEM="man-db man-pages fastfetch cowsay vi nano tree plocate openssh wget sl \
-    curl lm_sensors"
+    curl lm_sensors [CMD sudo sensors-detect --auto]"
 NETWORKMANAGER="\
     networkmanager [CMD sudo systemctl enable --now NetworkManager.service]"
 MONITORING="btop rocm-smi-lib hddtemp mangohud"
 AMDCPU="amd-ucode"
 AMDGPU="mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon"
-AUDIO="alsa-utils alsa-firmware pipewire pipewire-alsa"
+AUDIO="alsa-utils alsa-firmware pipewire pipewire-alsa pipewire-pulse\
+    [CMD systemctl --user enable --now pipewire-pulse.service]"
 BLUETOOTH="\
     bluez bluez-utils [CMD sudo systemctl enable --now bluetooth.service]"
 
