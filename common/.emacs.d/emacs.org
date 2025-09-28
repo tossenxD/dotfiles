@@ -5,7 +5,8 @@
 - [[#package-management][Package Management]]
   - [[#package-archives][Package Archives]]
   - [[#installing-packages][Installing Packages]]
-- [[#layout][Layout]]
+- [[#emacs][Emacs]]
+  - [[#evil][Evil]]
   - [[#theme-customization][Theme Customization]]
   - [[#faces--text-customization][Faces & Text Customization]]
   - [[#frame-customization][Frame Customization]]
@@ -50,7 +51,28 @@ Defines a function `get-package` s.t:
     (when mode (add-to-list 'auto-mode-alist mode)))
 #+end_src
 
-* Layout
+* Emacs
+** Evil
+Install and enable Evil mode
+#+begin_src emacs-lisp
+  (get-package 'evil)
+  (evil-mode 1)
+#+end_src
+
+Evil requires undo-redo --- which is part of Emacs from version 28 --- and it also requires
+'goto last change' functionality. The package goto-chg can provide this.
+#+begin_src emacs-lisp
+  (get-package 'goto-chg)
+#+end_src
+
+Settings
+#+begin_src emacs-lisp
+  (setq evil-v$-excludes-newline t)
+  (setq evil-want-fine-undo t)
+  (evil-set-undo-system 'undo-redo)
+#+end_src
+
+
 ** Theme Customization
 #+begin_src emacs-lisp
   (get-package 'gruvbox-theme)
