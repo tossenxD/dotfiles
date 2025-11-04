@@ -66,8 +66,7 @@ for TARGET in $CONFIG
 do
     SOURCE=$PDIR/$TARGET
     DEST=$HOME/$TARGET
-    if ([ ! -z $UNLINK_P ] && [ ! -e $DEST ]) || \
-       ([ -e $DEST ] && [ $(readlink -f -- $DEST) != $SOURCE ])
+    if ([ $UNLINK_P ] && [ ! -e $DEST ]) || ([ -z $UNLINK_P ] && [ -e $DEST ])
     then
         if [ -z $UNLINK_P ]
         then
@@ -79,10 +78,10 @@ do
         if [ -z $UNLINK_P ]
         then
             [ -z $DRYRUN_P ] && ln -sf $SOURCE $DEST
-            printf "linked: $SOURCE -> $DEST\n"
+            printf "linked: %-50s ->\t%s\n" $SOURCE $DEST
         else
-            [ -z $DRYRUN_P ] && unlink $DEST
-            printf "unlinked: $DEST <- $SOURCE\n"
+            [ -z $DRYRUN_P ] && rm -r $DEST
+            printf "unlinked: %-30s <-\t%s\n" $DEST $SOURCE
         fi
     fi
 done
