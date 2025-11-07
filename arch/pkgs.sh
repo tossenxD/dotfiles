@@ -26,7 +26,7 @@ BSPWM="xorg xorg-xinit bspwm sxhkd nitrogen dmenu screengrab rofi xsel \
 KDE="plasma-meta kde-utilities-meta kde-system-meta kde-multimedia-meta \
     [CMD sudo systemctl enable sddm.service]"
 
-FONTS="ttf-font-awesome ttf-liberation ttf-dejavu [AUR ttf-unifont]"
+FONTS="nerd-fonts ttf-liberation ttf-dejavu [AUR ttf-unifont]"
 GNOMETHEMES="gnome-themes-extra [AUR adwaita-qt5-git adwaita-qt6-git] \
     [CMD gsettings set org.gnome.desktop.interface color-scheme prefer-dark]"
 
