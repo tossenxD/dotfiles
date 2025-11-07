@@ -74,9 +74,11 @@ Settings
 
 
 ** Theme Customization
+The darkest text color will determine the whitespace color (by making it slightly darker).
 #+begin_src emacs-lisp
   (get-package 'gruvbox-theme)
   (load-theme 'gruvbox-dark-medium t)
+  (defconst theme-darkest-text-color "#665c54")
 #+end_src
 
 ** Faces & Text Customization
@@ -87,6 +89,41 @@ Settings
   (setq-default indent-tabs-mode nil)
   (setq-default fill-column 80)
   (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+#+end_src
+Show whitespaces.
+#+begin_src emacs-lisp
+  (global-whitespace-mode t)
+  (setq-default whitespace-style
+                '(face
+                  spaces
+                  newline
+                  empty
+                  tabs
+                  trailing
+                  missing-newline-at-eof
+                  space-mark
+                  tab-mark
+                  newline-mark))
+  (setq-default whitespace-global-modes
+                '(not shell-mode
+                      help-mode
+                      magit-mode
+                      magit-diff-mode
+                      ibuffer-mode
+                      dired-mode
+                      occur-mode))
+  (setq-default whitespace-action
+                '(cleanup auto-cleanup))
+  (require 'color)
+  (let ((whitespace-color (color-darken-name theme-darkest-text-color 10)))
+    (custom-set-faces
+     `(whitespace-newline                ((t (:foreground ,whitespace-color))))
+     `(whitespace-missing-newline-at-eof ((t (:foreground ,whitespace-color))))
+     `(whitespace-space                  ((t (:foreground ,whitespace-color))))
+     `(whitespace-space-after-tab        ((t (:foreground ,whitespace-color))))
+     `(whitespace-space-before-tab       ((t (:foreground ,whitespace-color))))
+     `(whitespace-tab                    ((t (:foreground ,whitespace-color))))
+     `(whitespace-trailing               ((t (:foreground ,whitespace-color))))))
 #+end_src
 
 ** Frame Customization
@@ -127,9 +164,9 @@ Settings
 #+begin_src emacs-lisp
   (setq-default c-basic-offset 4)
   (add-hook 'c++-mode-hook (lambda () (set-fill-column 100)))
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
-  (add-hook 'c-mode-hook 'eglot-ensure)
-  (add-hook 'c++-mode-hook 'eglot-ensure)
+  ;;(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  ;;(add-hook 'c-mode-hook 'eglot-ensure)
+  ;;(add-hook 'c++-mode-hook 'eglot-ensure)
 #+end_src
 
 ** LaTeX
@@ -216,8 +253,8 @@ Markdown depends on a markdown processor for parsing - set in PROCESSOR.
 Provides Nix language support and a NixOS option search function,
 which is bound to `C-c C-n` in any .nix file buffers.
 #+begin_src emacs-lisp
-  (get-package 'nix-mode nil '("\\.nix\\'" . nix-mode))
-  (get-package 'helm-nixos-options)
-  (with-eval-after-load 'nix-mode
-    (define-key nix-mode-map (kbd "C-c C-n") 'helm-nixos-options))
+  ;;(get-package 'nix-mode nil '("\\.nix\\'" . nix-mode))
+  ;;(get-package 'helm-nixos-options)
+  ;;(with-eval-after-load 'nix-mode
+  ;;  (define-key nix-mode-map (kbd "C-c C-n") 'helm-nixos-options))
 #+end_src
