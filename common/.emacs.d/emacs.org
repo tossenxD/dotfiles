@@ -112,18 +112,18 @@ Show whitespaces.
                       ibuffer-mode
                       dired-mode
                       occur-mode))
-  (setq-default whitespace-action
-                '(cleanup auto-cleanup))
+  (setq-default whitespace-action '(cleanup auto-cleanup))
   (require 'color)
-  (let ((whitespace-color (color-darken-name theme-darkest-text-color 10)))
-    (custom-set-faces
-     `(whitespace-newline                ((t (:foreground ,whitespace-color))))
-     `(whitespace-missing-newline-at-eof ((t (:foreground ,whitespace-color))))
-     `(whitespace-space                  ((t (:foreground ,whitespace-color))))
-     `(whitespace-space-after-tab        ((t (:foreground ,whitespace-color))))
-     `(whitespace-space-before-tab       ((t (:foreground ,whitespace-color))))
-     `(whitespace-tab                    ((t (:foreground ,whitespace-color))))
-     `(whitespace-trailing               ((t (:foreground ,whitespace-color))))))
+  (add-hook 'server-after-make-frame-hook
+            (lambda ()
+              (let ((whitespace-color (color-darken-name theme-darkest-text-color 10)))
+                (set-face-attribute 'whitespace-newline                nil :foreground whitespace-color)
+                (set-face-attribute 'whitespace-missing-newline-at-eof nil :foreground whitespace-color)
+                (set-face-attribute 'whitespace-space                  nil :foreground whitespace-color)
+                (set-face-attribute 'whitespace-space-after-tab        nil :foreground whitespace-color)
+                (set-face-attribute 'whitespace-space-before-tab       nil :foreground whitespace-color)
+                (set-face-attribute 'whitespace-tab                    nil :foreground whitespace-color)
+                (set-face-attribute 'whitespace-trailing               nil :foreground whitespace-color))))
 #+end_src
 
 ** Frame Customization
