@@ -15,8 +15,8 @@ matchToConfiguration()
     then
         CONFIG="
 .config/sway .config/swappy .config/waybar .config/alacritty .config/wofi
-.config/workstyle .emacs.d .config/nvim .config/ranger .config/zathura .bashrc
-.bash_profile scripts"
+.config/workstyle .config/emacs .config/nvim .config/ranger .config/zathura
+.bashrc .bash_profile scripts"
 
     elif [ $1 = "legacy" ]
     then

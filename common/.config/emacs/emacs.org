@@ -72,9 +72,8 @@ Settings
   (evil-set-undo-system 'undo-redo)
 #+end_src
 
-
 ** Theme Customization
-The darkest text color will determine the whitespace color (by making it slightly darker).
+# The darkest text color will determine the whitespace color (by making it slightly darker).
 #+begin_src emacs-lisp
   (get-package 'gruvbox-theme)
   (load-theme 'gruvbox-dark-medium t)
@@ -116,7 +115,7 @@ Show whitespaces.
   (require 'color)
   (add-hook 'server-after-make-frame-hook
             (lambda ()
-              (let ((whitespace-color (color-darken-name theme-darkest-text-color 10)))
+              (let ((whitespace-color (color-darken-name theme-darkest-text-color 20)))
                 (set-face-attribute 'whitespace-newline                nil :foreground whitespace-color)
                 (set-face-attribute 'whitespace-missing-newline-at-eof nil :foreground whitespace-color)
                 (set-face-attribute 'whitespace-space                  nil :foreground whitespace-color)
