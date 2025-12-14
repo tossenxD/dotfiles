@@ -40,3 +40,5 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 else
   alias cpf="xsel --clipboard <"
 fi
+
+alias systemstress="xmrig --stress -a rx/wow --opencl"

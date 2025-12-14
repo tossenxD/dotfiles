@@ -8,8 +8,8 @@ SYSTEM="man-db man-pages fastfetch cowsay vi nano tree plocate openssh wget sl \
     curl lm_sensors [CMD sudo sensors-detect --auto]"
 NETWORKMANAGER="\
     networkmanager [CMD sudo systemctl enable --now NetworkManager.service]"
-MONITORING="btop rocm-smi-lib hddtemp mangohud glmark2"
-AMDCPU="amd-ucode"
+MONITORING="btop rocm-smi-lib hddtemp mangohud glmark2 xmrig"
+MICROCODE="amd-ucode intel-ucode"
 AMDGPU="mesa lib32-mesa mesa-utils xf86-video-amdgpu vulkan-radeon \
     lib32-vulkan-radeon vulkan-mesa-layers lib32-vulkan-mesa-layers"
 AMDGPGPU="opencl-mesa lib32-opencl-mesa rocm-opencl-runtime"
