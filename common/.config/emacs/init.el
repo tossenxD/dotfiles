@@ -50,7 +50,10 @@
 (setq evil-want-fine-undo t)
 (evil-set-undo-system 'undo-redo)
 
-;; Setup leader key and keymap
+;; Setup leader key
+(evil-set-leader 'motion (kbd "SPC"))
+
+;; Term mode
 (defun new-term-below ()
   "Opens a new window below running a (uniquely named) terminal emulator"
   (interactive)
@@ -70,8 +73,25 @@
     (rename-uniquely)
     (evil-insert-state)))
 
-(evil-set-leader 'motion (kbd "SPC"))
 (evil-define-key 'normal 'global (kbd "<leader>t") 'new-term-below)
+
+(add-hook 'term-mode-hook (lambda () (setq-local evil-move-cursor-back nil)))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (add-hook 'evil-insert-state-entry-hook
+                      (lambda () (when (get-buffer-process (current-buffer)) (term-char-mode))) nil t)
+            (add-hook 'evil-insert-state-exit-hook (lambda () (term-line-mode)) nil t)))
+
+;; Navigation
+(global-set-key (kbd "M-h") 'windmove-left)
+(global-set-key (kbd "M-j") 'windmove-down)
+(global-set-key (kbd "M-k") 'windmove-up)
+(global-set-key (kbd "M-l") 'windmove-right)
+
+(global-set-key (kbd "M-<left>") 'windmove-left)
+(global-set-key (kbd "M-<down>") 'windmove-down)
+(global-set-key (kbd "M-<up>") 'windmove-up)
+(global-set-key (kbd "M-<right>") 'windmove-right)
 
 ;;;; Theme Customization
 
@@ -88,7 +108,7 @@
 (setq-default frame-resize-pixelwise t)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (setq-default indent-tabs-mode nil)
-(setq-default fill-column 80)
+(setq-default fill-column 100)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 ;; Show whitespaces.
@@ -157,11 +177,6 @@
 ;;;;;;;;;;;;;;;
 ;; Languages ;;
 ;;;;;;;;;;;;;;;
-
-
-;;;; Emacs-lisp
-
-(add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
 
 ;;;; Org
