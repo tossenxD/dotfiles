@@ -50,6 +50,28 @@
 (setq evil-want-fine-undo t)
 (evil-set-undo-system 'undo-redo)
 
+;; Setup leader key and keymap
+(defun new-term-below ()
+  "Opens a new window below running a (uniquely named) terminal emulator"
+  (interactive)
+  (let ((shells '("/usr/bin/bash" "/bin/sh"))
+        (found-p nil))
+    (split-window-below)
+    (other-window 1)
+    (while (and shells (not found-p))
+      (when (and (file-executable-p (car shells)) (not (file-directory-p (car shells))))
+        (message "Found shell: %s" (car shells))
+        (term (car shells))
+        (setq found-p t))
+      (pop shells))
+    (unless found-p
+      (message "Could not find a shell -- reverts to eshell")
+      (eshell))
+    (rename-uniquely)
+    (evil-insert-state)))
+
+(evil-set-leader 'motion (kbd "SPC"))
+(evil-define-key 'normal 'global (kbd "<leader>t") 'new-term-below)
 
 ;;;; Theme Customization
 
@@ -115,6 +137,10 @@
 
 (setq-default column-number-mode t)
 
+
+;;;; Which key
+
+(which-key-mode 1)
 
 
 ;;;;;;;;;;;;;;
