@@ -93,6 +93,11 @@
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 
+(evil-define-key 'normal 'global (kbd "<leader>1") 'delete-other-windows)
+(evil-define-key 'normal 'global (kbd "<leader>2") 'split-window-below)
+(evil-define-key 'normal 'global (kbd "<leader>3") 'split-window-right)
+(evil-define-key 'normal 'global (kbd "<leader>0") 'delete-window)
+
 ;;;; Theme Customization
 
 ;; The darkest text color will determine the whitespace color (by making it
