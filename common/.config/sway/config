@@ -59,8 +59,9 @@ client.unfocused        $red    $red    $fg  $blue     $red
     bindsym $mod+q kill
     bindsym $mod+space exec $menu
     floating_modifier $mod normal
-    bindsym $mod+Shift+r reload
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Alt+r reload
+    bindsym $mod+Alt+l exec swaylock -f -k -L -c 282828
+    bindsym $mod+Alt+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     bindsym XF86MonBrightnessUp exec brightnessctl s +5%
     bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
     bindsym XF86AudioMicMute exec amixer set Capture toggle
@@ -124,11 +125,6 @@ client.unfocused        $red    $red    $fg  $blue     $red
     bindsym $mod+t floating toggle
     bindsym $mod+c focus mode_toggle
     bindsym $mod+a focus parent
-#
-# Scratchpad
-#
-    bindsym $mod+Shift+minus move scratchpad
-    bindsym $mod+minus scratchpad show
 #
 # Resizing
 #
