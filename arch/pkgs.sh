@@ -42,7 +42,7 @@ EMACSCOMMON="aspell aspell-en aspell-da \
     [CMD systemctl --user enable --now emacs]"
 EMACS="emacs "$EMACSCOMMON
 EMACSWAYLAND="emacs-wayland "$EMACSCOMMON
-VIRTUALBOX="virtualbox virtualbox-host-modules-arch"
+VIRTUALIZATION="virtualbox virtualbox-host-modules-arch qemu-desktop"
 DDDPRINT="openscad inkscape prusa-slicer"
 MUSIC="spotify-launcher [AUR tidal-hifi-bin]"
 DISCORD="discord"
