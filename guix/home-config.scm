@@ -10,14 +10,33 @@
   #:use-module (guix modules editors)
   #:use-module (guix modules desktops)
   #:use-module (guix modules office)
+  #:use-module (guix modules benchutils)
+  #:use-module (guix modules amdgpu)
   #:use-module (guix modules browsers))
 
 (define base-packages
   '(vi
     vim
     nano
+
     git
+    network-manager
+    openssh
     recutils
+    man-db
+    man-pages
+    tree
+    plocate
+    wget
+    curl
+
+    lm-sensors
+    hddtemp
+    btop
+    htop
+
+    sl
+    cowsay
     fastfetch))
 
 (define host-packages
@@ -31,9 +50,13 @@
                    editors-packages
                    desktop-sway-packages
                    office-packages
+                   benchtils-packages
+                   amdgpu-packages
+                   amdgpgpu-packages
                    browsers-packages))
           ((hostname? '("htpc"))
            (append desktop-plasma-packages
+                   amdgpu-packages
                    browsers-packages))
           (else (throw 'missing-host hostname)))))
 
@@ -66,3 +89,5 @@
 
 ;; TODO embed home configuration in system configuration
 ;; (see https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype)
+
+;; TODO to microcode or not to microcode?

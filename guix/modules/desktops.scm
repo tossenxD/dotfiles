@@ -14,6 +14,16 @@
     wl-clipboard
     wofi
 
+    pipewire
+    alsa-utils
+    bluez
+
+    libcdio
+    libdvdread
+    libdvdcss
+    libdvdnav
+    audiocd-kio
+
     alacritty
     lf
     zathura
