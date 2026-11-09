@@ -1,4 +1,4 @@
-(define-module (guix modules devutils)
+(define-module (modules devutils)
   #:export (devutils-packages))
 
 (define devutils-packages

@@ -1,17 +1,17 @@
-(define-module (guix home-config)
+(define-module (home-config)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu services)
   #:use-module (gnu packages)
   ;; local module definitions
-  #:use-module (guix modules devutils)
-  #:use-module (guix modules editors)
-  #:use-module (guix modules desktops)
-  #:use-module (guix modules office)
-  #:use-module (guix modules benchutils)
-  #:use-module (guix modules amdgpu)
-  #:use-module (guix modules browsers))
+  #:use-module (modules devutils)
+  #:use-module (modules editors)
+  #:use-module (modules desktops)
+  #:use-module (modules office)
+  #:use-module (modules benchutils)
+  #:use-module (modules amdgpu)
+  #:use-module (modules browsers))
 
 (define base-packages
   '("vim"
@@ -28,6 +28,7 @@
     "wget"
     "curl"
     "gawk"
+    "ncurses"
 
     "lm-sensors"
     "hddtemp"
@@ -75,14 +76,7 @@
 
 ;; TODO Setup channels
 
-;; TODO Make multiple profiles (i.e. htpc, lightweight, gaming, etc.)
-
 ;; TODO Setup periodic garbage collection or alias
-
-;; TODO remember GCC toolchain
-
-;; TODO if `clear` does not work after install, try installing `ncurses`
-;;      (or alias `printf '\e[2J\e[H'`)
 
 ;; TODO possible no `workstyle` -- first contribution?
 

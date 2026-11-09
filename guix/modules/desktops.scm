@@ -1,4 +1,4 @@
-(define-module (guix modules desktops)
+(define-module (modules desktops)
   #:export (desktop-sway-packages
             desktop-plasma-packages))
 

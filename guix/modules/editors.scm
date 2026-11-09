@@ -1,4 +1,4 @@
-(define-module (guix modules editors)
+(define-module (modules editors)
   #:export (editors-packages))
 
 (define editors-packages

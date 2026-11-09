@@ -1,4 +1,4 @@
-(define-module (guix modules benchutils)
+(define-module (modules benchutils)
   #:export (benchutils-packages))
 
 (define benchutils-packages

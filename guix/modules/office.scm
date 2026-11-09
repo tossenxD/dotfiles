@@ -1,4 +1,4 @@
-(define-module (guix modules office)
+(define-module (modules office)
   #:export (office-packages))
 
 (define office-packages

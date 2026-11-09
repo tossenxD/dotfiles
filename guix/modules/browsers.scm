@@ -1,4 +1,4 @@
-(define-module (guix modules browsers)
+(define-module (modules browsers)
   #:export (browsers-packages))
 
 (define browsers-packages

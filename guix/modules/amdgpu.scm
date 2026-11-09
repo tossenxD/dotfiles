@@ -1,4 +1,4 @@
-(define-module (guix modules amdgpu)
+(define-module (modules amdgpu)
   #:export (amdgpu-packages
             amdgpgpu-packages))
 
