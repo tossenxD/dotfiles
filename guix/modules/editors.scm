@@ -2,7 +2,7 @@
   #:export (editors-packages))
 
 (define editors-packages
-  '("emacs"
+  '("emacs-pgtk"
     "aspell"
     "aspell-dict-uk"
     "aspell-dict-da"

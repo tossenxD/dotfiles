@@ -64,7 +64,12 @@ matchToConfiguration $HOST
 #
 for TARGET in $CONFIG
 do
-    SOURCE=$PDIR/$TARGET
+    if [ "$TARGET" = "scripts" ]
+    then
+        SOURCE=$PDIR/scripts/$TARGET
+    else
+        SOURCE=$PDIR/dotfiles/$TARGET
+    fi
     DEST=$HOME/$TARGET
     if ([ $UNLINK_P ] && [ ! -e $DEST ]) || ([ -z $UNLINK_P ] && [ -e $DEST ])
     then
@@ -78,7 +83,7 @@ do
         if [ -z $UNLINK_P ]
         then
             [ -z $DRYRUN_P ] && ln -sf $SOURCE $DEST
-            printf "linked: %-50s ->\t%s\n" $SOURCE $DEST
+            printf "linked: %-60s ->\t%s\n" $SOURCE $DEST
         else
             [ -z $DRYRUN_P ] && rm -r $DEST
             printf "unlinked: %-30s <-\t%s\n" $DEST $SOURCE

@@ -4,10 +4,12 @@
 
 (define desktop-sway-packages
   '("sway"
-    "waybar"
     "swaybg"
+    "swaylock"
+    "waybar"
     "wayland"
     "xorg-server-xwayland"
+    "xdg-utils"
     "swappy"
     "grim"
     "slurp"
@@ -16,6 +18,7 @@
 
     "pipewire"
     "alsa-utils"
+    "pulsemixer"
     "bluez"
 
     "libcdio"

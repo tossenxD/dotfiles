@@ -5,6 +5,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu services)
   #:use-module (gnu packages)
+  #:use-module (guix gexp)
   ;; local module definitions
   #:use-module (modules devutils)
   #:use-module (modules editors)
@@ -31,6 +32,10 @@
     "gawk"
     "ncurses"
     "make"
+    "zip"
+    "unzip"
+
+    "elogind"
 
     "lm-sensors"
     "hddtemp"
@@ -47,7 +52,7 @@
                          (cond ((null? xs) #f)
                                ((string=? hostname (car xs)) #t)
                                (else (hostname? (cdr xs)))))))
-    (cond ((hostname? '("T14" "apollo69"))
+    (cond ((hostname? '("T14" "apollo69" "guixpad"))
            (append devutils-packages
                    editors-packages
                    desktop-sway-packages
@@ -56,7 +61,7 @@
                    amdgpu-packages
                    amdgpgpu-packages
                    browsers-packages))
-          ((hostname? '("htpc" "guixpad"))
+          ((hostname? '("htpc"))
            (append desktop-plasma-packages
                    amdgpu-packages
                    browsers-packages))
@@ -68,7 +73,7 @@
  (services
   (append (list (service home-dotfiles-service-type
                          (home-dotfiles-configuration
-                          (directories '("../common")))))
+                          (directories '("../common/dotfiles" "../common/scripts")))))
           %base-home-services)))
 
 
@@ -100,3 +105,6 @@
 ;; TODO steam and nonguix channel (what about minecraft and lutris?)
 
 ;; TODO logitech mx3 mouse "solaar", look into
+
+;; TODO add service that checks for an existing wallpaper and creates a default if non are found
+;; (also TODO, consider moving wallpaper from ~.wallpaper.png -> ~.config/.wallpaper.png
