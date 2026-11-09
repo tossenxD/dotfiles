@@ -1,10 +1,10 @@
 (define-module (guix modules editors)
-  #:export editors-packages)
+  #:export (editors-packages))
 
 (define editors-packages
-  '(emacs
-    aspell
-    aspell-dict-uk
-    aspell-dict-da
-    neovim
-    python-pynvim))
+  '("emacs"
+    "aspell"
+    "aspell-dict-uk"
+    "aspell-dict-da"
+    "neovim"
+    "python-pynvim"))

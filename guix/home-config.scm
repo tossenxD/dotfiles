@@ -3,8 +3,7 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu services)
-  #:use-module (gnu packages admin)
-  #:use-module (gnu gexp)
+  #:use-module (gnu packages)
   ;; local module definitions
   #:use-module (guix modules devutils)
   #:use-module (guix modules editors)
@@ -15,29 +14,30 @@
   #:use-module (guix modules browsers))
 
 (define base-packages
-  '(vi
-    vim
-    nano
+  '("vi"
+    "vim"
+    "nano"
 
-    git
-    network-manager
-    openssh
-    recutils
-    man-db
-    man-pages
-    tree
-    plocate
-    wget
-    curl
+    "git"
+    "network-manager"
+    "openssh"
+    "recutils"
+    "man-db"
+    "man-pages"
+    "tree"
+    "plocate"
+    "wget"
+    "curl"
+    "gawk"
 
-    lm-sensors
-    hddtemp
-    btop
-    htop
+    "lm-sensors"
+    "hddtemp"
+    "btop"
+    "htop"
 
-    sl
-    cowsay
-    fastfetch))
+    "sl"
+    "cowsay"
+    "fastfetch"))
 
 (define host-packages
   (letrec* ((hostname (gethostname))
@@ -54,17 +54,17 @@
                    amdgpu-packages
                    amdgpgpu-packages
                    browsers-packages))
-          ((hostname? '("htpc"))
+          ((hostname? '("htpc" "guixpad"))
            (append desktop-plasma-packages
                    amdgpu-packages
                    browsers-packages))
           (else (throw 'missing-host hostname)))))
 
 (home-environment
- (packages (append base-packages
-                   host-packages))
+ (packages (specifications->packages (append base-packages
+                                             host-packages))
  (services
-  (append (list ())
+  (append (list)
           %base-home-services)))
 
 
@@ -91,3 +91,15 @@
 ;; (see https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype)
 
 ;; TODO to microcode or not to microcode?
+
+;; TODO add fonts and themes
+
+;; TODO add vpn and torrent clients
+
+;; TODO find out if virtualbox and qemu is needed on guix
+
+;; TODO tidal and discoard package? Or maybe just use browser
+
+;; TODO steam and nonguix channel (what about minecraft and lutris?)
+
+;; TODO logitech mx3 mouse "solaar", look into

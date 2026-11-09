@@ -1,21 +1,21 @@
 (define-module (guix modules devutils)
-  #:export devutils-packages)
+  #:export (devutils-packages))
 
 (define devutils-packages
-  '(gcc-toolchain
-    gdb
-    nasm
-    valgrind
+  '("gcc-toolchain"
+    "gdb"
+    "nasm"
+    "valgrind"
 
-    ghc
+    "ghc"
 
-    nix
+    "nix"
 
-    cmark
+    "cmark"
 
-    python
-    python-pip
+    "python"
+    "python-pip"
 
-    texlive-collection-latex
-    texlive-collection-latexrecommended
-    texlive-collection-latexextra))
+    "texlive-collection-latex"
+    "texlive-collection-latexrecommended"
+    "texlive-collection-latexextra"))

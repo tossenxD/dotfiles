@@ -1,7 +1,7 @@
 (define-module (guix modules benchutils)
-  #:export benchutils-packages)
+  #:export (benchutils-packages))
 
 (define benchutils-packages
-  '(mangohud
-    glmark2
-    xmrig))
+  '("mangohud"
+    "glmark2"
+    "xmrig"))
