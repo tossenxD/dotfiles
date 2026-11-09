@@ -51,7 +51,7 @@
                    editors-packages
                    desktop-sway-packages
                    office-packages
-                   benchtils-packages
+                   benchutils-packages
                    amdgpu-packages
                    amdgpgpu-packages
                    browsers-packages))
