@@ -2,6 +2,7 @@
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
+  #:use-module (gnu home services dotfiles)
   #:use-module (gnu services)
   #:use-module (gnu packages)
   ;; local module definitions
@@ -65,7 +66,9 @@
  (packages (specifications->packages (append base-packages
                                              host-packages)))
  (services
-  (append (list)
+  (append (list (service home-dotfiles-service-type
+                         (home-dotfiles-configuration
+                          (directories '("../common")))))
           %base-home-services)))
 
 
