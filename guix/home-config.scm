@@ -29,6 +29,7 @@
     "curl"
     "gawk"
     "ncurses"
+    "make"
 
     "lm-sensors"
     "hddtemp"

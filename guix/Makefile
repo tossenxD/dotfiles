@@ -1,10 +1,11 @@
-HOME-CONFIG-SRC = home-config.scm
+SRC-DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+HOME-CONFIG-SRC := $(SRC-DIR)home-config.scm
 
 reconfigure:
-	guix home -L . reconfigure $(HOME-CONFIG-SRC)
+	guix home -L $(SRC-DIR) reconfigure $(HOME-CONFIG-SRC)
 
 container:
-	guix home -L . container $(HOME-CONFIG-SRC)
+	guix home -L $(SRC-DIR) container $(HOME-CONFIG-SRC)
 
 clean:
-	git clean -fX
+	cd $(SRC-DIR); git clean -fX
