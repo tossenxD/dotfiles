@@ -14,8 +14,7 @@
   #:use-module (guix modules browsers))
 
 (define base-packages
-  '("vi"
-    "vim"
+  '("vim"
     "nano"
 
     "git"
@@ -62,7 +61,7 @@
 
 (home-environment
  (packages (specifications->packages (append base-packages
-                                             host-packages))
+                                             host-packages)))
  (services
   (append (list)
           %base-home-services)))
