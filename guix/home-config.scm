@@ -13,6 +13,9 @@
   #:use-module (modules office)
   #:use-module (modules benchutils)
   #:use-module (modules amdgpu)
+  #:use-module (modules privacy)
+  #:use-module (modules firmware)
+  #:use-module (modules virtualizers)
   #:use-module (modules browsers))
 
 (define base-packages
@@ -42,6 +45,10 @@
     "btop"
     "htop"
 
+    "font-liberation"
+    "font-dejavu"
+    "font-gnu-unifont"
+
     "sl"
     "cowsay"
     "fastfetch"))
@@ -60,10 +67,15 @@
                    benchutils-packages
                    amdgpu-packages
                    amdgpgpu-packages
+                   privacy-packages
+                   firmware-packages
+                   virtualizers-packages
                    browsers-packages))
           ((hostname? '("htpc"))
            (append desktop-plasma-packages
                    amdgpu-packages
+                   privacy-packages
+                   firmware-packages
                    browsers-packages))
           (else (throw 'missing-host hostname)))))
 
@@ -78,6 +90,15 @@
 
 
 
+;; TODO add service that checks for an existing wallpaper and creates a default if non are found
+;; (also TODO, consider moving wallpaper from ~.wallpaper.png -> ~.config/.wallpaper.png
+;;
+;; e.g. take inspiration from:
+;;
+;; (list (service (home-files-service-type
+;;   `(("scripts" ,(local0file "../common/foo" #:recursive? #t))))))
+
+
 
 
 
@@ -87,24 +108,11 @@
 
 ;; TODO Setup periodic garbage collection or alias
 
-;; TODO possible no `workstyle` -- first contribution?
-
 ;; TODO embed home configuration in system configuration
 ;; (see https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype)
 
-;; TODO to microcode or not to microcode?
+;; TODO tidal and discord package (nonguix)? Or maybe just use browser
 
-;; TODO add fonts and themes
+;; TODO to microcode or not to microcode (nonguix)?
 
-;; TODO add vpn and torrent clients
-
-;; TODO find out if virtualbox and qemu is needed on guix
-
-;; TODO tidal and discoard package? Or maybe just use browser
-
-;; TODO steam and nonguix channel (what about minecraft and lutris?)
-
-;; TODO logitech mx3 mouse "solaar", look into
-
-;; TODO add service that checks for an existing wallpaper and creates a default if non are found
-;; (also TODO, consider moving wallpaper from ~.wallpaper.png -> ~.config/.wallpaper.png
+;; TODO steam+wifi on nonguix channel (what about minecraft and lutris?)

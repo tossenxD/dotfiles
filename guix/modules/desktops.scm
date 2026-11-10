@@ -2,6 +2,7 @@
   #:export (desktop-sway-packages
             desktop-plasma-packages))
 
+;; TODO possibly no `workstyle` (used in sway config) -- first contribution?
 (define desktop-sway-packages
   '("sway"
     "swaybg"
