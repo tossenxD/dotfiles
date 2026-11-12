@@ -5,3 +5,9 @@
   '("icecat"
     "librewolf"
     "ungoogled-chromium-wayland"))
+
+(define browsers-services
+  '())
+
+(define browsers-environment
+  (cons browsers-packages browsers-services))

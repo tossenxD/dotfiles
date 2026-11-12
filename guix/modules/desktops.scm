@@ -1,6 +1,8 @@
 (define-module (modules desktops)
-  #:export (desktop-sway-packages
-            desktop-plasma-packages))
+  #:export (desktop-sway-environment
+            desktop-plasma-environment))
+
+;; sway
 
 ;; TODO possibly no `workstyle` (used in sway config) -- first contribution?
 (define desktop-sway-packages
@@ -35,5 +37,19 @@
     "mpv"
     "imv"))
 
+(define desktop-sway-services
+  '())
+
+(define desktop-sway-environment
+  (cons desktop-sway-packages desktop-sway-environment))
+
+;; plasma
+
 (define desktop-plasma-packages
   '("plasma"))
+
+(define desktop-plasma-services
+  '())
+
+(define desktop-plasma-environment
+  (cons desktop-plasma-packages desktop-plasma-services))

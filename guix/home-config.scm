@@ -6,7 +6,9 @@
   #:use-module (gnu services)
   #:use-module (gnu packages)
   #:use-module (guix gexp)
+  #:use-module (srfi srfi-1)
   ;; local module definitions
+  #:use-module (modules base)
   #:use-module (modules devutils)
   #:use-module (modules editors)
   #:use-module (modules desktops)
@@ -18,75 +20,38 @@
   #:use-module (modules virtualizers)
   #:use-module (modules browsers))
 
-(define base-packages
-  '("vim"
-    "nano"
-
-    "git"
-    "network-manager"
-    "openssh"
-    "recutils"
-    "man-db"
-    "man-pages"
-    "tree"
-    "plocate"
-    "wget"
-    "curl"
-    "gawk"
-    "ncurses"
-    "make"
-    "zip"
-    "unzip"
-
-    "elogind"
-
-    "lm-sensors"
-    "hddtemp"
-    "btop"
-    "htop"
-
-    "font-liberation"
-    "font-dejavu"
-    "font-gnu-unifont"
-
-    "sl"
-    "cowsay"
-    "fastfetch"))
-
-(define host-packages
-  (letrec* ((hostname (gethostname))
+(define host-environment
+  (letrec* ((zip (lambda (xs ys)
+                   (cons (append (car xs) (car ys)) (append (cdr xs) (cdr ys)))))
+            (hostname (gethostname))
             (hostname? (lambda (xs)
                          (cond ((null? xs) #f)
                                ((string=? hostname (car xs)) #t)
                                (else (hostname? (cdr xs)))))))
-    (cond ((hostname? '("T14" "apollo69" "guixpad"))
-           (append devutils-packages
-                   editors-packages
-                   desktop-sway-packages
-                   office-packages
-                   benchutils-packages
-                   amdgpu-packages
-                   amdgpgpu-packages
-                   privacy-packages
-                   firmware-packages
-                   virtualizers-packages
-                   browsers-packages))
-          ((hostname? '("htpc"))
-           (append desktop-plasma-packages
-                   amdgpu-packages
-                   privacy-packages
-                   firmware-packages
-                   browsers-packages))
-          (else (throw 'missing-host hostname)))))
+    (fold zip base-environment
+          (cond ((hostname? '("T14" "apollo69" "guixpad"))
+                 (list devutils-environment
+                       editors-environment
+                       desktop-sway-environment
+                       office-environment
+                       benchutils-environment
+                       amdgpu-environment
+                       amdgpgpu-environment
+                       privacy-environment
+                       firmware-environment
+                       virtualizers-environment
+                       browsers-environment))
+                ((hostname? '("htpc"))
+                 (list desktop-plasma-environment
+                       amdgpu-environment
+                       privacy-environment
+                       firmware-environment
+                       browsers-environment))
+                (else (throw 'missing-host hostname))))))
 
 (home-environment
- (packages (specifications->packages (append base-packages
-                                             host-packages)))
- (services
-  (append (list (service home-dotfiles-service-type
-                         (home-dotfiles-configuration
-                          (directories '("../common/dotfiles" "../common/scripts")))))
-          %base-home-services)))
+ (packages (specifications->packages (car host-environment)))
+ (services (append (cdr host-environment) %base-home-services)))
 
 
 

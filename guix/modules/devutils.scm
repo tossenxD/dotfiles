@@ -1,5 +1,5 @@
 (define-module (modules devutils)
-  #:export (devutils-packages))
+  #:export (devutils-environment))
 
 (define devutils-packages
   '("gcc-toolchain"
@@ -19,3 +19,9 @@
     "texlive-collection-latex"
     "texlive-collection-latexrecommended"
     "texlive-collection-latexextra"))
+
+(define devutils-services
+  '())
+
+(define devutils-environment
+  (cons devutils-packages devutils-services))

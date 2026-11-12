@@ -1,5 +1,5 @@
 (define-module (modules office)
-  #:export (office-packages))
+  #:export (office-environment))
 
 (define office-packages
   '("gimp"
@@ -8,3 +8,9 @@
     "inkscape"
     "prusa-slicer"
     "audacity"))
+
+(define office-services
+  '())
+
+(define office-environment
+  (cons office-packages office-services))
