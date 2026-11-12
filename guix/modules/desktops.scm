@@ -41,7 +41,7 @@
   '())
 
 (define desktop-sway-environment
-  (cons desktop-sway-packages desktop-sway-environment))
+  (cons desktop-sway-packages desktop-sway-services))
 
 ;; plasma
 

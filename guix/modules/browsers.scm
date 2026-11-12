@@ -1,5 +1,5 @@
 (define-module (modules browsers)
-  #:export (browsers-packages))
+  #:export (browsers-environment))
 
 (define browsers-packages
   '("icecat"

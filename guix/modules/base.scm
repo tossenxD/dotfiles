@@ -1,7 +1,6 @@
 (define-module (modules base)
-  #:use-module (gnu home services shepherd)
+  #:use-module (gnu home services dotfiles)
   #:use-module (gnu services)
-  #:use-module (guix gexp)
   #:export (base-environment))
 
 (define base-packages
@@ -42,9 +41,9 @@
     "fastfetch"))
 
 (define base-services
-  '((service home-dotfiles-service-type
-             (home-dotfiles-configuration
-              (directories '("../common/dotfiles" "../common/scripts"))))))
+  (list (service home-dotfiles-service-type
+                 (home-dotfiles-configuration
+                  (directories '("../../common/dotfiles" "../../common/scripts"))))))
 
 (define base-environment
   (cons base-packages base-services))

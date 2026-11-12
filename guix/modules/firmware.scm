@@ -1,5 +1,5 @@
 (define-module (modules firmware)
-  #:export (firmware-services))
+  #:export (firmware-environment))
 
 ;; TODO test (and add) game controllers and possibly keyboard QMK flashing
 (define firmware-packages
