@@ -1,5 +1,6 @@
 (define-module (modules desktops)
   #:use-module (gnu home services sound)
+  #:use-module (gnu services)
   #:export (desktop-sway-environment
             desktop-plasma-environment))
 

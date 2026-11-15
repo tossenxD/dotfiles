@@ -177,7 +177,8 @@
 
 ;;;; PDF Rendering
 
-(get-package 'pdf-tools nil '("\\.pdf\\'" . pdf-tools) 'pdf-tools-install t)
+;; TODO this is giving some trouble, at least on my guix setup
+;; (get-package 'pdf-tools nil '("\\.pdf\\'" . pdf-tools) 'pdf-tools-install t)
 
 
 

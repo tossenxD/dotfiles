@@ -4,6 +4,7 @@
   #:use-module (gnu home services xdg)
   #:use-module (gnu home services guix)
   #:use-module (gnu services)
+  #:use-module (guix channels)
   #:export (base-environment))
 
 (define base-packages
