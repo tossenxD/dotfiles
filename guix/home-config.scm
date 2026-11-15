@@ -16,6 +16,7 @@
   #:use-module (modules privacy)
   #:use-module (modules firmware)
   #:use-module (modules virtualizers)
+  #:use-module (modules flatpaks)
   #:use-module (modules browsers))
 
 (define host-environment
@@ -38,12 +39,14 @@
                        privacy-environment
                        firmware-environment
                        virtualizers-environment
+                       flatpaks-environment
                        browsers-environment))
                 ((hostname? '("htpc"))
                  (list desktop-plasma-environment
                        amdgpu-environment
                        privacy-environment
                        firmware-environment
+                       flatpaks-environment
                        browsers-environment))
                 (else (throw 'missing-host hostname))))))
 
