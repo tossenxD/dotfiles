@@ -1,4 +1,5 @@
 (define-module (modules desktops)
+  #:use-module (gnu home services sound)
   #:export (desktop-sway-environment
             desktop-plasma-environment))
 
@@ -20,6 +21,7 @@
     "wofi"
 
     "pipewire"
+    "wireplumber"
     "alsa-utils"
     "pulsemixer"
     "bluez"
@@ -38,7 +40,7 @@
     "imv"))
 
 (define desktop-sway-services
-  '())
+  (list (service home-pipewire-service-type)))
 
 (define desktop-sway-environment
   (cons desktop-sway-packages desktop-sway-services))

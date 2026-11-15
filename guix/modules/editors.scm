@@ -17,14 +17,15 @@
 
 (define editors-services
   (list
-   (simple-service 'emacs-daemon-service home-shepherd-service-type
+   (simple-service 'emacs-server
+                   home-shepherd-service-type
                    (list (shepherd-service
-                          (provision '(emacs))
-                          ;; (requirement '(user-processes)) TODO from docs, needed?
+                          (provision '(emacs-server))
+                          (requirement '(dbus))
                           (documentation "Emacs daemon")
                           (start #~(make-forkexec-constructor
-                                    (list (string-append #$emacs-pgtk "/bin/emacs") "--fg-daemon")))
-                          (stop #~(make-kill-desctructor)))))))
+                                    (list #$(file-append emacs-pgtk "/bin/emacs") "--fg-daemon")))
+                          (stop #~(make-kill-destructor)))))))
 
 (define editors-environment
   (cons editors-packages editors-services))
